@@ -37,7 +37,7 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/registro/crar', [registroController::class, 'create'])->name('registro.create');
 Route::post('/registro', [registroController::class, 'store'])->name('registro.store');
 
-// Órdenes
+// Órdenes vista cliente compra
 Route::get('/ordenes/create', [compraController::class, 'create'])->name('ordenes.create');
 Route::post('/ordenes', [compraController::class, 'store'])->name('ordenes.store'); 
 Route::get('/ordenes', [compraController::class, 'index'])->name('ordenes.index');
