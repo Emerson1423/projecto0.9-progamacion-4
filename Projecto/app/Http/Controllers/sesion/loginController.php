@@ -27,7 +27,7 @@ class LoginController extends Controller
             if ($user->rol_Id === 1) {
                 return redirect()->route('admin'); // Admin
             } elseif ($user->rol_Id === 3) {
-                return redirect()->route('inicio'); // Cliente
+                return redirect()->route('compra.create'); // Cliente
             }
             return redirect('/'); // Redirigir a la página de inicio si no se encuentra el rol
         }
