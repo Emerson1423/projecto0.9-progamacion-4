@@ -1,137 +1,242 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <style>
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color:rgb(32, 32, 32);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="icon" href="{{ asset('img/vg2.png') }}" type="image/x-icon">
 
-        h1 {
+        <title>Iniciar Sesión</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Segoe UI', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #0c0b10;
+                color: #ffffff;
+                display: flex;
+                height: 100vh;
+            }
+        
+            .card {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                place-items: center;
+                background: rgb(25, 5, 5);
+                padding: 40px 30px;
+                box-shadow: 0 0 10px rgba(255, 88, 88, 0.2);
+                max-width: 400px;
+                width: 100%;
+                z-index: 0;
+            }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-image: linear-gradient(180deg, rgb(255, 247, 0), rgb(121, 0, 0));
+                animation: rotBGimg 3s linear infinite;
+                z-index: -1;
+            }
+
+            .card::after {
+                content: '';
+                position: absolute;
+                inset: 5px;
+                background: rgb(25, 5, 5);
+                border-radius: 15px;
+                z-index: -1;
+            }
+
+            @keyframes rotBGimg {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+            h1 {
+                width: 42ch;
+                font-family: monospace;
+                text-wrap: nowrap;
+                overflow: hidden;
+                text-align: center;
+                animation: typing 3s steps(42) 1 forwards;
+                margin: 40px auto 20px auto; 
+            }
             
-            text-align: center;
-            color: whitesmoke;
-        }
+            @keyframes typing {
+                0% {
+                    width: 0ch;
+                }
+            }
+            
+            .container {
+                display: flex;
+                width: 100%;
+            }
 
-        form {
-            background:rgb(69, 67, 67);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
+            .left {
+                flex: 1;
+                background-color:rgb(0, 0, 0);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 40px;
+            }
 
-        div {
-            margin-bottom: 15px;
-        }
+            .left h1 {
+                font-size: 32px;
+                margin-bottom: 10px;
+                color: rgb(255, 255, 255);
+            }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: whitesmoke;
-        }
+            .left p {
+                font-size: 16px;
+                color: #c9d1d9;
+            }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+            .right {
+                flex: 1;
+                background-color: rgb(16, 0, 0);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-        input:focus {
-            border-color: #007bff;
-            outline: none;
-        }
+            form {
+                background: rgb(25, 5, 5);
+                padding: 30px;
+                width: 100%;
+                max-width: 400px;
+            }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+            label {
+                display: block;
+                margin-bottom: 6px;
+                font-weight: bold;
+                color: #c9d1d9;
+            }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid rgb(61, 48, 48);
+                background-color: rgb(0, 0, 0);
+                color: white;
+                border-radius: 5px;
+            }
 
-        p {
-            text-align: center;
-            color: whitesmoke;
-        }
+            input:focus {
+                outline: none;
+                border-color: rgb(177, 1, 1);
+            }
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+            button {
+                width: 100%;
+                padding: 10px;
+                background-color: rgb(255, 30, 0);
+                color: white;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
 
-        a:hover {
-            text-decoration: underline;
-        }
+            button:hover {
+                background-color: rgb(203, 86, 18);
+            }
 
-        span {
-            font-size: 12px;
-        }
-    
-    </style>
-    
+            a {
+                color: rgb(255, 0, 0);
+                text-decoration: none;
+            }
 
-    @if(session('error'))
-        <p style="color: red;">{{ session('error') }}</p>
-    @endif
+            a:hover {
+                text-decoration: underline;
+            }
 
-    <form method="POST" action="{{ route('login.post') }}">
-        @csrf <!-- Token de seguridad de Laravel -->
+            .error {
+                color: rgb(255, 17, 0);
+                font-size: 14px;
+            }
+
+            .register {
+                text-align: center;
+                margin-top: 15px;
+            }
+
+            .logo-gif {
+            width: 250px;
+            height: auto;
+            margin-bottom: 20px;
         
-        <h1>Iniciar Sesión</h1>
-        <div>
-            <label for="email">Correo electrónico:</label>
-            <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                required 
-                value="{{ old('email') }}"
-            >
-            @error('email')
-                <span style="color: red;">{{ $message }}</span>
-            @enderror
+    }
+    </style>
+    </head>
+
+<body>
+
+    <div class="container">
+        <div class= "left">
+            <img src="{{ asset('img/logovicegamess.gif') }}" alt="Logo ViceGames" class="logo-gif"> 
+            <h1>¡Bienvenido a ViceGames!</h1>     
         </div>
 
-        <div>
-            <label for="password">Contraseña:</label>
-            <input 
-                type="password" 
-                id="password" 
-                name="password" 
-                required
-            >
-            @error('password')
-                <span style="color: red;">{{ $message }}</span>
-            @enderror
+        <div class="right">
+            <div class="card">
+                @if(session('error'))
+                <p style="color: red;">{{ session('error') }}</p>
+        @endif
+
+        <form method="POST" action="{{ route('login.post') }}">
+            @csrf <!-- Token de seguridad de Laravel -->
+            
+            <h2 style="text-align:center; margin bottom: 20px;">Iniciar Sesión</h2>
+            <div>
+                <label for="email">Correo electrónico:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    value="{{ old('email') }}"
+                >
+                @error('email')
+                    <span style="color: red;">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div>
+                <label for="password">Contraseña:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required
+                >
+                @error('password')
+                    <span style="color: red;">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <button type="submit">Ingresar</button>
+            <!-- enlace a registro -->
+        <p>¿No tienes cuenta? <a href="{{ route('registro.create') }}">Regístrate aquí</a></p>
+         </form>  
         </div>
-
-        <button type="submit">Ingresar</button>
-        <!-- enlace a registro -->
-    <p>¿No tienes cuenta? <a href="{{ route('registro.create') }}">Regístrate aquí</a></p>
-    </form>
-
     
+        </div>
+    </div>
 </body>
 </html>

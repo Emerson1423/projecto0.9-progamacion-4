@@ -3,82 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="{{ asset('img/vg2.png') }}" type="image/x-icon">
+
+<link rel="stylesheet" href="{{ asset('css/Style.css') }}">
 <title>Catálogo de Juegos</title>
-<style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background:rgb(31, 31, 31);
-        margin: 0;
-        padding: 20px;
-    }
-    .navbar {
-    background-color: #1f1f1f;
-    padding: 10px;
-    }
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.navbar li a:hover {
-    color:rgb(255, 251, 0);
-}
-
-footer {
-    background-color: #1f1f1f;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-        
-h1{
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
-}
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-.game-card {
-    background-color: #2c2c2c;
-    border-radius: 10px;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.game-card img {
-    border-radius: 10px;
-    margin-bottom: 10px;
-     transform: scale(1.1); 
-}
-
-.game-card:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s;
-    color:rgb(251, 227, 91);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -88,7 +16,35 @@ h1{
             <li><a href="{{ route('registro.create') }}">Comprar</a></li>
         </ul>
     </nav>
-    <h1 >Catálogo de Juegos</h1>
+
+ <h1 >Catálogo de Juegos</h1>
+
+
+<div class="catalog-container">
+ 
+  <div class="game-card accion">
+    <img src="{{ asset('img/caratulagta.jpeg') }}" alt="GTA" class="game-img">
+    <h3>Grand Theft Auto V</h3>
+    <a href="{{ route('registro.create') }}" class="btn-ver-mas">Ver más</a>
+  </div>
+
+  <div class="game-card aventura">
+    <img src="{{ asset('img/caratulaspiderman.jpeg') }}" alt="Spiderman" class="game-img">
+    <h3>Spiderman</h3>
+    <a href="{{ route('registro.create') }}" class="btn-ver-mas">Ver más</a>
+  </div>
+
+
+  <div class="game-card simulacion">
+    <img src="{{ asset('img/caratulaminecraft.jpeg') }}" alt="Minecraft" class="game-img">
+    <h3>Minecraft</h3>
+    <a href="{{ route('registro.create') }}" class="btn-ver-mas">Ver más</a>
+  
+  </div>
+
+</div>
+
+   
     <div class="cards-container">
         @foreach($videogames as $juego)
         <div class="game-card">
