@@ -45,9 +45,11 @@ Route::get('/registro/crar', [registroController::class, 'create'])->name('regis
 Route::post('/registro', [registroController::class, 'store'])->name('registro.store');
 
 // Órdenes vista cliente compra
-Route::get('/ordenes/create', [compraController::class, 'create'])->name('ordenes.create');
-Route::post('/ordenes', [compraController::class, 'store'])->name('ordenes.store'); 
-Route::get('/ordenes', [compraController::class, 'index'])->name('ordenes.index');
+Route::prefix('compra')->group(function(){
+Route::get('/compra/create', [compraController::class, 'create'])->name('compra.create');
+Route::post('/compra', [compraController::class, 'store'])->name('compra.store'); //tenia ordenes.store
+Route::get('/compra', [compraController::class, 'index'])->name('compra.index'); //tenia ordenes.index
+});
 
 // Ruta para la página de inicio después de iniciar sesión
 

@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
+    <title>Comprar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
-<body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+<body class="bg-light">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Mi Tienda</a>
+                <a class="navbar-brand" href="#">ViceGames</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,7 +61,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $producto->titulo }}</h5>
                             <p class="card-text">{{ Str::limit($producto->descripcion, 100) }}</p>
-                            <p class="h5 text-primary">${{ number_format($producto->precio, 2) }}</p>
+                            <p class="h5 text-warning">${{ number_format($producto->precio, 2) }}</p>
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <div class="input-group" style="width: 120px;">
                                     <button class="btn btn-outline-secondary decrement" type="button">-</button>
@@ -81,7 +83,7 @@
             <!-- Resumen del Carrito -->
             <div class="col-md-4">
                 <div class="card cart-summary">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-dark text-white">
                         <h5 class="mb-0">Resumen del Pedido</h5>
                     </div>
                     <div class="card-body">
@@ -92,7 +94,7 @@
 
                         <hr>
 
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Pagar</button>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Pagar</button>
 
 
                     </div>
@@ -162,6 +164,7 @@
             </div>
         </div>
     </div>
+ 
 
 
    
