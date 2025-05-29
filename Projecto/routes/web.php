@@ -15,13 +15,20 @@ use App\Http\Controllers\rol\RolesController;
 use App\Http\Controllers\orden\OrdenesController;
 use App\Http\Controllers\pago\pagosController;
 use App\Http\Controllers\pedido\pedidosController;
+use App\Http\Controllers\vistaJuegos\ViewjuegosController;
 
+//ruta de inicio 
+Route::get('/', function () {
+    return view('welcome');
+})->name('inicio');
 
+// Ruta para la página de administración
 Route::get('/admin', function () {
     return view('administracion.admin');
 }) ->name('admin');
-// Página de inicio (formulario de login)
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+
+// Página de (formulario de login)
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 
 // Procesar login (POST)
@@ -43,6 +50,9 @@ Route::post('/ordenes', [compraController::class, 'store'])->name('ordenes.store
 Route::get('/ordenes', [compraController::class, 'index'])->name('ordenes.index');
 
 // Ruta para la página de inicio después de iniciar sesión
+
+//ruta para ver los juegos disponibles en inicio
+Route::get('/juegos', [viewjuegosController::class, 'index'])->name('juegos');
 
 // En routes/web.php
 

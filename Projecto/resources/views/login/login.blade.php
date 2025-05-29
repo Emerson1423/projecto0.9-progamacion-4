@@ -5,9 +5,10 @@
 </head>
 <body>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color:rgb(32, 32, 32);
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,12 +18,13 @@
         }
 
         h1 {
+            
             text-align: center;
-            color: #333;
+            color: whitesmoke;
         }
 
         form {
-            background: #fff;
+            background:rgb(69, 67, 67);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -38,7 +40,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #555;
+            color: whitesmoke;
         }
 
         input {
@@ -71,7 +73,7 @@
 
         p {
             text-align: center;
-            color: #555;
+            color: whitesmoke;
         }
 
         a {
@@ -86,8 +88,9 @@
         span {
             font-size: 12px;
         }
+    
     </style>
-    <h1>Iniciar Sesión</h1>
+    
 
     @if(session('error'))
         <p style="color: red;">{{ session('error') }}</p>
@@ -95,7 +98,8 @@
 
     <form method="POST" action="{{ route('login.post') }}">
         @csrf <!-- Token de seguridad de Laravel -->
-
+        
+        <h1>Iniciar Sesión</h1>
         <div>
             <label for="email">Correo electrónico:</label>
             <input 
@@ -124,9 +128,10 @@
         </div>
 
         <button type="submit">Ingresar</button>
+        <!-- enlace a registro -->
+    <p>¿No tienes cuenta? <a href="{{ route('registro.create') }}">Regístrate aquí</a></p>
     </form>
 
-    <!-- Opcional: Enlace a registro -->
-    <p>¿No tienes cuenta? <a href="{{ route('registro.create') }}">Regístrate aquí</a></p>
+    
 </body>
 </html>
