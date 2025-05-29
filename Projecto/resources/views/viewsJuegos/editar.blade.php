@@ -73,7 +73,7 @@
 <body>
 <h1>Editar Juego</h1>
 
-<form action="{{ route('editar', $videogames->juegos_Id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('juegos.actualizar', $videogames->juegos_Id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     
@@ -132,6 +132,7 @@
         @endforeach
     </select><br><br>
 
+    
     <button type="submit">Actualizar</button>
 </form>
 

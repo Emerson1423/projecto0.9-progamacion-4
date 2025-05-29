@@ -103,7 +103,7 @@ class JuegosController extends Controller
         }
         
         $juego->update($data);
-        return redirect()->route('index')->with('success', 'Juego actualizado exitosamente!');
+        return redirect()->route('juegos.index')->with('success', 'Juego actualizado exitosamente!');
     }
 
     public function eliminar($juegos_Id)

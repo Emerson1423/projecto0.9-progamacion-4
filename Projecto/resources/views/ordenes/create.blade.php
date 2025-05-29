@@ -54,31 +54,41 @@
             <div class="col-md-8">
                 <h2 class="mb-4">Nuestros Productos</h2>
                 <div class="row">
-                @foreach($productos as $producto)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card product-card">
-                        <img src="{{ $producto->imagen_url }}" class="card-img-top product-img" alt="{{ $producto->titulo }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $producto->titulo }}</h5>
-                            <p class="card-text">{{ Str::limit($producto->descripcion, 100) }}</p>
-                            <p class="h5 text-warning">${{ number_format($producto->precio, 2) }}</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="input-group" style="width: 120px;">
-                                    <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                                    <input type="number" class="form-control text-center quantity-input" 
-                                        data-product-id="{{ $producto->juegos_Id }}" 
-                                        data-price="{{ $producto->precio }}"
-                                        value="0" min="0" max="{{ $producto->cantidad_dispo }}">
-                                    <button class="btn btn-outline-secondary increment" type="button">+</button>
-                                </div>
-                            </div>
-                            <small class="text-muted">Stock: {{ $producto->cantidad_dispo }}</small>
-                        </div>
+    @foreach($productos as $producto)
+    <div class="col-md-6 col-lg-4 mb-4 d-flex align-items-stretch">
+        <div class="card w-100 product-card">
+            <!-- Contenedor flexible para la imagen (estilo del primer diseño) -->
+            <div class="img-container" style="height: 180px; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #f8f9fa;">
+                <img src="{{ $producto->imagen_url ?? 'https://via.placeholder.com/300' }}" 
+                     class="product-img" 
+                     style="object-fit: contain; width: 100%; height: 100%;"
+                     alt="{{ $producto->titulo }}">
+            </div>
+            
+            <!-- Card body con flex-column (estilo del primer diseño) -->
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ $producto->titulo }}</h5>
+                <p class="card-text flex-grow-1">{{ Str::limit($producto->descripcion, 100) }}</p>
+                <p class="h5 text-warning">${{ number_format($producto->precio, 2) }}</p>
+                
+                <!-- Input group (conservado del segundo diseño) -->
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="input-group" style="width: 120px;">
+                        <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                        <input type="number" class="form-control text-center quantity-input" 
+                               data-product-id="{{ $producto->juegos_Id }}" 
+                               data-price="{{ $producto->precio }}"
+                               value="0" min="0" max="{{ $producto->cantidad_dispo }}">
+                        <button class="btn btn-outline-secondary increment" type="button">+</button>
                     </div>
                 </div>
-                @endforeach
-                </div>
+                <small class="text-muted">Stock: {{ $producto->cantidad_dispo }}</small>
             </div>
+        </div>
+    </div>
+    @endforeach
+</div>
+</div>
             
             <!-- Resumen del Carrito -->
             <div class="col-md-4">
@@ -95,7 +105,6 @@
                         <hr>
 
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Pagar</button>
-
 
                     </div>
                

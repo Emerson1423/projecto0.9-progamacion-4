@@ -100,8 +100,8 @@
             <tr>
                 <td>{{ $juego->juegos_Id }}</td>
                 <td>
-                    @if($juego->imagen)
-                        <img src="{{ asset('storage/' . $juego->imagen) }}" alt="{{ $juego->titulo }}" width="50">
+                    @if($juego->imagen_url)
+                        <img src="{{  $juego->imagen_url }}" alt="{{ $juego->titulo }}" width="50">
                     @else
                         <span class="text-muted">Sin imagen</span>
                     @endif
