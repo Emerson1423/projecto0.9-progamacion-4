@@ -75,7 +75,7 @@ class compraController extends Controller
          // Relación en singular
         $pagos = Pago::all();
         $pedidos = Pedido::with(['juego', 'orden'])->get();
-        $ordenes = orden::with('usuario')->get(); // "usuario" (singular) es el nombre de la relación
+        $ordenes = orden::with('usuario')->get(); 
 
 
         return view('ordenes.index', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
