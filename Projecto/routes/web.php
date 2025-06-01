@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::get('/admin', function () {
     return view('administracion.admin');
-})->middleware([CheckRole::class . ':admin'])->name('admin');
+})->middleware([CheckRole::class . ':Admin'])->name('admin');
 
 // Página de (formulario de login)
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -47,10 +47,10 @@ Route::get('/registro/crar', [registroController::class, 'create'])->name('regis
 Route::post('/registro', [registroController::class, 'store'])->name('registro.store');
 
 // Ruta después de iniciar sesión Órdenes vista cliente compra
-Route::prefix('compra')->middleware([CheckRole::class . ':cliente'])->group(function(){
-Route::get('/compra/create', [compraController::class, 'create'])->name('compra.create');
-Route::post('/compra', [compraController::class, 'store'])->name('compra.store'); //tenia ordenes.store
-Route::get('/compra', [compraController::class, 'index'])->name('compra.index'); //tenia ordenes.index
+Route::prefix('compra')->middleware([CheckRole::class . ':Cliente'])->group(function(){
+Route::get('/compra/create', [compraController::class, 'create'])->name('compras.create');
+Route::post('/compra', [compraController::class, 'store'])->name('compras.store'); //tenia ordenes.store
+Route::get('/compra', [compraController::class, 'index'])->name('compras.index'); //tenia ordenes.index
 });
 
 // Ruta para la página de inicio después de iniciar sesión
@@ -97,7 +97,7 @@ Route::delete('/pedidos/{id}', [PedidosController::class, 'destroy'])->name('ped
 
 });
 
-Route::prefix('pago')->middleware([CheckRole::class . ':cliente'])->group(function() {
+Route::prefix('pago')->middleware([CheckRole::class . ':Cliente'])->group(function() {
 Route::get('/pagos', [PagosController::class, 'index'])->name('pagos.index');
 Route::get('/pagos/create', [PagosController::class, 'create'])->name('pagos.create');
 Route::post('/pagos', [PagosController::class, 'store'])->name('pagos.store');
@@ -107,7 +107,7 @@ Route::delete('/pagos/{id}', [PagosController::class, 'destroy'])->name('pagos.d
 });
 
 
-Route::prefix('juego')->middleware(['auth', CheckRole::class . ':admin'])->group(function() {
+Route::prefix('juego')->middleware(['auth', CheckRole::class . ':Admin'])->group(function() {
 Route::get('/juegos', [JuegosController::class, 'index'])->name('juegos.index');
 Route::get('/juegos/crear', [JuegosController::class, 'create'])->name('juegos.crear');
 Route::post('/juegos/guardar', [JuegosController::class, 'guardar'])->name('juegos.guardar');
@@ -118,7 +118,7 @@ Route::delete('/juegos/eliminar/{id}', [JuegosController::class, 'eliminar'])->n
 
 
 
-Route::prefix('categorias')->middleware(['auth', CheckRole::class . ':admin'])->group(function(){
+Route::prefix('categorias')->middleware(['auth', CheckRole::class . ':Admin'])->group(function(){
 Route::get('/categoria', [CategoriasController::class, 'index'])->name('caindex');
 Route::get('/categoria/crear', [CategoriasController::class, 'create']) ->name('caCrear');
 Route::post('/categoria/guardar', [CategoriasController::class, 'guardar']) ->name('caGuardar');
@@ -128,7 +128,7 @@ Route::delete('/categoria/eliminar/{id}', [CategoriasController::class, 'elimina
 
 });
 
-Route::prefix('plataforma')->middleware(['auth',CheckRole::class . ':admin'])->group(function(){
+Route::prefix('plataforma')->middleware(['auth',CheckRole::class . ':Admin'])->group(function(){
 Route::get('/plataformas', [PlataformasController::class, 'index'])->name('plaindex');
 Route::get('/plataformas/crear', [PlataformasController::class, 'create']) ->name('plaCrear');
 Route::post('/plataformas/guardar', [PlataformasController::class, 'guardar']) ->name('plaGuardar');
@@ -137,7 +137,7 @@ Route::put('/plataformas/editar/{id}', [PlataformasController::class, 'actualiza
 Route::delete('/plataformas/eliminar/{id}', [PlataformasController::class, 'eliminar']) ->name('plaEliminar');
 });
 
-Route::prefix('proveedores')->middleware(['auth',CheckRole::class . ':admin'])->group(function(){
+Route::prefix('proveedores')->middleware(['auth',CheckRole::class . ':Admin'])->group(function(){
 Route::get('/proveedor', [ProveedoresController::class, 'index'])->name('proindex');
 Route::get('/proveedor/crear', [ProveedoresController::class, 'create']) ->name('proCrear');
 Route::post('/proveedor/guardar', [ProveedoresController::class, 'guardar']) ->name('proGuardar');

@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <a href="{{ route('ordenes.create') }}" class="btn btn-secondary">hacer Pedido</a>
+    <a href="{{ route('compras.create') }}" class="btn btn-secondary">hacer Pedido</a>
    
     <div class="container mt-5">
         <h1>Pedidos Realizados</h1>
@@ -64,7 +64,7 @@
                     <td>{{ $producto->juegos_Id }}</td>
                     <td>{{ $producto->titulo }}</td>
                     <td>${{ number_format($producto->precio, 2) }}</td>
-                    <td>{{ $producto->cantidad_disponible}}</td>
+                    <td>{{ $producto->cantidad_dispo}}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -113,6 +113,7 @@
                     <th>nombre cliente</th>
                     <th>monto</th>
                     <th>numero targeta</th>
+                    
                 </tr>
             </thead>
             <tbody>

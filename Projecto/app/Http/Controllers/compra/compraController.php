@@ -12,11 +12,15 @@ class compraController extends Controller
     public function create()
     {
         $productos = juego::all();
-        return view('ordenes.create', compact('productos'));
+        return view('compras.create', compact('productos'));
+     
+       
     }
+    
+
     public function store(Request $request)
     {
-        if (!Auth::check()) {
+       if (!auth()->check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para realizar una compra');
         }
     
@@ -27,7 +31,7 @@ class compraController extends Controller
     
         // Crear orden
         $orden = Orden::create([
-            'usuario_Id' => Auth::id(),
+            'usuario_Id' => auth()->id(),
             'total' => $request->total
         ]);
     
@@ -64,22 +68,25 @@ class compraController extends Controller
             'tarjeta_ultimos' => substr($request->numero_tarjeta, -4),
         ]);
     
-        // Limpiar carrito
-        echo "<script>localStorage.removeItem('cart');</script>";
-    
-        return redirect()->route('ordenes.index')->with('success', 'Pedido y pago registrados!');
+        
+         // Limpiar carrito (mejor práctica)
+            return redirect()->route('compras.index')
+                ->with('success', 'Compra realizada con éxito!')
+                ->with('clearCart', true); // Enviar señal para limpiar carrito
     }
-    public function index()
+
+     public function index()
     {
         $productos= juego::all();
         $usuario = usuario::all();
          // Relación en singular
         $pagos = Pago::all();
         $pedidos = Pedido::with(['juego', 'orden'])->get();
-        $ordenes = orden::with('usuario')->get(); 
+        $ordenes = orden::with('usuario')->get(); // "usuario" (singular) es el nombre de la relación
 
 
-        return view('ordenes.index', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
+        return view('compras.index', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
     }
+
 
 }
