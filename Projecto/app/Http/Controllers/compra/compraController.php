@@ -5,6 +5,7 @@ namespace App\Http\Controllers\compra;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{orden, pedido, juego, pago,usuario};
+use Illuminate\Support\Facades\Auth;
 
 class compraController extends Controller
 {
@@ -15,7 +16,7 @@ class compraController extends Controller
     }
     public function store(Request $request)
     {
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para realizar una compra');
         }
     
@@ -26,7 +27,7 @@ class compraController extends Controller
     
         // Crear orden
         $orden = Orden::create([
-            'usuario_Id' => auth()->id(),
+            'usuario_Id' => Auth::id(),
             'total' => $request->total
         ]);
     
