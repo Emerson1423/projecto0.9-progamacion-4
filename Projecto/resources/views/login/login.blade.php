@@ -107,7 +107,7 @@
 
             .right {
                 flex: 1;
-                background-color: rgb(16, 0, 0);
+                background-color: rgb(0, 0, 0);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -202,7 +202,7 @@
         <form method="POST" action="{{ route('login.post') }}">
             @csrf <!-- Token de seguridad de Laravel -->
             
-            <h2 style="text-align:center; margin bottom: 20px;">Iniciar Sesión</h2>
+            <h2 style="text-align:center; margin-bottom: 20px;">Iniciar Sesión</h2>
             <div>
                 <label for="email">Correo electrónico:</label>
                 <input 
