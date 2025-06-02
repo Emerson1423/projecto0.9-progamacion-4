@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Online</title>
+    <title>Comprar</title>
     
     <!-- En el head -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Mi Tienda</a>
+                <a class="navbar-brand" href="#">ViceGames</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -55,35 +55,42 @@
                 <h2 class="mb-4">Nuestros Productos</h2>
                 <div class="row">
                 @foreach($productos as $producto)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card product-card">
-                        <img src="{{ $producto->imagen_url }}" class="card-img-top product-img" alt="{{ $producto->titulo }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $producto->titulo }}</h5>
-                            <p class="card-text">{{ Str::limit($producto->descripcion, 100) }}</p>
-                            <p class="h5 text-primary">${{ number_format($producto->precio, 2) }}</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="input-group" style="width: 120px;">
-                                    <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                                    <input type="number" class="form-control text-center quantity-input" 
-                                        data-productid="{{ $producto->juegos_Id }}" 
-                                        data-price="{{ $producto->precio }}"
-                                        value="0" min="0" max="{{ $producto->cantidad_dispo }}">
-                                    <button class="btn btn-outline-secondary increment" type="button">+</button>
-                                </div>
-                            </div>
-                            <small class="text-muted">Stock: {{ $producto->cantidad_dispo }}</small>
-                        </div>
+                <div class="col-md-6 col-lg-4 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 product-card">
+                        <div class="img-container" style="height: 180px; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #f8f9fa;">
+                <img src="{{ $producto->imagen_url ?? 'https://via.placeholder.com/300' }}" 
+                     class="product-img" 
+                     style="object-fit: contain; width: 100%; height: 100%;"
+                     alt="{{ $producto->titulo }}">
+            </div>
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ $producto->titulo }}</h5>
+                <p class="card-text flex-grow-1">{{ Str::limit($producto->descripcion, 100) }}</p>
+                <p class="h5 text-warning">${{ number_format($producto->precio, 2) }}</p>
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="input-group" style="width: 120px;">
+                        <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                        <input type="number" class="form-control text-center quantity-input" 
+                               data-product-id="{{ $producto->juegos_Id }}" 
+                               data-price="{{ $producto->precio }}"
+                               value="0" min="0" max="{{ $producto->cantidad_dispo }}">
+                        <button class="btn btn-outline-secondary increment" type="button">+</button>
                     </div>
                 </div>
-                @endforeach
-                </div>
+                <small class="text-muted">Stock: {{ $producto->cantidad_dispo }}</small>
             </div>
+        </div>
+    </div>
+    @endforeach
+</div>
+</div>
             
         <!-- Resumen del Carrito -->
         <div class="col-md-4">
             <div class="card cart-summary">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-black text-white">
                     <h5 class="mb-0">Resumen del Pedido</h5>
                 </div>
                 <div class="card-body">
@@ -94,7 +101,7 @@
                     <hr>
 
                     <!-- Botón de Pagar modificado -->
-                    <button type="button" class="btn btn-primary" id="checkout-button"
+                    <button type="button" class="btn btn-warning" id="checkout-button"
                         @guest disabled title="Debes iniciar sesión para comprar" @endguest
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Pagar
