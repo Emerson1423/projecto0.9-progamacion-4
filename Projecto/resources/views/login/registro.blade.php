@@ -202,11 +202,11 @@
             @csrf
             
             <label for="">Nombre</label>
-            <input type="text" name="nombre" >
+            <input type="text" name="nombre" required>
             <label for="">Correo</label>
-            <input type="text" name="email" >
+            <input type="text" name="email" required>
             <label for="">Contraseña</label>
-            <input type="password" name="password" >
+            <input type="password" name="password" required>
             <button type="submit">Registrarse</button>
             <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}">Iniciar sesión</a></p>
         </form>
