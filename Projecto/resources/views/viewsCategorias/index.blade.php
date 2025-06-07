@@ -14,51 +14,7 @@
         padding: 20px;
         
     }
-    table {
-        font-family: Poppins, sans-serif;
-        width: 100%;
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        min-width: 800px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        border-radius: 10px;
-        overflow: hidden;
-        background-color:rgb(241, 241, 242);
-    }
-    thead tr {
-        background-color: #0f3460;
-        color: #ffffff;
-        text-align: left;
-        font-weight: bold;
-    }
-    th, td, a{
-        padding: 15px 20px;
-        text-decoration: none;
-    }
-    h1{
-        text-align: center;
-    }
-    button {
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        margin: 2px;
-    }
-    a button {
-        background-color: #4CAF50;
-        color: white;
-    }
-    form {
-        display: inline-block;
-    }
-    form button {
-        background-color: #f44336;
-        color: white;
-    }
+
 
 </style>
 <body>
@@ -67,8 +23,8 @@
 
 <h1>Categorias</h1>
 
-<table>
-    <thead>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Nombre</th>
@@ -83,16 +39,16 @@
             <td>{{ $categoria->nombre }}</td>
             
             <td>
-                <a href="{{ route('caEditar', $categoria->categoria_Id) }}">
-                <button type="button">
+                <a href="{{ route('caEditar', $categoria->categoria_Id) }}" class="btn btn-sm btn-warning">
+               
                 <i class="fas fa-edit"></i>
-                </button>
+                
                 </a>
-                <form action="{{ route('caEliminar', $categoria->categoria_Id) }}" method="POST" >
+                <form action="{{ route('caEliminar', $categoria->categoria_Id) }}" method="POST" class="d-inline" >
                 @csrf
                 @method('DELETE')
         
-                <button type="submit">
+                <button type="submit" class="btn btn-sm btn-danger">
                 <i class="fas fa-trash-alt"></i>
                 </button>
             </form>

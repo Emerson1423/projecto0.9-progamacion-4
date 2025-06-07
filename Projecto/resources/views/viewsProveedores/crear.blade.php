@@ -72,7 +72,7 @@
 <Label for="telefono">Telefono Proveedor</Label>
 <input type="text" name="telefono"  required>
 <Label for="correo">Correo Proveedor</Label>
-<input type="text" name="correo"  required>
+<input type="email" name="correo"  required>
 <Label for="direcciom">Direccion Proveedor</Label>
 <input type="text" name="direcciom"  required>
 
