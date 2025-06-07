@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
     <title>Carrito de Compras</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -61,6 +62,104 @@
 </head>
 <body>
 
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar</title>
+    
+    <!-- En el head -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">ViceGames</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-cart-fill"></i> Carrito 
+                                <span class="badge bg-danger" id="cart-count">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    @auth
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->nombre }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    @endauth
+                </div>
+            </div>
+        </nav>
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Lista de Productos -->
+            <div class="col-md-8">
+                <h2 class="mb-4">Nuestros Productos</h2>
+                <div class="row">
+                @foreach($productos as $producto)
+                <div class="col-md-6 col-lg-4 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 product-card">
+                        <div class="img-container" style="height: 180px; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #f8f9fa;">
+                <img src="{{ $producto->imagen_url ?? 'https://via.placeholder.com/300' }}" 
+                     class="product-img" 
+                     style="object-fit: contain; width: 100%; height: 100%;"
+                     alt="{{ $producto->titulo }}">
+            </div>
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ $producto->titulo }}</h5>
+                <p class="card-text flex-grow-1">{{ Str::limit($producto->descripcion, 100) }}</p>
+                <p class="h5 text-warning">${{ number_format($producto->precio, 2) }}</p>
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="input-group" style="width: 120px;">
+                        <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                        <input type="number" class="form-control text-center quantity-input" 
+                               data-product-id="{{ $producto->juegos_Id }}" 
+                               data-price="{{ $producto->precio }}"
+                               value="0" min="0" max="{{ $producto->cantidad_dispo }}">
+                        <button class="btn btn-outline-secondary increment" type="button">+</button>
+                    </div>
+                </div>
+                <small class="text-muted">Stock: {{ $producto->cantidad_dispo }}</small>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
+</div>
+            
+        <!-- Resumen del Carrito -->
+        <div class="col-md-4">
+            <div class="card cart-summary">
+                <div class="card-header bg-black text-white">
+                    <h5 class="mb-0">Resumen del Pedido</h5>
+                </div>
+                <div class="card-body">
+                    <div id="cart-items">
+                        <!-- Los productos aparecerán aquí -->
+                    </div>
+>>>>>>> 55ca0840ab7bf2dcfdf0647901a8e464e22f6070
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
   <a class="navbar-brand" href="#">Mi Tienda</a>
@@ -78,11 +177,24 @@
     </ul>
   </div>
 
+<<<<<<< HEAD
    <div class="cart-icon" id="cartIcon">
         <i class="bi bi-cart3 fs-4"></i>
         <span class="cart-count d-none" id="cartCount">0</span>
     </div>
 </nav>
+=======
+                    <!-- Botón de Pagar modificado -->
+                    <button type="button" class="btn btn-warning" id="checkout-button"
+                        @guest disabled title="Debes iniciar sesión para comprar" @endguest
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Pagar
+                    </button>
+                    
+                    @guest
+                    <small class="text-muted d-block mt-2">¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a> para comprar</small>
+                    @endguest
+>>>>>>> 55ca0840ab7bf2dcfdf0647901a8e464e22f6070
 
 <!-- Modal Confirmar Logout -->
 <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutLabel" aria-hidden="true">

@@ -20,7 +20,7 @@ class compraController extends Controller
 
     public function store(Request $request)
     {
-       if (!auth()->check()) {
+       if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para realizar una compra');
         }
     
@@ -31,7 +31,7 @@ class compraController extends Controller
     
         // Crear orden
         $orden = Orden::create([
-            'usuario_Id' => auth()->id(),
+            'usuario_Id' => Auth::id(),
             'total' => $request->total
         ]);
     
@@ -70,6 +70,14 @@ class compraController extends Controller
     
         return redirect()->route('compras.create')->with('success', 'Compra realizada con éxito'); 
         
+<<<<<<< HEAD
+=======
+         // Limpiar carrito
+        
+            return redirect()->route('compras.index')
+                ->with('success', 'Compra realizada con éxito!')
+                ->with('clearCart', true); // Enviar señal para limpiar carrito
+>>>>>>> 55ca0840ab7bf2dcfdf0647901a8e464e22f6070
     }
 
      public function index()
@@ -82,7 +90,7 @@ class compraController extends Controller
         $ordenes = orden::with('usuario')->get(); // "usuario" (singular) es el nombre de la relación
 
 
-        return view('compras.index', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
+        return view('compras.create', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
     }
 
 

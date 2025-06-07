@@ -17,14 +17,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password'); // ✅ Obtiene credenciales
+        $credentials = $request->only('email', 'password'); //  Obtiene credenciales
     
-        if (Auth::attempt($credentials)) { // ✅ Pasa las credenciales
+        if (Auth::attempt($credentials)) { //  Pasa las credenciales
             $request->session()->regenerate();
             $user = Auth::user();
     
             // Redirigir según el rol
-            if ($user->rol_Id === 1) {
+            if ($user->rol_Id === 2) {
                 return redirect()->route('admin'); // Admin
             } elseif ($user->rol_Id === 3) {
                 return redirect()->route('compras.create'); // Cliente
