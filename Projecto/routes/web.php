@@ -1,7 +1,5 @@
 <?php
 
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\sesion\LoginController;
@@ -52,12 +50,7 @@ Route::post('/registro', [registroController::class, 'store'])->name('registro.s
     Route::post('/compras/store', [CompraController::class, 'store'])->name('compras.store');
     Route::get('/compras/index', [compraController::class, 'index'])->name('compras.index');
 });
-<<<<<<< HEAD
-    // Ruta para la página de inicio después de iniciar sesión
-=======
 
-
->>>>>>> 55ca0840ab7bf2dcfdf0647901a8e464e22f6070
 
 //ruta para ver los juegos disponibles en inicio
 Route::get('/juegos', [viewjuegosController::class, 'index'])->name('juegos');

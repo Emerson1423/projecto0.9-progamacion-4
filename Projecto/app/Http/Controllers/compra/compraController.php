@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\compra;
 
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{orden, pedido, juego, pago,usuario};
@@ -70,14 +71,8 @@ class compraController extends Controller
     
         return redirect()->route('compras.create')->with('success', 'Compra realizada con éxito'); 
         
-<<<<<<< HEAD
-=======
-         // Limpiar carrito
-        
-            return redirect()->route('compras.index')
-                ->with('success', 'Compra realizada con éxito!')
-                ->with('clearCart', true); // Enviar señal para limpiar carrito
->>>>>>> 55ca0840ab7bf2dcfdf0647901a8e464e22f6070
+
+
     }
 
      public function index()
