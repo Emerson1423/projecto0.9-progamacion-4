@@ -53,7 +53,7 @@ Route::post('/compra', [compraController::class, 'store'])->name('compras.store'
 Route::get('/compra', [compraController::class, 'index'])->name('compras.index'); //tenia ordenes.index
 });
 
-// Ruta para la página de inicio después de iniciar sesión
+
 
 //ruta para ver los juegos disponibles en inicio
 Route::get('/juegos', [viewjuegosController::class, 'index'])->name('juegos');

@@ -69,7 +69,7 @@ class compraController extends Controller
         ]);
     
         
-         // Limpiar carrito (mejor práctica)
+         // Limpiar carrito
         
             return redirect()->route('compras.index')
                 ->with('success', 'Compra realizada con éxito!')
