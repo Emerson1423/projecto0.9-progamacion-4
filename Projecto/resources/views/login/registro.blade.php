@@ -184,6 +184,9 @@
         height: auto;
         margin-bottom: 20px;
 }
+.error-message{
+    color: red;
+}
 
     </style>
 
@@ -198,18 +201,33 @@
     <div class="right">
         <div class="card">
         <h2>Registrarse</h2>
-        <form action="{{ route('registro.store') }}" method="POST">
-            @csrf
-            
-            <label for="">Nombre</label>
-            <input type="text" name="nombre" required>
-            <label for="">Correo</label>
-            <input type="text" name="email" required>
-            <label for="">Contraseña</label>
-            <input type="password" name="password" required>
-            <button type="submit">Registrarse</button>
-            <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}">Iniciar sesión</a></p>
-        </form>
+            <form action="{{ route('registro.store') }}" method="POST">
+                @csrf
+                
+                <label for="">Nombre</label>
+                <input type="text" name="nombre" value="{{ old('nombre') }}" >
+                @error('nombre')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
+                
+                <label for="">Correo</label>
+                <input type="email" name="email" value="{{ old('email') }}" >
+                @error('email')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
+                
+                <label for="">Contraseña</label>
+                <input type="password" name="password" >
+                @error('password')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
+                
+                <label for="">Confirmar Contraseña</label>
+                <input type="password" name="password_confirmation" >
+
+                <button type="submit">Registrarse</button>
+                <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}">Iniciar sesión</a></p>
+            </form>
         </div>
         </div>
     </div>

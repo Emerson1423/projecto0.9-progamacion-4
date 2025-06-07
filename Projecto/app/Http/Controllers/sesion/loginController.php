@@ -17,6 +17,15 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            'email.required' => 'El correo es obligatorio.',
+            'email.email' => 'El correo debe ser una dirección válida.',
+            'password.required' => 'El campo contraseña es obligatorio.',
+        ]);
+
         $credentials = $request->only('email', 'password'); //  Obtiene credenciales
     
         if (Auth::attempt($credentials)) { //  Pasa las credenciales

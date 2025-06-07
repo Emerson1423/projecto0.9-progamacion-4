@@ -209,9 +209,9 @@
                     type="email" 
                     id="email" 
                     name="email" 
-                    required 
-                    value="{{ old('email') }}"
-                >
+                     
+                    value="{{ old('email') }}">
+                
                 @error('email')
                     <span style="color: red;">{{ $message }}</span>
                 @enderror
@@ -222,9 +222,9 @@
                 <input 
                     type="password" 
                     id="password" 
-                    name="password" 
-                    required
-                >
+                    name="password" >
+                    
+                
                 @error('password')
                     <span style="color: red;">{{ $message }}</span>
                 @enderror
