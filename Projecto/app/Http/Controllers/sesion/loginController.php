@@ -23,7 +23,7 @@ class LoginController extends Controller
         ], [
             'email.required' => 'El correo es obligatorio.',
             'email.email' => 'El correo debe ser una dirección válida.',
-            'password.required' => 'El campo contraseña es obligatorio.',
+            'password.required' => 'La contraseña es obligatoria.',
         ]);
 
         $credentials = $request->only('email', 'password'); //  Obtiene credenciales
