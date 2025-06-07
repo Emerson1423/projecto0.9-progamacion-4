@@ -68,11 +68,8 @@ class compraController extends Controller
             'tarjeta_ultimos' => substr($request->numero_tarjeta, -4),
         ]);
     
+        return redirect()->route('compras.create')->with('success', 'Compra realizada con éxito'); 
         
-         // Limpiar carrito (mejor práctica)
-            return redirect()->route('compras.index')
-                ->with('success', 'Compra realizada con éxito!')
-                ->with('clearCart', true); // Enviar señal para limpiar carrito
     }
 
      public function index()

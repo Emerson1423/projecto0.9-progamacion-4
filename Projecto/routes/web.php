@@ -47,13 +47,12 @@ Route::get('/registro/crar', [registroController::class, 'create'])->name('regis
 Route::post('/registro', [registroController::class, 'store'])->name('registro.store');
 
 // Ruta después de iniciar sesión Órdenes vista cliente compra
-Route::prefix('compra')->middleware([CheckRole::class . ':Cliente'])->group(function(){
-Route::get('/compra/create', [compraController::class, 'create'])->name('compras.create');
-Route::post('/compra', [compraController::class, 'store'])->name('compras.store'); //tenia ordenes.store
-Route::get('/compra', [compraController::class, 'index'])->name('compras.index'); //tenia ordenes.index
+   Route::prefix('compras')->middleware([CheckRole::class . ':Cliente'])->group(function(){
+     Route::get('/compras/create', [CompraController::class, 'create'])->name('compras.create');
+    Route::post('/compras/store', [CompraController::class, 'store'])->name('compras.store');
+    Route::get('/compras/index', [compraController::class, 'index'])->name('compras.index');
 });
-
-// Ruta para la página de inicio después de iniciar sesión
+    // Ruta para la página de inicio después de iniciar sesión
 
 //ruta para ver los juegos disponibles en inicio
 Route::get('/juegos', [viewjuegosController::class, 'index'])->name('juegos');
