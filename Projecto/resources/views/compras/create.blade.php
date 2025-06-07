@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Carrito de Compras</title>
+    <title>Comprar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -59,16 +59,18 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-black">
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-  <a class="navbar-brand" href="#">Mi Tienda</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-black px-3">
+  <a class="navbar-brand text-light" >
+    <img src="{{ asset('img/logovicegamess.gif') }}" alt="Logo" width="80" height="65" class="d-inline-block align-text-top me-2">
+  </a>
   
   <div class="ms-auto">
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ auth()->user()->nombre }}
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -79,7 +81,7 @@
   </div>
 
    <div class="cart-icon" id="cartIcon">
-        <i class="bi bi-cart3 fs-4"></i>
+        <i class="bi bi-cart3 fs-4 text-white"></i>
         <span class="cart-count d-none" id="cartCount">0</span>
     </div>
 </nav>
@@ -114,7 +116,7 @@
   <div id="toastCompra" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
       <div class="toast-body">
-        Compra realizada con éxito 🎉
+        Compra realizada con éxito 
       </div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
     </div>
@@ -127,44 +129,57 @@
     <div id="resumenProductos" class="small text-secondary p-2">No hay productos agregados.</div>
     <div class="cart-summary border-top">
         <p class="fw-bold">Total: $<span id="total">0.00</span></p>
-        <button type="button" class="btn btn-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPago" id="pagarBtn" disabled>
+        <button type="button" class="btn btn-warning w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPago" id="pagarBtn" disabled>
             Realizar Compra
         </button>
     </div>
 </div>
 
 <div class="container py-5">
-    <h1 class="mb-4">Tienda de Juegos</h1>
+    <h1 class="mb-4 text-light text-center">Videojuegos de ViceGames </h1>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <div class="row">
-        @foreach($productos as $producto)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
+<div class="row">
+    @foreach($productos as $producto)
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 bg-black text-light border-warning">
                 <img src="{{ asset('storage/' . $producto->imagen) }}" 
-                 alt="{{ $producto->titulo }}" 
-                style="height:150px; object-fit: contain;" 
-                 class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $producto->titulo }}</h5>
-                        <p class="card-text">{{ $producto->descripcion }}</p>
-                        <p class="text-primary fw-bold">${{ number_format($producto->precio, 2) }}</p>
-                        <p class="text-muted small">Stock: {{ $producto->cantidad_dispo }}</p>
+                     alt="{{ $producto->titulo }}" 
+                     style="height:150px; object-fit: contain;" 
+                     class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $producto->titulo }}</h5>
+                    <p class="card-text">{{ $producto->descripcion }}</p>
+                    <p class="text-warning fw-bold">${{ number_format($producto->precio, 2) }}</p>
+                    <p class="text-light small">
+                        Stock: 
+                        @if($producto->cantidad_dispo > 0)
+                            {{ $producto->cantidad_dispo }}
+                        @else
+                            <span class="text-danger">Agotado</span>
+                        @endif
+                    </p>
+                    
+                    @if($producto->cantidad_dispo > 0)
                         <button type="button"
-                                class="btn btn-outline-success w-100 agregar-btn"
+                                class="btn btn-outline-warning w-100 agregar-btn"
                                 data-id="{{ $producto->juegos_Id }}"
                                 data-nombre="{{ $producto->titulo }}"
                                 data-precio="{{ $producto->precio }}"
                                 data-img="{{ asset('storage/' . $producto->imagen) }}">
                             Agregar al carrito
                         </button>
-                    </div>
+                    @else
+                        <button class="btn btn-secondary w-100" disabled>
+                            No disponible
+                        </button>
+                    @endif
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
 </div>
 
 {{-- Modal de pago (igual que antes) --}}
