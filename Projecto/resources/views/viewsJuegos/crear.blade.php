@@ -65,9 +65,6 @@
 </style>
 
 <body>
-<h1>Ingresar Juegos</h1>
-
-
 
 @extends('administracion.admin')
 <!-- Mostrar errores de validación -->

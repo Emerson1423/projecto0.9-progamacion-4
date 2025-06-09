@@ -46,6 +46,27 @@
 </head>
 <body>
     <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="ms-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-black" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ auth()->user()->nombre }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">Cerrar sesión</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 d-md-block sidebar bg-dark">
@@ -68,7 +89,7 @@
                                 <li class="nav-item"> 
                                     <a class="nav-link {{ request()->is('juego/juegos*') ? 'active' : '' }}" 
                                     href="{{ route('juegos.index') }}">
-                                      <i class="fas fa-gamepad me-2"></i> ver tabla
+                                      <i class="fas fa-gamepad me-2"></i> Lista de juegos
                                     </a>
                                 </li>
 
@@ -126,7 +147,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Puedes agregar más items del menú aquí -->
+                   
                     </ul>
                 </div>
             </div>
@@ -136,10 +157,30 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 @yield('content')
             </main>
-
-            
         </div>
     </div>
+ <!-- modal de confirmación para cerrar sesión -->
+    <div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmLogoutModalLabel">Confirmar cierre de sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas cerrar sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

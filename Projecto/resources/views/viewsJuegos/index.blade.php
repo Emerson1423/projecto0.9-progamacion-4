@@ -51,6 +51,7 @@
                 <th>Stock</th>
                 <th>Plataforma</th>
                 <th>Categoría</th>
+                <th>Proveedor</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -70,6 +71,7 @@
                 <td>{{ $juego->cantidad_dispo }}</td>
                 <td>{{ $juego->plataforma->nombrePlataforma }}</td>
                 <td>{{ $juego->categoria->nombre }}</td>
+                <td>{{ $juego->proveedor->nombre }}</td>
                 <td>
                     <a href="{{ route('juegos.editar', $juego->juegos_Id) }}" class="btn btn-sm btn-warning">
                         <i class="fas fa-edit"></i>
