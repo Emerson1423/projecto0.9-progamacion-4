@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>historial-compras</title>
+    <title>Historial compras</title>
     <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -92,16 +92,16 @@
         border-radius: 0 0 8px 8px;
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-  <a class="navbar-brand" href="{{ route('compras.create') }}">Mi Tienda</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-black px-3">
+  <a class="navbar-brand" ><img src="{{ asset('img/logovicegamess.gif') }}" alt="Logo" width="80" height="65" class="d-inline-block align-text-top me-2"></a>
 
   <div class="ms-auto">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('compras.create') }}">Inicio</a>
+        <a class="nav-link text-light" href="{{ route('compras.create') }}">Inicio</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ auth()->user()->nombre }}
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -144,11 +144,11 @@
     @if(isset($mensaje))
         <div class="alert alert-info">{{ $mensaje }}</div>
     @elseif($ordenes->isEmpty())
-        <div class="alert alert-info">Aún no has realizado ninguna compra.</div>
+        <div class="alert alert-info">Aún no has realizado ninguna compra</div>
     @else
         @foreach($ordenes as $orden)
             <div class="card mb-4 shadow-sm">
-                <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
+                <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
                     <span><strong>Compra realizada el:</strong> {{ $orden->created_at->format('d/m/Y H:i') }}</span>
                     <span><strong>Total:</strong> ${{ number_format($orden->total, 2) }}</span>
                 </div>

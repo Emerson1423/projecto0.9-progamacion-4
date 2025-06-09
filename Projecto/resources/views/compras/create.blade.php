@@ -62,18 +62,18 @@
 <body class="bg-black">
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
-  <a class="navbar-brand" href="#">Mi Tienda</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-black px-3">
+  <a class="navbar-brand" ><img src="{{ asset('img/logovicegamess.gif') }}" alt="Logo" width="80" height="65" class="d-inline-block align-text-top me-2"></a>
 
   <div class="ms-auto d-flex align-items-center gap-3">
     <div class="cart-icon position-relative" id="cartIcon">
-      <i class="bi bi-cart3 fs-4"></i>
+      <i class="bi bi-cart3 fs-4 text-white"></i>
       <span class="cart-count d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
     </div>
 
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{ auth()->user()->nombre }}
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
