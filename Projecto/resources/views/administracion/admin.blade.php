@@ -147,7 +147,14 @@
                                 </li>
                             </ul>
                         </li>
-                   
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('orden/ordenes*') ? 'active' : '' }}" 
+                               href="{{ route('ordenes.index') }}">
+                               <i class="fa-solid fa-cash-register"></i> ordenes
+                            </a>
+                           
+                        </li>                        
                     </ul>
                 </div>
             </div>

@@ -67,7 +67,7 @@ Route::put('/usuarios/actualizar/{id}', [usuariosController::class, 'actualizar'
 Route::delete('/usuarios/eliminar/{id}', [usuariosController::class, 'eliminar'])->name('usuarios.eliminar');
 });
 
-Route::prefix('orden')->group(function() {
+Route::prefix('orden')->middleware([CheckRole::class . ':Admin'])->group(function() {
 Route::get('/ordenes', [OrdenesController::class, 'index'])->name('ordenes.index');
 Route::get('/ordenes/create', [OrdenesController::class, 'create'])->name('ordenes.create');
 Route::post('/ordenes', [OrdenesController::class, 'store'])->name('ordenes.store');
@@ -84,7 +84,7 @@ Route::put('/roles/{id}', [RolesController::class, 'update'])->name('roles.updat
 Route::delete('/roles/{id}', [RolesController::class, 'destroy'])->name('roles.destroy');
 });
 
-Route::prefix('pedido')->group(function() {
+Route::prefix('pedido')->middleware([CheckRole::class . ':Admin'])->group(function() {
 Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos.index');
 Route::get('/pedidos/create', [PedidosController::class, 'create'])->name('pedidos.create');
 Route::post('/pedidos', [PedidosController::class, 'store'])->name('pedidos.store');
@@ -104,7 +104,7 @@ Route::delete('/pagos/{id}', [PagosController::class, 'destroy'])->name('pagos.d
 });
 
 
-Route::prefix('juego')->middleware(['auth', CheckRole::class . ':Admin'])->group(function() {
+Route::prefix('juego')->middleware([ CheckRole::class . ':Admin'])->group(function() {
 Route::get('/juegos', [JuegosController::class, 'index'])->name('juegos.index');
 Route::get('/juegos/crear', [JuegosController::class, 'create'])->name('juegos.crear');
 Route::post('/juegos/guardar', [JuegosController::class, 'guardar'])->name('juegos.guardar');
@@ -115,7 +115,7 @@ Route::delete('/juegos/eliminar/{id}', [JuegosController::class, 'eliminar'])->n
 
 
 
-Route::prefix('categorias')->middleware(['auth', CheckRole::class . ':Admin'])->group(function(){
+Route::prefix('categorias')->middleware([CheckRole::class . ':Admin'])->group(function(){
 Route::get('/categoria', [CategoriasController::class, 'index'])->name('caindex');
 Route::get('/categoria/crear', [CategoriasController::class, 'create']) ->name('caCrear');
 Route::post('/categoria/guardar', [CategoriasController::class, 'guardar']) ->name('caGuardar');
@@ -125,7 +125,7 @@ Route::delete('/categoria/eliminar/{id}', [CategoriasController::class, 'elimina
 
 });
 
-Route::prefix('plataforma')->middleware(['auth',CheckRole::class . ':Admin'])->group(function(){
+Route::prefix('plataforma')->middleware([CheckRole::class . ':Admin'])->group(function(){
 Route::get('/plataformas', [PlataformasController::class, 'index'])->name('plaindex');
 Route::get('/plataformas/crear', [PlataformasController::class, 'create']) ->name('plaCrear');
 Route::post('/plataformas/guardar', [PlataformasController::class, 'guardar']) ->name('plaGuardar');
@@ -134,7 +134,7 @@ Route::put('/plataformas/editar/{id}', [PlataformasController::class, 'actualiza
 Route::delete('/plataformas/eliminar/{id}', [PlataformasController::class, 'eliminar']) ->name('plaEliminar');
 });
 
-Route::prefix('proveedores')->middleware(['auth',CheckRole::class . ':Admin'])->group(function(){
+Route::prefix('proveedores')->middleware([CheckRole::class . ':Admin'])->group(function(){
 Route::get('/proveedor', [ProveedoresController::class, 'index'])->name('proindex');
 Route::get('/proveedor/crear', [ProveedoresController::class, 'create']) ->name('proCrear');
 Route::post('/proveedor/guardar', [ProveedoresController::class, 'guardar']) ->name('proGuardar');

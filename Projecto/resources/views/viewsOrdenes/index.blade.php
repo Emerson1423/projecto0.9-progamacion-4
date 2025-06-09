@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ordenes</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+@extends('administracion.admin')
+@section('content')
+   
    <div class="container">
     <h1>Listado de Órdenes</h1>
     
@@ -15,15 +20,15 @@
         </div>
     @endif
 
-    <a href="{{ route('ordenes.create') }}" class="btn btn-primary mb-3">Crear Nueva Orden</a>
+
 
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>ID</th>
                 <th>Usuario</th>
                 <th>Total</th>
-                <th>Acciones</th>
+                <!--<th>Acciones</th>-->
             </tr>
         </thead>
         <tbody>
@@ -32,19 +37,24 @@
                 <td>{{ $orden->orden_Id }}</td>
                 <td>{{ $orden->usuario->nombre ?? 'N/A' }}</td>
                 <td>${{ number_format($orden->total, 2) }}</td>
-                <td>
+                <!--<td>
                     
-                    <a href="{{ route('ordenes.edit', $orden->orden_Id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{{ route('ordenes.edit', $orden->orden_Id) }}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
                     <form action="{{ route('ordenes.destroy', $orden->orden_Id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta orden?')">Eliminar</button>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta orden?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </form>
-                </td>
+                </td>-->
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+@endsection
 </body>
 </html>
