@@ -87,6 +87,25 @@ class compraController extends Controller
 
         return view('compras.create', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
     }
+    
+
+    public function historial()
+    {
+        $usuarioId = Auth::id();
+        
+        // Obtener órdenes con sus pedidos y pagos
+        $ordenes = Orden::where('usuario_Id', $usuarioId)
+            ->with(['pedidos.juego', 'pago'])
+            ->get();
+
+        // Si no hay compras
+        if ($ordenes->isEmpty()) {
+            return view('compras.historial', ['ordenes' => $ordenes, 'mensaje' => 'Aún no has realizado ninguna compra.']);
+        }
+
+        return view('compras.historial', compact('ordenes'));
+    }
+
 
 
 }
