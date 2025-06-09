@@ -46,9 +46,10 @@ Route::post('/registro', [registroController::class, 'store'])->name('registro.s
 
 // Ruta después de iniciar sesión Órdenes vista cliente compra
    Route::prefix('compras')->middleware([CheckRole::class . ':Cliente'])->group(function(){
-     Route::get('/compras/create', [CompraController::class, 'create'])->name('compras.create');
+    Route::get('/compras/create', [CompraController::class, 'create'])->name('compras.create');
     Route::post('/compras/store', [CompraController::class, 'store'])->name('compras.store');
     Route::get('/compras/index', [compraController::class, 'index'])->name('compras.index');
+    Route::get('/historial-compras', [compraController::class, 'historial'])->name('compras.historial');
 });
 
 
