@@ -106,7 +106,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('categorias/categoria*') ? 'active' : '' }}" 
                                href="{{ route('caindex') }}">
-                               <i class="fa-solid fa-icons"></i> categorias
+                               <i class="fa-solid fa-icons"></i> Categorias
                             </a>
                             <ul class="nav flex-column ms-3">
                                 <li class="nav-item">
@@ -121,7 +121,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('plataforma/plataformas*') ? 'active' : '' }}" 
                                href="{{ route('plaindex') }}">
-                               <i class="fas fa-tv"></i> plataforma
+                               <i class="fas fa-tv"></i> Plataforma
                             </a>
                             <ul class="nav flex-column ms-3">
                                 <li class="nav-item">
@@ -136,7 +136,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('proveedores/proveedor*') ? 'active' : '' }}" 
                                href="{{ route('proindex') }}">
-                               <i class="fa-solid fa-truck"></i> proveedores
+                               <i class="fa-solid fa-truck"></i> Proveedores
                             </a>
                             <ul class="nav flex-column ms-3">
                                 <li class="nav-item">
@@ -151,7 +151,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('orden/ordenes*') ? 'active' : '' }}" 
                                href="{{ route('ordenes.index') }}">
-                               <i class="fa-solid fa-cash-register"></i> ordenes
+                               <i class="fa-solid fa-cash-register"></i> Ventas
                             </a>
                            
                         </li>                        

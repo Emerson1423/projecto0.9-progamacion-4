@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Ordenes</title>
+    <title>Ventas</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,7 +12,7 @@
 @section('content')
    
    <div class="container">
-    <h1>Listado de Órdenes</h1>
+    <h1>Ventas</h1>
     
     @if(session('success'))
         <div class="alert alert-success">
