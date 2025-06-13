@@ -136,10 +136,14 @@
 </div>
 
 <div class="container py-5">
-    <h1 class="mb-4 text-light text-center">Videojuegos de ViceGames </h1>
+    <h1 class="mb-4 text-light text-center">Videojuegos de ViceGames</h1>
+
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div id="success-message" class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
+</div>
 
 <div class="row">
     @foreach($productos as $producto)
@@ -233,13 +237,44 @@
     </div>
 </div>
 
+@if(session('factura_blob'))
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blob = atob("{{ session('factura_blob') }}");
+            const arrayBuffer = new Uint8Array(blob.length);
+            for (let i = 0; i < blob.length; i++) {
+                arrayBuffer[i] = blob.charCodeAt(i);
+            }
+
+            const file = new Blob([arrayBuffer], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(file);
+            link.download = 'factura Vicegames.pdf';
+            link.click();
+
+            // Limpiar sesión después de usarla
+            fetch("{{ route('factura.limpiar') }}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+        });
+    </script>
+@endif
+
+
 @if(session('success'))
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toastEl = document.getElementById('toastCompra');
-    const toast = new bootstrap.Toast(toastEl);
-    toast.show();
-  });
+    // Esperar a que cargue la página
+    document.addEventListener('DOMContentLoaded', function () {
+        const msg = document.getElementById('success-message');
+        if (msg) {
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+    });
 </script>
 @endif
 

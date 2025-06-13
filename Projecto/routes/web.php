@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('inicio');
 
+
 // Ruta para la página de administración
 
 Route::get('/admin', function () {
@@ -144,3 +145,8 @@ Route::put('/proveedor/editar/{id}', [ProveedoresController::class, 'actualizar'
 Route::delete('/proveedor/eliminar/{id}', [ProveedoresController::class, 'eliminar']) ->name('proEliminar');
 
 });
+
+Route::post('/limpiar-factura-session', function () {
+    session()->forget('factura_blob');
+    return response()->noContent();
+})->name('factura.limpiar');

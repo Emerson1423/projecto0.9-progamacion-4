@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{orden, pedido, juego, pago,usuario};
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class compraController extends Controller
 {
@@ -68,8 +69,16 @@ class compraController extends Controller
             'monto' => $total,
             'tarjeta_ultimos' => substr($request->numero_tarjeta, -4),
         ]);
-    
-        return redirect()->route('compras.create')->with('success', 'Compra realizada con éxito'); 
+
+        // Guardar PDF en storage
+        $pdf = Pdf::loadView('facturas.pdf', ['orden' => $orden->load(['usuario', 'pedidos.juego', 'pago'])]);
+
+        // 👉 Guardar el PDF como string en base64 en la sesión (sin guardarlo en disco)
+        session(['factura_blob' => base64_encode($pdf->output())]);
+
+
+        return redirect()->route('compras.create')->with('success', 'Compra realizada con éxito');
+
         
 
 
@@ -86,6 +95,13 @@ class compraController extends Controller
 
 
         return view('compras.create', compact('ordenes' , 'productos','pedidos', 'pagos', 'usuario'));
+    }
+
+    public function descargarFactura($ordenId)
+    {
+        $orden = orden::with(['usuario', 'pedidos.juego', 'pago'])->findOrFail($ordenId);
+        $pdf = Pdf::loadView('facturas.pdf', compact('orden'));
+        return $pdf->download("factura_orden_{$orden->id}.pdf");
     }
     
 
