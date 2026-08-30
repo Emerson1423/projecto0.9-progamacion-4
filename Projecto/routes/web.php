@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\sesion\LoginController;
-use App\Http\Controllers\sesion\registroController;
+use App\Http\Controllers\sesion\RegistroController;
 use App\Http\Controllers\juego\JuegosController;
 use App\Http\Controllers\categoria\CategoriasController;
 use App\Http\Controllers\plataforma\PlataformasController;
 use App\Http\Controllers\proveedor\ProveedoresController;
-use App\Http\Controllers\compra\compraController;
-use App\Http\Controllers\usuario\usuariosController;
+use App\Http\Controllers\compra\CompraController;
+use App\Http\Controllers\usuario\UsuariosController;
 use App\Http\Controllers\rol\RolesController;
-use App\Http\Controllers\orden\OrdenesController;
-use App\Http\Controllers\pago\pagosController;
-use App\Http\Controllers\pedido\pedidosController;
+use App\Http\Controllers\Orden\OrdenesController;
+use App\Http\Controllers\pago\PagosController;
+use App\Http\Controllers\pedido\PedidosController;
 use App\Http\Controllers\vistaJuegos\ViewjuegosController;
 
 // Ruta de Inicio / Landing Page (Acceso Libre)
@@ -36,16 +36,16 @@ Route::get('/admin', function () {
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/registro/crar', [registroController::class, 'create'])->name('registro.create');
-Route::post('/registro', [registroController::class, 'store'])->name('registro.store');
+Route::get('/registro/crar', [RegistroController::class, 'create'])->name('registro.create');
+Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');
 
 // Rutas de Cotización y Compras del Cliente (Acceso Directo Libre)
 Route::prefix('compras')->group(function(){
-    Route::get('/compras/create', [compraController::class, 'create'])->name('compras.create');
-    Route::post('/compras/store', [compraController::class, 'store'])->name('compras.store');
-    Route::get('/compras/index', [compraController::class, 'index'])->name('compras.index');
-    Route::get('/historial-compras', [compraController::class, 'historial'])->name('compras.historial');
-    Route::get('/descargar/{ordenId}', [compraController::class, 'descargarFactura'])->name('compras.descargar');
+    Route::get('/compras/create', [CompraController::class, 'create'])->name('compras.create');
+    Route::post('/compras/store', [CompraController::class, 'store'])->name('compras.store');
+    Route::get('/compras/index', [CompraController::class, 'index'])->name('compras.index');
+    Route::get('/historial-compras', [CompraController::class, 'historial'])->name('compras.historial');
+    Route::get('/descargar/{ordenId}', [CompraController::class, 'descargarFactura'])->name('compras.descargar');
 });
 
 // Catálogo de Servicios
@@ -53,12 +53,12 @@ Route::get('/juegos', [ViewjuegosController::class, 'index'])->name('juegos');
 
 // Gestión de Usuarios y Roles (Acceso Directo Libre)
 Route::prefix('usuario')->group(function() {
-    Route::get('/usuarios', [usuariosController::class, 'index'])->name('usuarios.index');
-    Route::get('/usuarios/crear', [usuariosController::class, 'create'])->name('usuarios.crear');
-    Route::post('/usuarios/guardar', [usuariosController::class, 'guardar'])->name('usuarios.guardar');
-    Route::get('/usuarios/editar/{id}', [usuariosController::class, 'editar'])->name('usuarios.editar');
-    Route::put('/usuarios/actualizar/{id}', [usuariosController::class, 'actualizar'])->name('usuarios.actualizar');
-    Route::delete('/usuarios/eliminar/{id}', [usuariosController::class, 'eliminar'])->name('usuarios.eliminar');
+    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios/crear', [UsuariosController::class, 'create'])->name('usuarios.crear');
+    Route::post('/usuarios/guardar', [UsuariosController::class, 'guardar'])->name('usuarios.guardar');
+    Route::get('/usuarios/editar/{id}', [UsuariosController::class, 'editar'])->name('usuarios.editar');
+    Route::put('/usuarios/actualizar/{id}', [UsuariosController::class, 'actualizar'])->name('usuarios.actualizar');
+    Route::delete('/usuarios/eliminar/{id}', [UsuariosController::class, 'eliminar'])->name('usuarios.eliminar');
 });
 
 // Gestión de Órdenes

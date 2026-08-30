@@ -8,7 +8,7 @@ use App\Models\Usuario;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-class usuariosController extends Controller
+class UsuariosController extends Controller
 {
     public function index()
     {

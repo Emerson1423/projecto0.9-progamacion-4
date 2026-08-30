@@ -7,7 +7,7 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 
-class registroController extends Controller
+class RegistroController extends Controller
 {
     
     public function index()

@@ -12,7 +12,7 @@ use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-class compraController extends Controller
+class CompraController extends Controller
 {
     private function autoLoginClient()
     {

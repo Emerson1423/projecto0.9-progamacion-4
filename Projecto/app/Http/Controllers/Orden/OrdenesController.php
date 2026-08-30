@@ -8,7 +8,7 @@ use App\Models\Usuario;
 
 use Illuminate\Http\Request;
 
-class ordenesController extends Controller
+class OrdenesController extends Controller
 {
         /**
      * Display a listing of the resource.

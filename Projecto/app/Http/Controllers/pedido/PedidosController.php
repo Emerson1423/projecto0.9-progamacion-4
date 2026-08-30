@@ -9,7 +9,7 @@ use App\Models\Orden;
 use App\Models\Juego;
 use Illuminate\Http\Request;
 
-class pedidosController extends Controller
+class PedidosController extends Controller
 {
     /**
      * Display a listing of the resource.
