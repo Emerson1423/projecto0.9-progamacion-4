@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
             ['rol_Id' => 3, 'nombrerol' => 'Cliente', 'created_at' => now(), 'updated_at' => now()],
         ]);
 
-        // 2. Insertar Usuarios por Defecto con los nombres permitidos
+        // 2. Insertar Usuarios por Defecto con Nombres Genéricos
         DB::table('usuarios')->insert([
             [
                 'usuario_Id' => 1,
-                'nombre' => 'VARGAS DÍAZ, JAVIER ALEXANDER',
-                'email' => 'emerson@gmail.com',
+                'nombre' => 'CARLOS GÓMEZ',
+                'email' => 'admin@securecode.com',
                 'password' => Hash::make('12345678'),
                 'rol_Id' => 2, // Admin
                 'created_at' => now(),
@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'usuario_Id' => 2,
-                'nombre' => 'ALFREDO EZEQUIEL MEDRANO MARTINEZ',
-                'email' => 'alfredomedrano678@gmail.com',
+                'nombre' => 'JUAN PÉREZ',
+                'email' => 'juanperez@gmail.com',
                 'password' => Hash::make('12345678'),
                 'rol_Id' => 3, // Cliente
                 'created_at' => now(),
@@ -65,8 +65,8 @@ class DatabaseSeeder extends Seeder
                 'proveedor_Id' => 1,
                 'nombre' => 'SECURE CODE S.A.S. de C.V. (Oficina Principal)',
                 'direcciom' => 'Plaza Jardín, Local #10, Calle Los Almendros, San Miguel Centro, San Miguel',
-                'telefono' => '7525-4863',
-                'correo' => 'vargasjavier26@gmail.com',
+                'telefono' => '2661-0000',
+                'correo' => 'contacto@securecode.com',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -74,8 +74,8 @@ class DatabaseSeeder extends Seeder
                 'proveedor_Id' => 2,
                 'nombre' => 'SECURE CODE S.A.S. de C.V. (Sucursal Ciudad Barrios)',
                 'direcciom' => 'Plaza El Calvario, Local N.° 20, 1.ª Calle Poniente, Ciudad Barrios, San Miguel Norte',
-                'telefono' => '7525-4863',
-                'correo' => 'vargasjavier26@gmail.com',
+                'telefono' => '2661-0000',
+                'correo' => 'contacto@securecode.com',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

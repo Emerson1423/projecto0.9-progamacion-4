@@ -152,7 +152,7 @@
             
             <div class="mb-2">
                 <label class="form-label font-monospace">Nombre Completo / Empresa</label>
-                <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}" placeholder="Ej. Alfredo Medrano (Empresa SV)" required>
+                <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}" placeholder="Ej. Juan Pérez (Comercio SV)" required>
                 @error('nombre')
                     <span class="text-danger small d-block mt-1">{{ $message }}</span>
                 @enderror

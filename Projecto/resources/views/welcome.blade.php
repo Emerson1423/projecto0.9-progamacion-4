@@ -984,7 +984,7 @@
 
     <div class="text-center pt-3">
       <p class="fs-4 text-light font-display mb-4" style="max-width:700px; margin:0 auto; color:#FFFFFF !important;">¿Quién de ustedes quiere nadar con nosotros en este océano de oportunidades?</p>
-      <a class="btn-ui btn-ui-primary" href="mailto:vargasjavier26@gmail.com"><i class="bi bi-briefcase me-1"></i> Hablemos de la Inversión</a>
+      <a class="btn-ui btn-ui-primary" href="mailto:contacto@securecode.com"><i class="bi bi-briefcase me-1"></i> Hablemos de la Inversión</a>
     </div>
   </div>
 </section>
@@ -1063,7 +1063,7 @@
         <div class="footer-col">
           <h5>Contacto Directo</h5>
           <a href="tel:75254863">+503 7525-4863</a>
-          <a href="mailto:vargasjavier26@gmail.com">vargasjavier26@gmail.com</a>
+          <a href="mailto:contacto@securecode.com">contacto@securecode.com</a>
         </div>
       </div>
     </div>

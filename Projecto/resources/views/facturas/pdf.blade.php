@@ -134,7 +134,7 @@
     </tr>
     <tr>
         <td><strong>Representante Legal:</strong></td>
-        <td>VARGAS DÍAZ, JAVIER ALEXANDER</td>
+        <td>CARLOS GÓMEZ</td>
         <td><strong>Método de Pago:</strong></td>
         <td>Tarjeta de Crédito / Débito (En línea)</td>
     </tr>
@@ -179,7 +179,7 @@
     <tr>
         <td class="signature-cell">
             <div class="signature-line"></div>
-            <strong>VARGAS DÍAZ, JAVIER ALEXANDER</strong><br>
+            <strong>CARLOS GÓMEZ</strong><br>
             Representante Legal<br>
             SECURE CODE S.A.S. de C.V.
         </td>
