@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class rol extends Model
+class Rol extends Model
 {
     protected $table = 'roles';
     protected $primaryKey = 'rol_Id';
-
 
     protected $fillable = [
         'nombrerol',
@@ -16,6 +15,8 @@ class rol extends Model
 
     public function usuarios()
     {
-        return $this->hasMany(usuario::class, 'usuario_Id');
+        return $this->hasMany(Usuario::class, 'usuario_Id');
     }
 }
+
+class_alias(Rol::class, 'App\Models\rol');

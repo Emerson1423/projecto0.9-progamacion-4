@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class categoria extends Model
+class Categoria extends Model
 {
-    protected $fillable=[
+    protected $fillable = [
         'nombre',
     ];
     protected $primaryKey = 'categoria_Id';
@@ -17,3 +17,5 @@ class categoria extends Model
         return $this->hasMany(Juego::class, 'categoria_Id', 'categoria_Id');
     }
 }
+
+class_alias(Categoria::class, 'App\Models\categoria');

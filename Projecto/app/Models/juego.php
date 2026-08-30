@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Support\Facades\Storage;
 
-class juego extends Model
+class Juego extends Model
 {
     protected $table = 'juegos';
     protected $primaryKey = 'juegos_Id';
@@ -21,13 +20,11 @@ class juego extends Model
         'proveedor_Id',
     ];
 
-    // Accesor para la URL de la imagen
     public function getImagenUrlAttribute()
     {
         return $this->imagen ? Storage::url($this->imagen) : asset('images/default-game.png');
     }
     
-    // Eliminar imagen al borrar el juego
     protected static function boot()
     {
         parent::boot();
@@ -39,19 +36,18 @@ class juego extends Model
         });
     }
     
-        
-        
-  
     public function plataforma()
     {
-        return $this->belongsTo(Plataforma::class,  'plataforma_Id');
+        return $this->belongsTo(Plataforma::class, 'plataforma_Id');
     }
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class,  'categoria_Id');
+        return $this->belongsTo(Categoria::class, 'categoria_Id');
     }
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class,  'proveedor_Id');
+        return $this->belongsTo(Proveedor::class, 'proveedor_Id');
     }
 }
+
+class_alias(Juego::class, 'App\Models\juego');

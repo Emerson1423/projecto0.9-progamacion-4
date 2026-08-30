@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class plataforma extends Model
+class Plataforma extends Model
 {
     protected $fillable = [
         'nombrePlataforma',
@@ -17,3 +17,5 @@ class plataforma extends Model
         return $this->hasMany(Juego::class, 'plataforma_Id');
     }
 }
+
+class_alias(Plataforma::class, 'App\Models\plataforma');

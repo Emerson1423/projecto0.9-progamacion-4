@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable; 
 
-
-class usuario extends Authenticatable
+class Usuario extends Authenticatable
 {
     protected $table = 'usuarios';
     protected $primaryKey = 'usuario_Id';   
-
 
     protected $fillable = [
         'nombre',
@@ -20,17 +17,19 @@ class usuario extends Authenticatable
     ];
 
     public function rol()
-{
-    return $this->belongsTo(rol::class, 'rol_Id'); 
-}
+    {
+        return $this->belongsTo(Rol::class, 'rol_Id'); 
+    }
 
-public function hasRole($roleName)
-{
-    return optional($this->rol)->nombrerol === $roleName; // Compara el nombre del rol
-}
+    public function hasRole($roleName)
+    {
+        return optional($this->rol)->nombrerol === $roleName;
+    }
 
     public function ordenes() 
     {
-        return $this->hasMany(orden::class, 'usuario_Id'); 
+        return $this->hasMany(Orden::class, 'usuario_Id'); 
     }
 }
+
+class_alias(Usuario::class, 'App\Models\usuario');

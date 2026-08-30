@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class pago extends Model
+class Pago extends Model
 {
     use HasFactory;
     protected $table = 'pagos';
@@ -21,3 +21,5 @@ class pago extends Model
         return $this->belongsTo(Orden::class, 'orden_Id');
     }
 }
+
+class_alias(Pago::class, 'App\Models\pago');

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pedido extends Model
+class Pedido extends Model
 {
     protected $table = 'pedidos';
     protected $primaryKey = 'pedido_Id';
@@ -17,6 +17,8 @@ class pedido extends Model
 
     public function juego()
     {
-        return $this->belongsTo(juego::class, 'juegos_Id');
+        return $this->belongsTo(Juego::class, 'juegos_Id');
     }
 }
+
+class_alias(Pedido::class, 'App\Models\pedido');

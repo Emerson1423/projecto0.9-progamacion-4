@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class orden extends Model
+class Orden extends Model
 {
     protected $table = 'ordenes';
     protected $primaryKey = 'orden_Id';
@@ -20,9 +20,10 @@ class orden extends Model
         return $this->hasOne(Pago::class, 'orden_Id');
     }
 
-
-   public function usuario() 
-   {
-       return $this->belongsTo(usuario::class, 'usuario_Id');
-   }
+    public function usuario() 
+    {
+        return $this->belongsTo(Usuario::class, 'usuario_Id');
+    }
 }
+
+class_alias(Orden::class, 'App\Models\orden');
