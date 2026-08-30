@@ -1,43 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-</head>
-<body>
-    <div class="container">
-    <h1>Listado de Roles</h1>
-    
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+@extends('administracion.admin')
 
-    <a href="{{ route('roles.create') }}" class="btn btn-primary mb-3">Crear Nuevo Rol</a>
+@section('content')
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom border-secondary">
+    <div>
+        <h1 class="h3 text-light font-monospace m-0">Roles del Sistema de Ciberseguridad</h1>
+        <p class="text-muted small m-0">Niveles de acceso y permisos de administración en SECURE CODE S.A.S. de C.V.</p>
+    </div>
+    <div>
+        <a href="{{ route('roles.create') }}" class="btn btn-sm btn-outline-info">
+            <i class="fas fa-plus me-1"></i> Crear Nuevo Rol
+        </a>
+    </div>
+</div>
 
-    <table class="table table-bordered">
-        <thead>
+@if(session('success'))
+    <div class="alert alert-success bg-dark text-success border-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
+<div class="table-responsive">
+    <table class="table table-dark table-hover align-middle border-secondary">
+        <thead class="table-dark text-info font-monospace small">
             <tr>
-                <th>ID</th>
+                <th width="15%">ID</th>
                 <th>Nombre del Rol</th>
-                <th>Acciones</th>
+                <th width="20%">Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
             @foreach($roles as $role)
             <tr>
-                <td>{{ $role->rol_Id }}</td>
-                <td>{{ $role->nombrerol }}</td>
+                <td class="font-monospace text-muted">#{{ $role->rol_Id }}</td>
+                <td><strong class="text-light">{{ $role->nombrerol }}</strong></td>
                 <td>
-                    <a href="{{ route('roles.edit', $role->rol_Id) }}" class="btn btn-warning">Editar</a>
-                    <form action="{{ route('roles.destroy', $role->rol_Id) }}" method="POST" style="display: inline;">
+                    <a href="{{ route('roles.edit', $role->rol_Id) }}" class="btn btn-sm btn-outline-warning me-1">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="{{ route('roles.destroy', $role->rol_Id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este rol?')">Eliminar</button>
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Deseas eliminar este rol?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </form>
                 </td>
             </tr>
@@ -45,5 +51,4 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>
+@endsection

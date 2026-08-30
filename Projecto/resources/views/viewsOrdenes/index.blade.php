@@ -1,60 +1,46 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Ventas</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
 @extends('administracion.admin')
+
 @section('content')
-   
-   <div class="container">
-    <h1>Ventas</h1>
-    
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom border-secondary">
+    <div>
+        <h1 class="h3 text-light font-monospace m-0">Contrataciones & Órdenes de Servicio</h1>
+        <p class="text-muted small m-0">Registro de transacciones de auditoría y facturas de ciberseguridad emitidas.</p>
+    </div>
+</div>
 
+@if(session('success'))
+    <div class="alert alert-success bg-dark text-success border-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+    </div>
+@endif
 
-
-    <table class="table table-bordered">
-        <thead class="table-dark">
+<div class="table-responsive">
+    <table class="table table-dark table-hover align-middle border-secondary">
+        <thead class="table-dark text-info font-monospace small">
             <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Total</th>
-                <!--<th>Acciones</th>-->
+                <th>ID Orden</th>
+                <th>Cliente / Empresa</th>
+                <th>Fecha de Emisión</th>
+                <th>Monto Total (USD)</th>
+                <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
             @foreach($ordenes as $orden)
             <tr>
-                <td>{{ $orden->orden_Id }}</td>
-                <td>{{ $orden->usuario->nombre ?? 'N/A' }}</td>
-                <td>${{ number_format($orden->total, 2) }}</td>
-                <!--<td>
-                    
-                    <a href="{{ route('ordenes.edit', $orden->orden_Id) }}" class="btn btn-warning btn-sm">
-                        <i class="fas fa-edit"></i>
+                <td class="font-monospace text-muted">#{{ $orden->orden_Id }}</td>
+                <td><strong class="text-light">{{ $orden->usuario->nombre ?? 'Cliente Desconocido' }}</strong></td>
+                <td class="text-muted">{{ $orden->created_at ? $orden->created_at->format('d/m/Y H:i') : 'N/A' }}</td>
+                <td class="font-monospace text-info fw-bold">${{ number_format($orden->total, 2) }}</td>
+                <td>
+                    <a href="{{ route('compras.descargar', $orden->orden_Id) }}" class="btn btn-sm btn-outline-info">
+                        <i class="fas fa-file-pdf me-1"></i> Descargar Carta/Factura PDF
                     </a>
-                    <form action="{{ route('ordenes.destroy', $orden->orden_Id) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta orden?')">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </form>
-                </td>-->
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
 @endsection
-</body>
-</html>

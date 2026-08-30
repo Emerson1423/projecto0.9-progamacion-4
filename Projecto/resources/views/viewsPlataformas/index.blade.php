@@ -1,64 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataformas</title>
-</head>
-<style>
-    body {
-        font-family: Poppins, sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-        
-    }
-
-    h1{
-        text-align: center;
-    }
-
-
-</style>
-<body>
 @extends('administracion.admin')
+
 @section('content')
-<h1>Lista de Plataformas</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom border-secondary">
+    <div>
+        <h1 class="h3 text-light font-monospace m-0">Plataformas e Infraestructura Evaluadas</h1>
+        <p class="text-muted small m-0">Catálogo de entornos de despliegue tecnológicos de SECURE CODE S.A.S. de C.V.</p>
+    </div>
+    <div>
+        <a href="{{ route('plaCrear') }}" class="btn btn-sm btn-outline-info">
+            <i class="fas fa-plus me-1"></i> Nueva Plataforma
+        </a>
+    </div>
+</div>
 
-<table class="table table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    @foreach($plataformas as $plataforma)
-        <tr>
-            <td>{{ $plataforma->plataforma_Id }}</td>
-            <td>{{ $plataforma->nombrePlataforma }}</td>
-            
-            <td>
-                <a href="{{ route('plaEditar', $plataforma->plataforma_Id) }}"class="btn btn-sm btn-warning">
-                <i class="fas fa-edit"></i>
-               
-                </a>
-                <form action="{{ route('plaEliminar', $plataforma->plataforma_Id) }}" method="POST" class="d-inline" >
-                @csrf
-                @method('DELETE')
-        
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">
-                <i class="fas fa-trash-alt"></i>
-                </button>
-            </form>
-            </td>
+@if(session('success'))
+    <div class="alert alert-success bg-dark text-success border-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+    </div>
+@endif
 
-        </tr>
-    @endforeach
-
-    @endsection
-</body>
-</html>
+<div class="table-responsive">
+    <table class="table table-dark table-hover align-middle border-secondary">
+        <thead class="table-dark text-info font-monospace small">
+            <tr>
+                <th width="15%">ID</th>
+                <th>Nombre de Plataforma / Entorno</th>
+                <th width="20%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="small">
+            @foreach($plataformas as $plataforma)
+            <tr>
+                <td class="font-monospace text-muted">#{{ $plataforma->plataforma_Id }}</td>
+                <td><strong class="text-light">{{ $plataforma->nombrePlataforma }}</strong></td>
+                <td>
+                    <a href="{{ route('plaEditar', $plataforma->plataforma_Id) }}" class="btn btn-sm btn-outline-warning me-1">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="{{ route('plaEliminar', $plataforma->plataforma_Id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Deseas eliminar esta plataforma?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

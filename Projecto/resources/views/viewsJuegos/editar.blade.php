@@ -1,150 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar</title>
-</head>
+@extends('administracion.admin')
 
-<style>
-    body {
-        font-family: poppins, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-    }
-
-    h1 {
-        text-align: center;
-        
-    }
-
-    form {
-    background-color: #fff;
-    padding: 25px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    margin: 20px auto;
-    font-family: poppins, sans-serif;
-
-    }
-
-    label {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-size: 16px;
-        font-family: poppins, sans-serif;   
-    }
-    select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        background-color: #28a745;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #218838;
-    }
-
-</style>
-<body>
-<h1>Editar Juego</h1>
-
-<form action="{{ route('juegos.actualizar', $videogames->juegos_Id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    
-    <label for="titulo">Título:</label><br>
-    <input type="text" id="titulo" name="titulo" value="{{ old('titulo', $videogames->titulo) }}" required><br><br>
-    
-    <label for="descripcion">Descripción:</label><br>
-    <textarea id="descripcion" name="descripcion" required>{{ old('descripcion', $videogames->descripcion) }}</textarea><br><br>
-    
-    <label for="precio">Precio:</label><br>
-    <input type="number" id="precio" name="precio" step="0.01" min="0" value="{{ old('precio', $videogames->precio) }}" required><br><br>
-    
-    <label for="cantidad_dispo">Cantidad Disponible:</label><br>
-    <input type="number" id="cantidad_dispo" name="cantidad_dispo" min="0" value="{{ old('cantidad_dispo', $videogames->cantidad_dispo) }}" required><br><br>
-    
-    <!-- Campo de imagen actual -->
-    <div>
-        <label>Imagen Actual:</label><br>
-        @if($videogames->imagen)
-            <img src="{{ Storage::url($videogames->imagen) }}" alt="{{ $videogames->titulo }}" style="max-width: 200px; max-height: 200px;">
-            <p>{{ basename($videogames->imagen) }}</p>
-        @else
-            <p>No hay imagen cargada</p>
+@section('content')
+<div class="card bg-dark text-light border-secondary shadow">
+    <div class="card-header bg-black border-secondary d-flex justify-content-between align-items-center">
+        <h4 class="mb-0 text-info font-monospace"><i class="fas fa-edit me-2"></i>Editar Servicio #{{ $videogames->juegos_Id }}</h4>
+    </div>
+    <div class="card-body">
+        @if($errors->any())
+            <div class="alert alert-danger bg-dark text-danger border-danger">
+                <ul class="mb-0">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
+
+        <form action="{{ route('juegos.actualizar', $videogames->juegos_Id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="titulo" class="form-label small text-muted font-monospace">Nombre del Servicio / Objeto Social</label>
+                    <input type="text" class="form-control bg-black text-light border-secondary" name="titulo" value="{{ old('titulo', $videogames->titulo) }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="precio" class="form-label small text-muted font-monospace">Precio Base (USD)</label>
+                    <input type="number" step="0.01" min="0" class="form-control bg-black text-light border-secondary" name="precio" value="{{ old('precio', $videogames->precio) }}" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="descripcion" class="form-label small text-muted font-monospace">Descripción Detallada del Servicio</label>
+                <textarea class="form-control bg-black text-light border-secondary" name="descripcion" rows="3" required>{{ old('descripcion', $videogames->descripcion) }}</textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="cantidad_dispo" class="form-label small text-muted font-monospace">Cupos / Disponibilidad</label>
+                    <input type="number" min="0" class="form-control bg-black text-light border-secondary" name="cantidad_dispo" value="{{ old('cantidad_dispo', $videogames->cantidad_dispo) }}" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="plataforma_Id" class="form-label small text-muted font-monospace">Plataforma Evaluada</label>
+                    <select class="form-select bg-black text-light border-secondary" name="plataforma_Id" required>
+                        @foreach ($plataformas as $plataforma)
+                            <option value="{{ $plataforma->plataforma_Id }}" {{ old('plataforma_Id', $videogames->plataforma_Id) == $plataforma->plataforma_Id ? 'selected' : '' }}>
+                                {{ $plataforma->nombrePlataforma }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="categoria_Id" class="form-label small text-muted font-monospace">Categoría de Auditoría</label>
+                    <select class="form-select bg-black text-light border-secondary" name="categoria_Id" required>
+                        @foreach ($categorias as $categoria)
+                            <option value="{{ $categoria->categoria_Id }}" {{ old('categoria_Id', $videogames->categoria_Id) == $categoria->categoria_Id ? 'selected' : '' }}>
+                                {{ $categoria->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="proveedor_Id" class="form-label small text-muted font-monospace">Sede / Aliado Responsable</label>
+                    <select class="form-select bg-black text-light border-secondary" name="proveedor_Id" required>
+                        @foreach ($proveedores as $proveedor)
+                            <option value="{{ $proveedor->proveedor_Id }}" {{ old('proveedor_Id', $videogames->proveedor_Id) == $proveedor->proveedor_Id ? 'selected' : '' }}>
+                                {{ $proveedor->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="imagen" class="form-label small text-muted font-monospace">Cambiar Imagen Promocional / Icono</label>
+                    <input type="file" class="form-control bg-black text-light border-secondary" name="imagen" accept="image/jpeg,image/png,image/jpg,image/gif">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <a href="{{ route('juegos.index') }}" class="btn btn-sm btn-outline-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-sm btn-warning text-dark font-monospace fw-bold">Actualizar Servicio</button>
+            </div>
+        </form>
     </div>
-    
-    <!-- Campo para subir nueva imagen -->
-    <label for="imagen">Cambiar Imagen:</label><br>
-    <input type="file" id="imagen" name="imagen" accept="image/jpeg,image/png,image/jpg,image/gif"><br>
-    <small>Formatos aceptados: jpeg, png, jpg, gif (Máx. 2MB)</small><br><br>
-    
-    <label for="categoria_Id">Género:</label><br>
-    <select id="categoria_Id" name="categoria_Id" required>
-        @foreach($categorias as $categoria)
-            <option value="{{ $categoria->categoria_Id }}" {{ old('categoria_Id', $videogames->categoria_Id) == $categoria->categoriaId ? 'selected' : '' }}>
-                {{ $categoria->nombre }}
-            </option>
-        @endforeach
-    </select><br><br>
-    
-    <label for="plataforma_Id">Plataforma:</label><br>
-    <select id="plataforma_Id" name="plataforma_Id" required>
-        @foreach($plataformas as $plataforma)
-            <option value="{{ $plataforma->plataforma_Id }}" {{ old('plataforma_Id', $videogames->plataforma_Id) == $plataforma->plataforma_Id ? 'selected' : '' }}>
-                {{ $plataforma->nombrePlataforma }}
-            </option>
-        @endforeach
-    </select><br><br>
-
-    <label for="proveedor_Id">Proveedor:</label><br>
-    <select id="proveedor_Id" name="proveedor_Id" required>
-        @foreach($proveedores as $proveedor)
-            <option value="{{ $proveedor->proveedor_Id }}" {{ old('proveedor_Id', $videogames->proveedor_Id) == $proveedor->proveedor_Id ? 'selected' : '' }}>
-                {{ $proveedor->nombre }}
-            </option>                
-        @endforeach
-    </select><br><br>
-
-    
-    <button type="submit">Actualizar</button>
-</form>
-
-@if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-    
-</body>
-</html>
+</div>
+@endsection

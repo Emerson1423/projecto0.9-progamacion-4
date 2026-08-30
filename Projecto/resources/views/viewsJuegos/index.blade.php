@@ -1,85 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juegos</title>
-</head>
-<style>
-    body {
-        font-family: Poppins, sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-        
-    }
-
-    h1{
-        text-align: center;
-    }
-
-    </style>
-<body>
 @extends('administracion.admin')
 
 @section('content')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Listado de Juegos</h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom border-secondary">
+    <div>
+        <h1 class="h3 text-light font-monospace m-0">Servicios de Ciberseguridad (Objeto Social)</h1>
+        <p class="text-muted small m-0">Gestión del catálogo oficial de auditorías y consultorías de SECURE CODE S.A.S. de C.V.</p>
+    </div>
     <div class="btn-toolbar mb-2 mb-md-0">
-        <a href="{{ route('juegos.crear') }}" class="btn btn-sm btn-primary">
-            <i class="fas fa-plus me-1"></i> Nuevo Juego
+        <a href="{{ route('juegos.crear') }}" class="btn btn-sm btn-outline-info">
+            <i class="fas fa-plus me-1"></i> Registrar Nuevo Servicio
         </a>
     </div>
 </div>
 
 @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert alert-success bg-dark text-success border-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
     </div>
 @endif
 
 <div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
+    <table class="table table-dark table-hover align-middle border-secondary">
+        <thead class="table-dark text-info font-monospace small">
             <tr>
                 <th>ID</th>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Stock</th>
+                <th>Servicio / Título</th>
+                <th>Precio Base</th>
+                <th>Disponibilidad</th>
                 <th>Plataforma</th>
                 <th>Categoría</th>
-                <th>Proveedor</th>
-                <th>Acciones</th>
+                <th>Sede Responsable</th>
+                <th text-align="right">Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
             @foreach($videogames as $juego)
             <tr>
-                <td>{{ $juego->juegos_Id }}</td>
+                <td class="font-monospace text-muted">#{{ $juego->juegos_Id }}</td>
                 <td>
-                    @if($juego->imagen_url)
-                        <img src="{{  $juego->imagen_url }}" alt="{{ $juego->titulo }}" width="50">
-                    @else
-                        <span class="text-muted">Sin imagen</span>
-                    @endif
+                    <strong class="text-light">{{ $juego->titulo }}</strong><br>
+                    <span class="text-muted" style="font-size:11px;">{{ Str::limit($juego->descripcion, 60) }}</span>
                 </td>
-                <td>{{ $juego->titulo }}</td>
-                <td>${{ number_format($juego->precio, 2) }}</td>
-                <td>{{ $juego->cantidad_dispo }}</td>
-                <td>{{ $juego->plataforma->nombrePlataforma }}</td>
-                <td>{{ $juego->categoria->nombre }}</td>
-                <td>{{ $juego->proveedor->nombre }}</td>
+                <td class="font-monospace text-info fw-bold">${{ number_format($juego->precio, 2) }}</td>
+                <td><span class="badge bg-secondary font-monospace">{{ $juego->cantidad_dispo }} cupos</span></td>
+                <td class="text-muted">{{ $juego->plataforma->nombrePlataforma ?? 'N/A' }}</td>
+                <td><span class="badge bg-dark text-info border border-info">{{ $juego->categoria->nombre ?? 'N/A' }}</span></td>
+                <td class="text-muted small">{{ $juego->proveedor->nombre ?? 'N/A' }}</td>
                 <td>
-                    <a href="{{ route('juegos.editar', $juego->juegos_Id) }}" class="btn btn-sm btn-warning">
+                    <a href="{{ route('juegos.editar', $juego->juegos_Id) }}" class="btn btn-sm btn-outline-warning me-1">
                         <i class="fas fa-edit"></i>
                     </a>
                     <form action="{{ route('juegos.eliminar', $juego->juegos_Id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Deseas eliminar este servicio del catálogo?')">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </form>
@@ -90,7 +65,3 @@
     </table>
 </div>
 @endsection
-
-    
-</body>
-</html>

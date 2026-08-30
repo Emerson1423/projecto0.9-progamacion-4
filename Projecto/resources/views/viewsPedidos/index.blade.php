@@ -1,57 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-</head>
-<body>
-<div class="container">
-    <h1>Listado de Pedidos</h1>
-    
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+@extends('administracion.admin')
 
-    <a href="{{ route('pedidos.create') }}" class="btn btn-primary mb-3">Crear Nuevo Pedido</a>
+@section('content')
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom border-secondary">
+    <div>
+        <h1 class="h3 text-light font-monospace m-0">Detalle de Servicios Contratados</h1>
+        <p class="text-muted small m-0">Desglose de ítems de auditoría e ingeniería por cada orden de cliente.</p>
+    </div>
+</div>
 
-    <table class="table table-bordered">
-        <thead>
+@if(session('success'))
+    <div class="alert alert-success bg-dark text-success border-success alert-dismissible fade show">
+        <i class="fas fa-check-circle me-1"></i> {{ session('success') }}
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
+<div class="table-responsive">
+    <table class="table table-dark table-hover align-middle border-secondary">
+        <thead class="table-dark text-info font-monospace small">
             <tr>
-                <th>ID</th>
+                <th>ID Pedido</th>
                 <th>Orden</th>
-                <th>Juego</th>
-                <th>Cantidad</th>
+                <th>Servicio Contratado</th>
+                <th>Cantidad / Licencias</th>
                 <th>Precio Unitario</th>
                 <th>Subtotal</th>
-                <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
             @foreach($pedidos as $pedido)
             <tr>
-                <td>{{ $pedido->pedido_Id }}</td>
-                <td>Orden #{{ $pedido->orden_Id }}</td>
-                <td>{{ $pedido->juego->titulo ?? 'N/A' }}</td>
-                <td>{{ $pedido->cantidad }}</td>
-                <td>${{ number_format($pedido->precio_unitario, 2) }}</td>
-                <td>${{ number_format($pedido->cantidad * $pedido->precio_unitario, 2) }}</td>
-                <td>
-                    <a href="{{ route('pedidos.edit', $pedido->pedido_Id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <form action="{{ route('pedidos.destroy', $pedido->pedido_Id) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este pedido?')">Eliminar</button>
-                    </form>
-                </td>
+                <td class="font-monospace text-muted">#{{ $pedido->pedido_Id }}</td>
+                <td class="font-monospace text-info">Orden #{{ $pedido->orden_Id }}</td>
+                <td><strong class="text-light">{{ $pedido->juego->titulo ?? 'N/A' }}</strong></td>
+                <td><span class="badge bg-secondary font-monospace">{{ $pedido->cantidad }}</span></td>
+                <td class="font-monospace text-muted">${{ number_format($pedido->precio_unitario, 2) }}</td>
+                <td class="font-monospace text-info fw-bold">${{ number_format($pedido->cantidad * $pedido->precio_unitario, 2) }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-</body>
-</html>
+@endsection

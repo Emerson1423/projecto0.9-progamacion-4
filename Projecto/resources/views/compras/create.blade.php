@@ -1,236 +1,459 @@
 <!DOCTYPE html>
-<html>
+<html lang="es-SV">
 <head>
-    <title>Comprar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización e Integración de Servicios — SECURE CODE S.A.S. de C.V.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        .cart-dropdown {
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            width: 320px;
-            background: #fff;
-            border: 1px solid #ddd;
+        :root {
+            --bg: #0d1120;
+            --bg-1: #121626;
+            --bg-2: #161c33;
+            --bg-3: #1b2240;
+            --primary: #0047AB;
+            --accent: #00E5FF;
+            --interact: #3377FF;
+            --muted: #F1F5F9;
+            --muted-sub: #E2E8F0;
+            --border: #2b3350;
+            --border-soft: #475669;
+            --white: #FFFFFF;
+            --success: #00E676;
+            --warning: #FFB300;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: var(--font-body);
+        }
+
+        /* SOBREESCRITURA GLOBAL DE TEXTOS PARA MÁXIMA LEGIBILIDAD */
+        .text-muted, p.text-muted, span.text-muted, div.text-muted, small.text-muted {
+            color: #E2E8F0 !important;
+            font-weight: 500 !important;
+            opacity: 1 !important;
+        }
+
+        p {
+            color: #F1F5F9 !important;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(13, 17, 32, 0.95) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-logo { width: 34px; height: 34px; }
+        .brand-name { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.02em; color: var(--white); font-weight: 700; }
+        .brand-name b { color: var(--accent); }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 12.5px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .prereq-box {
+            background: var(--bg-2);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 24px;
+        }
+
+        .prereq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
+        .prereq-item {
+            background: var(--bg-1);
+            border: 1px solid var(--border);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 1000;
+            padding: 16px;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .prereq-item input { accent-color: var(--accent); margin-top: 3px; width: 18px; height: 18px; }
+        .prereq-item p { color: #E2E8F0 !important; font-size: 14px; margin: 0; }
+
+        .maturity-container { background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px; margin-bottom: 30px; }
+        .maturity-bar-bg { height: 12px; background: var(--bg-3); border-radius: 6px; overflow: hidden; }
+        .maturity-bar-fill { height: 100%; width: 45%; background: linear-gradient(90deg, var(--interact), var(--accent)); transition: width .4s ease; }
+
+        .seg-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+        .seg-tab {
+            font-family: var(--font-mono); font-size: 13.5px; font-weight: 700;
+            padding: 11px 20px; border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-1); color: #F1F5F9;
+            cursor: pointer; transition: all .15s;
+        }
+        .seg-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(0,229,255,0.08); }
+        .seg-panel { display: none; }
+        .seg-panel.active { display: block; }
+
+        .calc-panel {
+            display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0;
+            background: var(--bg-1);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .calc-addons { padding: 28px; border-right: 1px solid var(--border); }
+
+        .tier-card {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .tier-card.active { border-color: var(--accent); background: rgba(0,229,255,0.08); }
+        .tier-card p { color: #E2E8F0 !important; font-size: 13.5px; }
+
+        .service-card {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 14px;
+            transition: border-color .15s;
+        }
+        .service-card:hover { border-color: var(--border-soft); }
+        .service-card p { color: #E2E8F0 !important; font-size: 14.5px; }
+
+        .next-step-box {
+            margin-top: 10px; padding: 12px 14px;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px dashed var(--accent);
+            border-radius: 6px;
+            font-size: 13.5px; color: var(--accent); font-weight: 600;
             display: none;
         }
+        .next-step-box.show { display: block; }
 
-        .cart-dropdown.active {
-            display: block;
+        .calc-console { padding: 28px; background: linear-gradient(180deg, var(--bg-2), var(--bg-1)); display: flex; flex-direction: column; }
+        .cart-dropdown-custom {
+            background: var(--bg-1);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
         }
 
-        .cart-item {
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            border-bottom: 1px solid #eee;
+        .console-warning {
+            font-family: var(--font-mono); font-size: 12.5px; color: var(--warning);
+            background: rgba(255,179,0,0.08); border: 1px solid rgba(255,179,0,0.3);
+            border-radius: 8px; padding: 12px; margin-bottom: 16px; display: none;
         }
+        .console-warning.show { display: block; }
 
-        .cart-item img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
-        .cart-summary {
-            padding: 10px;
-        }
-
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: red;
-            color: white;
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 12px;
+        @media (max-width: 900px) {
+            .calc-panel { grid-template-columns: 1fr; }
+            .prereq-grid { grid-template-columns: 1fr; }
+            .calc-addons { border-right: none; border-bottom: 1px solid var(--border); }
         }
     </style>
 </head>
-<body class="bg-black">
+<body>
 
+<header class="navbar navbar-expand-lg px-4 border-bottom border-secondary sticky-top" style="background: rgba(11, 15, 25, 0.94); backdrop-filter: blur(14px); z-index:1000;">
+  <div class="container-fluid max-w-1280">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('inicio') }}">
+      <svg class="brand-logo" viewBox="0 0 100 100" fill="none" style="width:36px;height:36px;">
+        <path d="M50 8L15 24V50C15 70 30 87 50 94C70 87 85 70 85 50V24L50 8Z" stroke="#00E5FF" stroke-width="6" fill="#121626"/>
+        <rect x="42" y="66" width="16" height="14" rx="3" fill="#00E5FF"/>
+      </svg>
+      <span class="brand-name font-monospace fs-5 fw-bold text-light">SECURE<b style="color:var(--accent);">CODE</b></span>
+    </a>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-black px-3">
-  <a class="navbar-brand" ><img src="{{ asset('img/logovicegamess.gif') }}" alt="Logo" width="80" height="65" class="d-inline-block align-text-top me-2"></a>
-
-  <div class="ms-auto d-flex align-items-center gap-3">
-    <div class="cart-icon position-relative" id="cartIcon">
-      <i class="bi bi-cart3 fs-4 text-white"></i>
-      <span class="cart-count d-none position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+    <div class="ms-auto d-flex align-items-center gap-3 flex-wrap">
+      <a href="{{ route('inicio') }}" class="btn btn-sm btn-outline-info font-monospace fw-bold">
+        <i class="bi bi-house me-1"></i> Inicio / Portal
+      </a>
+      <span class="text-light small font-monospace fw-bold fs-6 border-start border-secondary ps-3 ms-1">
+        <i class="bi bi-person-circle text-info me-1"></i> {{ auth()->user()->nombre }}
+      </span>
+      <a href="{{ route('compras.historial') }}" class="btn btn-sm btn-outline-light font-monospace fw-bold">Mis Contrataciones</a>
+      <button class="btn btn-sm btn-outline-danger font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">Cerrar Sesión</button>
     </div>
-
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{ auth()->user()->nombre }}
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-          <li><a class="dropdown-item" href="{{ route('compras.historial') }}">Historial de compras</a></li>
-          <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">Cerrar sesión</button></li>
-        </ul>
-      </li>
-    </ul>
   </div>
-</nav>
-
+</header>
 
 <!-- Modal Confirmar Logout -->
-<div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutLabel" aria-hidden="true">
+<div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmLogoutLabel">Confirmar Cierre de Sesión</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+    <div class="modal-content bg-dark text-light border-secondary">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title font-monospace">Confirmar Cierre de Sesión</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
-      <div class="modal-body">
-        ¿Estás seguro que quieres cerrar sesión?
+      <div class="modal-body" style="color:#F1F5F9;">
+        ¿Deseas cerrar sesión en el sistema de SECURE CODE S.A.S. de C.V.?
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer border-secondary">
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+          <button type="button" class="btn btn-secondary btn-sm font-monospace" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger btn-sm font-monospace">Cerrar Sesión</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-<!-- Toast de éxito -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
-  <div id="toastCompra" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        Compra realizada con éxito 
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+<div class="container py-4">
+    <div class="text-center mb-4">
+        <span class="eyebrow">Integrador Técnico & Cotización</span>
+        <h1 class="text-light fw-bold">Cotizador de Servicios de Ciberseguridad</h1>
+        <p class="max-w-2xl mx-auto fw-medium" style="color:#E2E8F0 !important; font-size:16px;">Evaluación de requisitos de infraestructura, cálculo transparente y recomendaciones para la contratación de auditorías.</p>
     </div>
-  </div>
-</div>
-
-
-{{-- Dropdown carrito --}}
-<div class="cart-dropdown" id="cartDropdown">
-    <div id="resumenProductos" class="small text-secondary p-2">No hay productos agregados.</div>
-    <div class="cart-summary border-top">
-        <p class="fw-bold">Total: $<span id="total">0.00</span></p>
-        <button type="button" class="btn btn-warning w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPago" id="pagarBtn" disabled>
-            Realizar Compra
-        </button>
-    </div>
-</div>
-
-<div class="container py-5">
-    <h1 class="mb-4 text-light text-center">Videojuegos de ViceGames</h1>
 
     @if(session('success'))
-        <div id="success-message" class="alert alert-success">
-            {{ session('success') }}
+        <div id="success-message" class="alert alert-success border-0 bg-success text-white mb-4">
+            <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
         </div>
     @endif
-</div>
 
-<div class="row">
-    @foreach($productos as $producto)
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 bg-black text-light border-warning">
-                <img src="{{ asset('storage/' . $producto->imagen) }}" 
-                     alt="{{ $producto->titulo }}" 
-                     style="height:150px; object-fit: contain;" 
-                     class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $producto->titulo }}</h5>
-                    <p class="card-text">{{ $producto->descripcion }}</p>
-                    <p class="text-warning fw-bold">${{ number_format($producto->precio, 2) }}</p>
-                    <p class="text-light small">
-                        Stock: 
-                        @if($producto->cantidad_dispo > 0)
-                            {{ $producto->cantidad_dispo }}
-                        @else
-                            <span class="text-danger">Agotado</span>
-                        @endif
-                    </p>
-                    
-                    @if($producto->cantidad_dispo > 0)
-                        <button type="button"
-                                class="btn btn-outline-warning w-100 agregar-btn"
-                                data-id="{{ $producto->juegos_Id }}"
-                                data-nombre="{{ $producto->titulo }}"
-                                data-precio="{{ $producto->precio }}"
-                                data-img="{{ asset('storage/' . $producto->imagen) }}">
-                            Agregar al carrito
-                        </button>
-                    @else
-                        <button class="btn btn-secondary w-100" disabled>
-                            No disponible
-                        </button>
-                    @endif
-                </div>
-            </div>
+    <!-- PASO 1: REQUISITOS TECNICOS Y LEGALES -->
+    <div class="prereq-box">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+        <h3 class="text-light m-0 fw-bold fs-4">Paso 1: Check-list de Requisitos Técnicos y Legales</h3>
+        <span style="font-family:var(--font-mono);font-size:14px;color:var(--accent);font-weight:bold;" id="prereqStatus">5 de 5 verificados</span>
+      </div>
+      <p style="font-size:15px;color:#E2E8F0 !important;" class="mb-3">Selecciona los requisitos que cumple actualmente tu empresa para habilitar la ejecución de las auditorías:</p>
+      
+      <div class="prereq-grid">
+        <div class="prereq-item">
+          <input type="checkbox" id="reqLegal" checked>
+          <div>
+            <label for="reqLegal" class="text-light fw-bold" style="font-size:14.5px;">1. Firma de Carta de Autorización (RoE)</label>
+            <p class="m-0" style="color:#CBD5E1 !important;">Consentimiento formal firmado por la alta dirección.</p>
+          </div>
         </div>
-    @endforeach
+
+        <div class="prereq-item">
+          <input type="checkbox" id="reqScope" checked>
+          <div>
+            <label for="reqScope" class="text-light fw-bold" style="font-size:14.5px;">2. Delimitación de Alcance (IPs / Dominios)</label>
+            <p class="m-0" style="color:#CBD5E1 !important;">Matriz delimitada de Direcciones IP y FQDNs a evaluar.</p>
+          </div>
+        </div>
+
+        <div class="prereq-item">
+          <input type="checkbox" id="reqEnvironments" checked>
+          <div>
+            <label for="reqEnvironments" class="text-light fw-bold" style="font-size:14.5px;">3. Clasificación de Entornos de Prueba</label>
+            <p class="m-0" style="color:#CBD5E1 !important;">Especificación de Producción, Staging o Desarrollo.</p>
+          </div>
+        </div>
+
+        <div class="prereq-item">
+          <input type="checkbox" id="reqBackups" checked>
+          <div>
+            <label for="reqBackups" class="text-light fw-bold" style="font-size:14.5px;">4. Política de Respaldos e Integridad</label>
+            <p class="m-0" style="color:#CBD5E1 !important;">Copias de seguridad verificadas antes del análisis.</p>
+          </div>
+        </div>
+
+        <div class="prereq-item col-span-2">
+          <input type="checkbox" id="reqPoc" checked>
+          <div>
+            <label for="reqPoc" class="text-light fw-bold" style="font-size:14.5px;">5. Punto de Contacto Técnico de Emergencia (24/7)</label>
+            <p class="m-0" style="color:#CBD5E1 !important;">Responsable técnico interno disponible para la coordinación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATURITY SCORE BAR -->
+    <div class="maturity-container">
+      <div class="d-flex justify-content-between font-monospace small mb-2 text-light fw-bold">
+        <span>Nivel de Madurez de Seguridad Estimado:</span>
+        <span id="maturityPercent" style="color:var(--accent);">75% · Madurez Avanzada</span>
+      </div>
+      <div class="maturity-bar-bg">
+        <div class="maturity-bar-fill" id="maturityFill" style="width:75%;"></div>
+      </div>
+    </div>
+
+    <!-- PASO 2: SELECCIÓN DE SEGMENTO Y SERVICIOS -->
+    <div class="seg-tabs">
+      <button class="seg-tab active" data-seg="pyme" type="button">Cotizador PYME (Servidores / Dispositivos)</button>
+      <button class="seg-tab" data-seg="publico" type="button">Sector Público (Tarifa Institucional)</button>
+      <button class="seg-tab" data-seg="empresarial" type="button">Empresarial / Proyectos Especiales</button>
+    </div>
+
+    <!-- PANEL PYME -->
+    <div class="seg-panel active" id="panel-pyme">
+      <div class="calc-panel">
+        <div class="calc-addons">
+          <h3 class="text-light fs-5 mb-2 fw-bold">Paso 2: Paquete Base de Monitoreo</h3>
+          <p class="small mb-3" style="color:#E2E8F0 !important;">Planes anuales adaptados según la cantidad de activos o dispositivos a proteger.</p>
+          
+          <div class="row g-2 mb-3" id="pymeTierGroup">
+            <div class="col-md-4">
+              <div class="tier-card active" data-tier="pbasico" data-price="30">
+                <span class="font-monospace small uppercase fw-bold" style="color:var(--accent);">Básico</span>
+                <div class="text-light font-monospace fw-bold fs-4">$30<small class="fs-6" style="color:#CBD5E1;">/año/disp.</small></div>
+                <p class="small m-0" style="color:#E2E8F0 !important;">Monitoreo básico.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tier-card" data-tier="pestandar" data-price="75">
+                <span class="font-monospace small uppercase fw-bold" style="color:var(--accent);">Estándar</span>
+                <div class="text-light font-monospace fw-bold fs-4">$75<small class="fs-6" style="color:#CBD5E1;">/año/disp.</small></div>
+                <p class="small m-0" style="color:#E2E8F0 !important;">Recomendado PYME.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tier-card" data-tier="pcompleto" data-price="150">
+                <span class="font-monospace small uppercase fw-bold" style="color:var(--accent);">Completo</span>
+                <div class="text-light font-monospace fw-bold fs-4">$150<small class="fs-6" style="color:#CBD5E1;">/año/disp.</small></div>
+                <p class="small m-0" style="color:#E2E8F0 !important;">Protección total.</p>
+              </div>
+            </div>
+          </div>
+
+          <label class="form-label text-light font-monospace small fw-bold">
+            Cantidad de Dispositivos / Servidores: <span id="deviceCountLabel" class="text-info fw-bold fs-6">5</span>
+          </label>
+          <input type="range" id="deviceCount" min="1" max="100" value="5" class="form-range mb-4">
+
+          <h3 class="text-light fs-5 mb-2 fw-bold">Servicios Específicos del Catálogo Oficial</h3>
+          <p class="small mb-3" style="color:#E2E8F0 !important;">Selecciona auditorías o servicios adicionales para agregarlos al desglose de tu orden:</p>
+
+          <div class="row g-3">
+            @foreach($productos as $producto)
+              <div class="col-12">
+                <div class="service-card">
+                  <div class="d-flex justify-content-between align-items-start gap-2">
+                    <div>
+                      <h6 class="text-light fw-bold mb-1 fs-5">{{ $producto->titulo }}</h6>
+                      <p class="small mb-2" style="color:#E2E8F0 !important;">{{ $producto->descripcion }}</p>
+                      <span class="text-info font-monospace fw-bold fs-6">${{ number_format($producto->precio, 2) }} USD</span>
+                    </div>
+                    <div>
+                      <button type="button" 
+                              class="btn btn-sm btn-outline-info agregar-btn font-monospace fw-bold"
+                              data-id="{{ $producto->juegos_Id }}"
+                              data-nombre="{{ $producto->titulo }}"
+                              data-precio="{{ $producto->precio }}">
+                        + Agregar al Carrito
+                      </button>
+                    </div>
+                  </div>
+                  <div class="next-step-box show mt-2">
+                    <strong>Ruta de Madurez Sugerida:</strong> Al contratar {{ $producto->titulo }}, se recomienda coordinar el Hardening de Servidores y la firma de la Carta de Autorización Expresa.
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          </div>
+        </div>
+
+        <div class="calc-console">
+          <div class="text-light font-monospace small mb-1 fw-bold">Membresía Mensual (Base)</div>
+          <div class="text-light font-monospace fw-bold fs-2">$<span id="totalPrice">12.50</span><small class="fs-6" style="color:#CBD5E1;">/mes</small></div>
+          <div class="small mb-3" id="totalSub" style="color:#E2E8F0 !important;">Paquete Básico · 5 dispositivos</div>
+
+          <div class="text-light font-monospace small mb-2 fw-bold">Servicios Seleccionados en Carrito</div>
+          <div class="cart-dropdown-custom">
+            <div id="resumenProductos" class="small" style="color:#F1F5F9 !important;">No hay servicios agregados.</div>
+          </div>
+
+          <div class="console-warning" id="letterWarning">
+            <strong>Notificación Legal:</strong> Se preparará la Carta de Autorización y Exención de Responsabilidad formal para la firma de la Representación Legal de la empresa.
+          </div>
+
+          <div class="mt-auto pt-3">
+            <button type="button" class="btn btn-primary w-100 py-2 font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago" id="pagarBtn" disabled>
+              Confirmar y Contratar Servicios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL SECTOR PÚBLICO -->
+    <div class="seg-panel" id="panel-publico">
+      <div class="p-4 bg-dark rounded border border-secondary">
+        <span class="badge bg-info text-dark font-monospace mb-2 fw-bold">Sector Público El Salvador</span>
+        <h3 class="text-light fs-2">$3,915.18 <small class="fs-6" style="color:#CBD5E1;">/mes</small></h3>
+        <p style="color:#E2E8F0 !important;">Equivalente a <strong>$46,982.13 anuales</strong> según tabulador del Ministerio de Hacienda para contratos institucionales de ciberseguridad.</p>
+        <button class="btn btn-primary font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago">Solicitar Contratación Institucional</button>
+      </div>
+    </div>
+
+    <!-- PANEL EMPRESARIAL -->
+    <div class="seg-panel" id="panel-empresarial">
+      <div class="p-4 bg-dark rounded border border-secondary">
+        <span class="badge bg-info text-dark font-monospace mb-2 fw-bold">Grandes Empresas</span>
+        <h3 class="text-light fs-2">$1,500 – $10,000+ <small class="fs-6" style="color:#CBD5E1;">/proyecto</small></h3>
+        <p style="color:#E2E8F0 !important;">Evaluaciones a medida para infraestructura crítica y dictámenes técnicos de software de terceros.</p>
+        <button class="btn btn-primary font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago">Solicitar Propuesta Corporativa</button>
+      </div>
+    </div>
 </div>
 
-{{-- Modal de pago (igual que antes) --}}
-<div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+<!-- Modal de pago / Formulario POST -->
+<div class="modal fade" id="modalPago" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <form method="POST" action="{{ route('compras.store') }}" onsubmit="return enviarFormulario()">
             @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Pago</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            <div class="modal-content bg-dark text-light border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title font-monospace fw-bold">Contratación & Pago de Servicios</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                <div class="row g-2">
-                    <div class="col-12 mb-2">
-                        <label class="form-label">Nombre en la tarjeta</label>
-                        <input type="text" name="nombre_tarjeta" class="form-control form-control-sm" required>
+                    <p class="small" style="color:#E2E8F0 !important;">Ingresa las credenciales de pago para registrar la orden y generar tu Carta de Autorización / Factura PDF:</p>
+                    <div class="row g-2">
+                        <div class="col-12 mb-2">
+                            <label class="form-label small text-light font-monospace fw-bold">Nombre en la Tarjeta / Titular</label>
+                            <input type="text" name="nombre_tarjeta" class="form-control form-control-sm bg-black text-light border-secondary" required value="{{ auth()->user()->nombre }}">
+                        </div>
+
+                        <div class="col-12 mb-2">
+                            <label class="form-label small text-light font-monospace fw-bold">Número de Tarjeta de Crédito / Débito</label>
+                            <input type="text" name="numero_tarjeta" class="form-control form-control-sm bg-black text-light border-secondary" required maxlength="19" placeholder="4532-XXXX-XXXX-8901" oninput="formatearTarjeta(this)">
+                        </div>
+
+                        <div class="col-6 mb-2">
+                            <label class="form-label small text-light font-monospace fw-bold">Vencimiento</label>
+                            <input type="text" name="fecha_vencimiento" class="form-control form-control-sm bg-black text-light border-secondary" required placeholder="MM/AA">
+                        </div>
+
+                        <div class="col-6 mb-2">
+                            <label class="form-label small text-light font-monospace fw-bold">CVV</label>
+                            <input type="text" name="codigo_cvv" class="form-control form-control-sm bg-black text-light border-secondary" maxlength="4" required placeholder="123">
+                        </div>
                     </div>
 
-                    <div class="col-12 mb-2">
-                        <label class="form-label">Número de tarjeta</label>
-                        <input type="text" name="numero_tarjeta" class="form-control form-control-sm" required maxlength="19" oninput="formatearTarjeta(this)">
-                    </div>
+                    <!-- Hidden inputs -->
+                    <input type="hidden" name="total" id="totalInput">
+                    <div id="inputProductos"></div>
 
-                    <div class="col-6 mb-2">
-                        <label class="form-label">Vencimiento</label>
-                        <input type="text" name="fecha_vencimiento" class="form-control form-control-sm" required placeholder="MM/AA">
-                    </div>
-
-                    <div class="col-6 mb-2">
-                        <label class="form-label">CVV</label>
-                        <input type="text" name="codigo_cvv" class="form-control form-control-sm" maxlength="4" required>
+                    <div class="alert alert-info mt-3 mb-0 py-2 font-monospace small bg-black text-info border-info fw-bold">
+                        Monto Total a Procesar: $<span id="modalSubtotal">0.00</span> USD
                     </div>
                 </div>
 
-                <!-- Inputs ocultos -->
-                <input type="hidden" name="total" id="totalInput">
-                <div id="inputProductos"></div>
-
-                <!-- Subtotal en el modal -->
-                <div class="alert alert-info mt-2 mb-0 py-2">
-                    Subtotal: $<span id="modalSubtotal">0.00</span>
-                </div>
-            </div>
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Confirmar Compra</button>
+                <div class="modal-footer border-secondary">
+                    <button type="submit" class="btn btn-success font-monospace fw-bold">Procesar Orden y Descargar Carta PDF</button>
                 </div>
             </div>
         </form>
@@ -249,10 +472,9 @@
             const file = new Blob([arrayBuffer], { type: 'application/pdf' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(file);
-            link.download = 'factura Vicegames.pdf';
+            link.download = 'Carta_Autorizacion_Factura_SecureCode.pdf';
             link.click();
 
-            // Limpiar sesión después de usarla
             fetch("{{ route('factura.limpiar') }}", {
                 method: 'POST',
                 headers: {
@@ -263,127 +485,142 @@
     </script>
 @endif
 
-
-@if(session('success'))
-<script>
-    // Esperar a que cargue la página
-    document.addEventListener('DOMContentLoaded', function () {
-        const msg = document.getElementById('success-message');
-        if (msg) {
-            setTimeout(() => {
-                msg.style.display = 'none';
-            }, 5000); // 5000 milisegundos = 5 segundos
-        }
-    });
-</script>
-@endif
-
 <script>
     const resumenProductos = document.getElementById('resumenProductos');
-    const totalSpan = document.getElementById('total');
     const totalInput = document.getElementById('totalInput');
     const inputProductosDiv = document.getElementById('inputProductos');
     const modalSubtotal = document.getElementById('modalSubtotal');
     const pagarBtn = document.getElementById('pagarBtn');
-    const cartIcon = document.getElementById('cartIcon');
-    const cartDropdown = document.getElementById('cartDropdown');
-    const cartCount = document.getElementById('cartCount');
+    const deviceSlider = document.getElementById('deviceCount');
 
+    let currentTierPrice = 30;
+    let currentTierName = 'pbasico';
     const carrito = {};
 
-    document.querySelectorAll('.agregar-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = btn.dataset.id;
-            const nombre = btn.dataset.nombre;
-            const precio = parseFloat(btn.dataset.precio);
-            const img = btn.dataset.img;
+    function updateCalculator() {
+        const reqLegal = document.getElementById('reqLegal').checked;
+        const reqScope = document.getElementById('reqScope').checked;
+        const reqEnvironments = document.getElementById('reqEnvironments').checked;
+        const reqBackups = document.getElementById('reqBackups').checked;
+        const reqPoc = document.getElementById('reqPoc').checked;
 
-            if (!carrito[id]) {
-                carrito[id] = { nombre, cantidad: 1, precio, img };
-            } else {
-                carrito[id].cantidad += 1;
-            }
+        const prereqCount = (reqLegal?1:0) + (reqScope?1:0) + (reqEnvironments?1:0) + (reqBackups?1:0) + (reqPoc?1:0);
+        document.getElementById('prereqStatus').textContent = `${prereqCount} de 5 verificados`;
 
-            actualizarResumen();
-        });
-    });
+        const devices = parseInt(deviceSlider.value, 10);
+        document.getElementById('deviceCountLabel').textContent = devices;
 
-    function actualizarResumen() {
-        let resumen = '';
-        let total = 0;
-        let count = 0;
+        const monthlyPrice = (currentTierPrice / 12) * devices;
+        document.getElementById('totalPrice').textContent = monthlyPrice.toFixed(2);
+
+        let addonTotal = 0;
+        let cartItemCount = 0;
+        let resumenHTML = '';
         inputProductosDiv.innerHTML = '';
 
-        Object.entries(carrito).forEach(([id, producto]) => {
-            const subtotal = producto.precio * producto.cantidad;
-            total += subtotal;
-            count += producto.cantidad;
+        Object.entries(carrito).forEach(([id, item]) => {
+            const sub = item.precio * item.cantidad;
+            addonTotal += sub;
+            cartItemCount += item.cantidad;
 
-            resumen += `
-                <div class="cart-item">
-                    <img src="${producto.img}" alt="${producto.nombre}">
-                    <div class="flex-grow-1">
-                        <small>${producto.nombre}</small><br>
-                        <small class="text-muted">${producto.cantidad} x $${producto.precio.toFixed(2)}</small>
-                    </div>
-                    <button class="btn btn-sm btn-danger btn-restar" data-id="${id}">−</button>
+            resumenHTML += `
+                <div class="d-flex justify-content-between align-items-center py-1 border-bottom border-secondary">
+                    <span class="text-light" style="font-size:12.5px;">${item.nombre} x${item.cantidad}</span>
+                    <span class="text-info font-monospace fw-bold" style="font-size:12.5px;">$${sub.toFixed(2)}</span>
                 </div>
             `;
 
             const hidden = document.createElement('input');
             hidden.type = 'hidden';
             hidden.name = `productos[${id}]`;
-            hidden.value = producto.cantidad;
+            hidden.value = item.cantidad;
             inputProductosDiv.appendChild(hidden);
         });
 
-        resumenProductos.innerHTML = resumen || 'No hay productos agregados.';
-        totalSpan.textContent = total.toFixed(2);
-        totalInput.value = total.toFixed(2);
-        modalSubtotal.textContent = total.toFixed(2);
-        pagarBtn.disabled = total === 0;
+        resumenProductos.innerHTML = resumenHTML || '<span style="color:#E2E8F0 !important;">No hay servicios agregados.</span>';
 
-        // Mostrar contador en ícono
-        cartCount.textContent = count;
-        cartCount.classList.toggle('d-none', count === 0);
+        const grandTotal = monthlyPrice + addonTotal;
+        totalInput.value = grandTotal.toFixed(2);
+        modalSubtotal.textContent = grandTotal.toFixed(2);
+        pagarBtn.disabled = grandTotal <= 0;
 
-        // Botones de restar
-        document.querySelectorAll('.btn-restar').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const id = btn.dataset.id;
-                if (carrito[id]) {
-                    carrito[id].cantidad -= 1;
-                    if (carrito[id].cantidad <= 0) {
-                        delete carrito[id];
-                    }
-                    actualizarResumen();
-                }
-            });
+        let score = (prereqCount * 12) + (cartItemCount * 8) + (currentTierName === 'pcompleto' ? 20 : 10);
+        if(score > 100) score = 100;
+
+        document.getElementById('maturityFill').style.width = `${score}%`;
+        document.getElementById('maturityPercent').textContent = `${score}% · Madurez ${score >= 70 ? 'Avanzada' : 'Intermedia'}`;
+
+        const warningEl = document.getElementById('letterWarning');
+        warningEl.classList.add('show');
+    }
+
+    document.querySelectorAll('.agregar-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            const nombre = btn.dataset.nombre;
+            const precio = parseFloat(btn.dataset.precio);
+
+            if (!carrito[id]) {
+                carrito[id] = { nombre, cantidad: 1, precio };
+            } else {
+                carrito[id].cantidad += 1;
+            }
+            updateCalculator();
         });
-    }
-
-    function enviarFormulario() {
-        actualizarResumen();
-        return true;
-    }
-
-    // Mostrar / ocultar carrito al hacer clic en ícono
-    cartIcon.addEventListener('click', () => {
-        cartDropdown.classList.toggle('active');
     });
 
-    // Cerrar carrito si se hace clic fuera
-    document.addEventListener('click', (e) => {
-        if (!cartDropdown.contains(e.target) && !cartIcon.contains(e.target)) {
-            cartDropdown.classList.remove('active');
+    document.querySelectorAll('.seg-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.seg-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.seg-panel').forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('panel-' + tab.dataset.seg).classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('#pymeTierGroup .tier-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('#pymeTierGroup .tier-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            currentTierName = card.dataset.tier;
+            currentTierPrice = parseInt(card.dataset.price, 10);
+            updateCalculator();
+        });
+    });
+
+    deviceSlider.addEventListener('input', updateCalculator);
+    document.getElementById('reqLegal').addEventListener('change', updateCalculator);
+    document.getElementById('reqScope').addEventListener('change', updateCalculator);
+    document.getElementById('reqEnvironments').addEventListener('change', updateCalculator);
+    document.getElementById('reqBackups').addEventListener('change', updateCalculator);
+    document.getElementById('reqPoc').addEventListener('change', updateCalculator);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const draft = localStorage.getItem('draftCart');
+        if (draft) {
+            try {
+                const parsed = JSON.parse(draft);
+                Object.entries(parsed).forEach(([id, serv]) => {
+                    carrito[id] = { nombre: serv.nombre, cantidad: 1, precio: serv.precio };
+                });
+                localStorage.removeItem('draftCart');
+                updateCalculator();
+            } catch (e) {}
         }
     });
+
+    function enviarFormulario() {
+        updateCalculator();
+        return true;
+    }
 
     function formatearTarjeta(input) {
         let valor = input.value.replace(/\D/g, '').substring(0, 16);
         valor = valor.replace(/(\d{4})(?=\d)/g, '$1-');
         input.value = valor;
     }
+
+    updateCalculator();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
