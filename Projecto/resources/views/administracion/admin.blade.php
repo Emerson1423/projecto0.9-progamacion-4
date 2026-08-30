@@ -176,7 +176,7 @@
                         <div class="col-md-4">
                             <div class="p-3 bg-dark rounded border border-secondary">
                                 <span class="font-monospace small fw-bold" style="color:var(--accent);">Representante Legal</span>
-                                <h4 class="text-info mt-1 mb-0 fw-bold">VARGAS DÍAZ, JAVIER ALEXANDER</h4>
+                                <h4 class="text-info mt-1 mb-0 fw-bold">{{ auth()->user()->nombre ?? 'CARLOS GÓMEZ' }}</h4>
                             </div>
                         </div>
                         <div class="col-md-4">
