@@ -1,9 +1,8 @@
 services:
   - type: web
     name: securecode-app
-    env: php
-    buildCommand: "./build.sh"
-    startCommand: "vendor/bin/heroku-php-apache2 public/"
+    env: docker
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
         value: production
@@ -14,4 +13,4 @@ services:
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
-        value: /var/www/html/database/database.sqlite
+        value: /var/www/database/database.sqlite
