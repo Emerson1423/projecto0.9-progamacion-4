@@ -10,16 +10,10 @@ class Pago extends Model
     use HasFactory;
     protected $table = 'pagos';
     protected $primaryKey = 'pago_Id';
-    protected $fillable = [
-        'orden_Id',
-        'monto',
-        'tarjeta_ultimos'
-    ];
+    protected $fillable = ['orden_Id', 'monto', 'tarjeta_ultimos'];
 
     public function orden()
     {
         return $this->belongsTo(Orden::class, 'orden_Id');
     }
 }
-
-class_alias(Pago::class, 'App\Models\pago');

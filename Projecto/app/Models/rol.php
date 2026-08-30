@@ -9,14 +9,10 @@ class Rol extends Model
     protected $table = 'roles';
     protected $primaryKey = 'rol_Id';
 
-    protected $fillable = [
-        'nombrerol',
-    ];
+    protected $fillable = ['nombrerol'];
 
     public function usuarios()
     {
         return $this->hasMany(Usuario::class, 'usuario_Id');
     }
 }
-
-class_alias(Rol::class, 'App\Models\rol');

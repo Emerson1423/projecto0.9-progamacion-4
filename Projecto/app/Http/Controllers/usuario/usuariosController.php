@@ -4,8 +4,8 @@
 namespace App\Http\Controllers\usuario;
 use App\Http\Controllers\Controller;
 
-use App\Models\usuario;
-use App\Models\rol;
+use App\Models\Usuario;
+use App\Models\Rol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 class usuariosController extends Controller
@@ -13,15 +13,15 @@ class usuariosController extends Controller
     public function index()
     {
         
-        $usuarios = usuario::with('rol')->get();
+        $usuarios = Usuario::with('rol')->get();
         return view('viewsUsuarios.index', compact('usuarios'));
         
     }
 
     public function create()
     {
-        $usuarios = usuario::all();
-        $roles = rol::all();
+        $usuarios = Usuario::all();
+        $roles = Rol::all();
         return view('viewsUsuarios.crear', compact('usuarios', 'roles'));
     }
 
@@ -35,7 +35,7 @@ class usuariosController extends Controller
             'rol_Id' => 'required|integer',
         ]);
 
-        usuario::create([
+        Usuario::create([
             'nombre' => $request->nombre,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -49,8 +49,8 @@ class usuariosController extends Controller
 
     public function editar($usuarioId)
     {
-        $usuario = usuario::find($usuarioId);
-        $roles = rol::all();
+        $usuario = Usuario::find($usuarioId);
+        $roles = Rol::all();
         return view('viewsUsuarios.editar', compact('usuario', 'roles'));
     }
     public function actualizar(Request $request, $id)
@@ -64,14 +64,14 @@ class usuariosController extends Controller
                
             ]
         );
-        $usuario = usuario::find($id);
+        $usuario = Usuario::find($id);
         $usuario->update($request->all());
         return redirect()->route('usuarios.index');
      
     }
     public function eliminar($usuario_Id)
     {
-        $usuario = usuario::find($usuario_Id);
+        $usuario = Usuario::find($usuario_Id);
         $usuario->delete();
         return redirect()->route('usuarios.index');
     }

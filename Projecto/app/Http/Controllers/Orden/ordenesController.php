@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Orden;
 use App\Http\Controllers\Controller;
-use App\Models\orden;
-use App\Models\usuario;
+use App\Models\Orden;
+use App\Models\Usuario;
 
 
 use Illuminate\Http\Request;

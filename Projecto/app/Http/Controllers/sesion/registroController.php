@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\sesion;
 use App\Http\Controllers\Controller;
 
-use App\Models\usuario;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 
@@ -17,7 +17,7 @@ class registroController extends Controller
 
     public function create()
 {
-    return view('login.registro'); // Vista directa (no en subcarpeta)
+    return view('login.registro');
 }
 
 public function store(Request $request)
@@ -37,11 +37,11 @@ public function store(Request $request)
     ]
 );
 
-    usuario::create([
+    Usuario::create([
         'nombre' => $request->nombre,
         'email' => $request->email,
         'password' => bcrypt($request->password),
-        'rol_Id' => 3, // Cliente=3, Admin=2
+        'rol_Id' => 3,
     ]);
 
     return redirect()->route('login')->with('success', '¡Registro exitoso!');

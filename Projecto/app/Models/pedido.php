@@ -20,5 +20,3 @@ class Pedido extends Model
         return $this->belongsTo(Juego::class, 'juegos_Id');
     }
 }
-
-class_alias(Pedido::class, 'App\Models\pedido');

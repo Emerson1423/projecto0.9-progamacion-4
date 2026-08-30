@@ -28,7 +28,6 @@ class Juego extends Model
     protected static function boot()
     {
         parent::boot();
-
         static::deleting(function ($juego) {
             if ($juego->imagen && Storage::disk('public')->exists($juego->imagen)) {
                 Storage::disk('public')->delete($juego->imagen);
@@ -49,5 +48,3 @@ class Juego extends Model
         return $this->belongsTo(Proveedor::class, 'proveedor_Id');
     }
 }
-
-class_alias(Juego::class, 'App\Models\juego');

@@ -25,5 +25,3 @@ class Orden extends Model
         return $this->belongsTo(Usuario::class, 'usuario_Id');
     }
 }
-
-class_alias(Orden::class, 'App\Models\orden');

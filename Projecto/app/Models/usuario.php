@@ -9,12 +9,7 @@ class Usuario extends Authenticatable
     protected $table = 'usuarios';
     protected $primaryKey = 'usuario_Id';   
 
-    protected $fillable = [
-        'nombre',
-        'email',
-        'password',
-        'rol_Id',
-    ];
+    protected $fillable = ['nombre', 'email', 'password', 'rol_Id'];
 
     public function rol()
     {
@@ -31,5 +26,3 @@ class Usuario extends Authenticatable
         return $this->hasMany(Orden::class, 'usuario_Id'); 
     }
 }
-
-class_alias(Usuario::class, 'App\Models\usuario');

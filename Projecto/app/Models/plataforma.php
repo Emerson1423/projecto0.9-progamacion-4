@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plataforma extends Model
 {
-    protected $fillable = [
-        'nombrePlataforma',
-    ];
+    protected $fillable = ['nombrePlataforma'];
     protected $primaryKey = 'plataforma_Id';
     protected $table = 'plataformas';
     
@@ -17,5 +15,3 @@ class Plataforma extends Model
         return $this->hasMany(Juego::class, 'plataforma_Id');
     }
 }
-
-class_alias(Plataforma::class, 'App\Models\plataforma');

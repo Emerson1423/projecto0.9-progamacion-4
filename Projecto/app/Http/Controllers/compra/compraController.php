@@ -4,7 +4,11 @@ namespace App\Http\Controllers\compra;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{orden, pedido, juego, pago, usuario};
+use App\Models\Orden;
+use App\Models\Pedido;
+use App\Models\Juego;
+use App\Models\Pago;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -13,7 +17,7 @@ class compraController extends Controller
     private function autoLoginClient()
     {
         if (!Auth::check()) {
-            $cliente = usuario::where('rol_Id', 3)->first() ?? usuario::first();
+            $cliente = Usuario::where('rol_Id', 3)->first() ?? Usuario::first();
             if ($cliente) {
                 Auth::login($cliente);
             }
@@ -23,7 +27,7 @@ class compraController extends Controller
     public function create()
     {
         $this->autoLoginClient();
-        $productos = juego::all();
+        $productos = Juego::all();
         return view('compras.create', compact('productos'));
     }
 
@@ -31,13 +35,11 @@ class compraController extends Controller
     {
         $this->autoLoginClient();
 
-        // Validar que hay productos en el carrito
         if (empty($request->productos)) {
             return back()->with('error', 'No hay productos en el carrito');
         }
 
-        // Crear orden
-        $orden = orden::create([
+        $orden = Orden::create([
             'usuario_Id' => Auth::id(),
             'total' => $request->total ?? 300.00
         ]);
@@ -45,13 +47,13 @@ class compraController extends Controller
         $total = 0;
         foreach ($request->productos as $juegos_Id => $cantidad) {
             if ($cantidad > 0) {
-                $producto = juego::find($juegos_Id);
+                $producto = Juego::find($juegos_Id);
                 
                 if (!$producto) {
                     continue;
                 }
 
-                pedido::create([
+                Pedido::create([
                     'orden_Id' => $orden->orden_Id,
                     'juegos_Id' => $juegos_Id,
                     'cantidad' => $cantidad,
@@ -63,11 +65,10 @@ class compraController extends Controller
             }
         }
 
-        // Si no seleccionó ningún producto específico pero le dio a comprar, crear el pedido por defecto
         if ($total <= 0) {
-            $producto = juego::first();
+            $producto = Juego::first();
             if ($producto) {
-                pedido::create([
+                Pedido::create([
                     'orden_Id' => $orden->orden_Id,
                     'juegos_Id' => $producto->juegos_Id,
                     'cantidad' => 1,
@@ -77,20 +78,15 @@ class compraController extends Controller
             }
         }
 
-        // Actualizar total en orden
         $orden->update(['total' => $total]);
 
-        // Crear pago
-        pago::create([
+        Pago::create([
             'orden_Id' => $orden->orden_Id,
             'monto' => $total,
             'tarjeta_ultimos' => substr($request->numero_tarjeta ?? '4532', -4),
         ]);
 
-        // Guardar PDF en storage
         $pdf = Pdf::loadView('facturas.pdf', ['orden' => $orden->load(['usuario', 'pedidos.juego', 'pago'])]);
-
-        // 👉 Guardar el PDF como string en base64 en la sesión
         session(['factura_blob' => base64_encode($pdf->output())]);
 
         return redirect()->route('compras.create')->with('success', 'Contratación realizada con éxito. Se ha generado tu Carta de Autorización / Factura PDF.');
@@ -99,18 +95,18 @@ class compraController extends Controller
     public function index()
     {
         $this->autoLoginClient();
-        $productos = juego::all();
-        $usuario = usuario::all();
-        $pagos = pago::all();
-        $pedidos = pedido::with(['juego', 'orden'])->get();
-        $ordenes = orden::with('usuario')->get();
+        $productos = Juego::all();
+        $usuario = Usuario::all();
+        $pagos = Pago::all();
+        $pedidos = Pedido::with(['juego', 'orden'])->get();
+        $ordenes = Orden::with('usuario')->get();
 
         return view('compras.create', compact('ordenes', 'productos', 'pedidos', 'pagos', 'usuario'));
     }
 
     public function descargarFactura($ordenId)
     {
-        $orden = orden::with(['usuario', 'pedidos.juego', 'pago'])->findOrFail($ordenId);
+        $orden = Orden::with(['usuario', 'pedidos.juego', 'pago'])->findOrFail($ordenId);
         $pdf = Pdf::loadView('facturas.pdf', compact('orden'));
         return $pdf->download("Carta_Autorizacion_Factura_Orden_{$orden->orden_Id}.pdf");
     }
@@ -120,14 +116,12 @@ class compraController extends Controller
         $this->autoLoginClient();
         $usuarioId = Auth::id();
 
-        // Obtener órdenes con sus pedidos y pagos
-        $ordenes = orden::where('usuario_Id', $usuarioId)
+        $ordenes = Orden::where('usuario_Id', $usuarioId)
             ->with(['pedidos.juego', 'pago'])
             ->get();
 
         if ($ordenes->isEmpty()) {
-            // Si no hay órdenes del usuario actual, mostrar todas para demo
-            $ordenes = orden::with(['pedidos.juego', 'pago', 'usuario'])->get();
+            $ordenes = Orden::with(['pedidos.juego', 'pago', 'usuario'])->get();
         }
 
         return view('compras.historial', compact('ordenes'));
