@@ -112,7 +112,7 @@
             <div class="ms-auto d-flex align-items-center gap-3">
                 <a class="btn btn-sm btn-outline-info font-monospace fw-bold" href="{{ route('inicio') }}">Ver Portal Público</a>
                 <span class="text-light small font-monospace fw-bold fs-6">
-                    <i class="bi bi-person-circle text-info me-1"></i> {{ auth()->user()->nombre }}
+                    <i class="bi bi-person-circle text-info me-1"></i> {{ auth()->user()->nombre ?? 'ADMIN' }}
                 </span>
                 <button class="btn btn-sm btn-outline-danger font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#confirmLogoutModal">Salir</button>
             </div>

@@ -22,11 +22,19 @@ Route::get('/', function () {
 
 // Ruta para el Panel de Administración (Acceso Directo Libre para Demostración)
 Route::get('/admin', function () {
-    // Si no hay usuario logueado, forzamos la sesión como Admin de demostración
     if (!auth()->check()) {
-        $adminUser = \App\Models\Usuario::where('rol_Id', 2)->first();
-        if ($adminUser) {
-            auth()->login($adminUser);
+        try {
+            $adminUser = \App\Models\Usuario::where('rol_Id', 2)->first();
+            if (!$adminUser) {
+                // Seed on-demand si la DB está vacía
+                \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+                $adminUser = \App\Models\Usuario::where('rol_Id', 2)->first();
+            }
+            if ($adminUser) {
+                auth()->login($adminUser);
+            }
+        } catch (\Exception $e) {
+            // Si falla, continuar sin autenticar — la vista usa ?? para manejar null
         }
     }
     return view('administracion.admin');
