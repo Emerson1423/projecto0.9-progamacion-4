@@ -974,7 +974,7 @@
         <div class="card-service-item">
           <div>
             <span class="service-tag-label">Estructura Accionaria y Capital</span>
-            <p>Sociedad conformada por 4 accionistas fundadores, cada uno con un aporte dinerario de <strong class="text-light">$4,500.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Administrador Único Titular.</p>
+            <p>Sociedad conformada por 4 accionistas fundadores, cada uno con un aporte dinerario de <strong class="text-light">$4,500.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Representante Legal.</p>
           </div>
           <div class="table-responsive mt-2">
             <table class="table table-dark table-borderless table-sm mb-0 align-middle" style="font-size:14px; background-color:transparent;">
@@ -1007,7 +1007,7 @@
                 </tr>
                 <tr>
                   <td class="py-2">Javier Alexander Vargas Díaz</td>
-                  <td class="py-2" style="color:var(--accent);">Rep. Legal y Adm. Único Titular</td>
+                  <td class="py-2" style="color:var(--accent);">Representante Legal</td>
                   <td class="py-2 font-monospace">$4,500.00</td>
                   <td class="py-2 font-monospace">25%</td>
                 </tr>
