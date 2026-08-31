@@ -395,10 +395,10 @@
     <!-- NAVEGACIÓN PRINCIPAL EN ORDEN JERÁRQUICO -->
     <nav class="nav-links">
       <a href="#servicios">Servicios</a>
-      <a href="#requisitos">Requisitos</a>
-      <a href="#cotizador">Arma tu Paquete</a>
       <a href="#metodologia">Metodología</a>
-      <a href="#faq">Preguntas Frecuentes</a>
+      <a href="#requisitos">Requisitos</a>
+      <a href="#cotizador">Cotizador</a>
+      <a href="#faq">FAQ</a>
       <a href="#inversion">Inversión</a>
     </nav>
 
@@ -423,11 +423,11 @@
   <div class="offcanvas-body d-flex flex-column justify-content-between">
     <div class="d-flex flex-column gap-3 font-monospace">
       <a href="#servicios" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Servicios</a>
-      <a href="#requisitos" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Requisitos</a>
-      <a href="#cotizador" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Arma tu Paquete</a>
       <a href="#metodologia" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Metodología</a>
-      <a href="#faq" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Preguntas Frecuentes</a>
-      <a href="#inversion" class="text-info fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Para Inversionistas</a>
+      <a href="#requisitos" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Requisitos</a>
+      <a href="#cotizador" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Cotizador</a>
+      <a href="#faq" class="text-light fs-5 text-decoration-none" data-bs-dismiss="offcanvas">FAQ</a>
+      <a href="#inversion" class="text-info fs-5 text-decoration-none" data-bs-dismiss="offcanvas">Inversión</a>
       <hr class="border-secondary my-2">
       <a href="{{ route('admin') }}" class="text-info fs-6 text-decoration-none"><i class="bi bi-speedometer2 me-1"></i> Panel Admin</a>
       <a href="{{ route('compras.historial') }}" class="text-light fs-6 text-decoration-none"><i class="bi bi-clock-history me-1"></i> Mis Contrataciones</a>
@@ -513,10 +513,10 @@
           <span class="service-tag-label">Auditoría Técnica</span>
           <h3>Auditoría de Lógica de Negocio y Flujos Digitales</h3>
           <p>Análisis de flujos de trabajo en plataformas transaccionales para identificar fallas en reglas de negocio y evasión de controles.</p>
-          <div class="price-tag-value">$300.00 <small style="font-size:12px; color:var(--text-muted);">USD / Evaluación</small></div>
+          <div class="price-tag-value">Desde $500.00 <small style="font-size:12px; color:var(--text-muted);">USD / Evaluación</small></div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(1, 'Auditoría de Lógica de Negocio', 300)">Agregar al Paquete</button>
+          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(1, 'Auditoría de Lógica de Negocio', 500)">Agregar al Paquete</button>
         </div>
       </div>
 
@@ -525,10 +525,10 @@
           <span class="service-tag-label">Pentesting de Red</span>
           <h3>Auditoría Técnica y Pentesting de Infraestructura</h3>
           <p>Pruebas de intrusión defensivas y ofensivas sobre servidores, Direcciones IP y servicios expuestos.</p>
-          <div class="price-tag-value">$450.00 <small style="font-size:12px; color:var(--text-muted);">USD / Alcance</small></div>
+          <div class="price-tag-value">Desde $850.00 <small style="font-size:12px; color:var(--text-muted);">USD / Alcance</small></div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(2, 'Auditoría Técnica y Pentesting', 450)">Agregar al Paquete</button>
+          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(2, 'Auditoría Técnica y Pentesting', 850)">Agregar al Paquete</button>
         </div>
       </div>
 
@@ -537,10 +537,10 @@
           <span class="service-tag-label">Desarrollo Seguro</span>
           <h3>Ingeniería de Software Seguro (OWASP / ISO 27001)</h3>
           <p>Revisión de código fuente y arquitectura de software bajo estándares internacionales para el ciclo de vida seguro.</p>
-          <div class="price-tag-value">$350.00 <small style="font-size:12px; color:var(--text-muted);">USD / Proyecto</small></div>
+          <div class="price-tag-value">Desde $600.00 <small style="font-size:12px; color:var(--text-muted);">USD / Proyecto</small></div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(3, 'Ingeniería de Software Seguro', 350)">Agregar al Paquete</button>
+          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(3, 'Ingeniería de Software Seguro', 600)">Agregar al Paquete</button>
         </div>
       </div>
 
@@ -549,10 +549,10 @@
           <span class="service-tag-label">Bastionado de Entornos</span>
           <h3>Hardening y Bastionado de Entornos de Despliegue</h3>
           <p>Configuración y aseguramiento de servidores web, bases de datos y contenedores reduciendo vectores de ataque.</p>
-          <div class="price-tag-value">$250.00 <small style="font-size:12px; color:var(--text-muted);">USD / Entorno</small></div>
+          <div class="price-tag-value">Desde $450.00 <small style="font-size:12px; color:var(--text-muted);">USD / Entorno</small></div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(4, 'Hardening y Bastionado', 250)">Agregar al Paquete</button>
+          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(4, 'Hardening y Bastionado', 450)">Agregar al Paquete</button>
         </div>
       </div>
 
@@ -561,10 +561,10 @@
           <span class="service-tag-label">Monitoreo SOC 24/7</span>
           <h3>Plataforma de Monitoreo Continuo e Incidentes</h3>
           <p>Supervisión en tiempo real de logs, detección de anomalías y respuesta inmediata ante amenazas operado por analistas.</p>
-          <div class="price-tag-value">$500.00 <small style="font-size:12px; color:var(--text-muted);">USD / Mes</small></div>
+          <div class="price-tag-value">Desde $1,200.00 <small style="font-size:12px; color:var(--text-muted);">USD / Mes</small></div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(5, 'Monitoreo Continuo SOC 24/7', 500)">Agregar al Paquete</button>
+          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(5, 'Monitoreo Continuo SOC 24/7', 1200)">Agregar al Paquete</button>
         </div>
       </div>
 
@@ -573,17 +573,45 @@
           <span class="service-tag-label">Dictamen Técnico</span>
           <h3>Evaluación y Dictamen Técnico de Software de Terceros</h3>
           <p>Análisis de cumplimiento y diagnóstico de seguridad para soluciones adquiridas a proveedores externos.</p>
-          <div class="price-tag-value">$400.00 <small style="font-size:12px; color:var(--text-muted);">USD / Dictamen</small></div>
+          <div class="price-tag-value">Desde $700.00 <small style="font-size:12px; color:var(--text-muted);">USD / Dictamen</small></div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(6, 'Evaluación y Dictamen Técnico', 400)">Agregar al Paquete</button>
+          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(6, 'Evaluación y Dictamen Técnico', 700)">Agregar al Paquete</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECCIÓN 2: REQUISITOS DE EVALUACIÓN + BOTÓN PREVISUALIZACIÓN ROE -->
+<!-- SECCIÓN METODOLOGÍA -->
+<section class="section" id="metodologia">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Metodología de Trabajo</span>
+      <h2>Fases de Ejecución de la Auditoría</h2>
+      <p>Proceso estructurado que garantiza rigurosidad técnica, confidencialidad y cero interrupciones en la continuidad del negocio.</p>
+    </div>
+    <div class="approach-grid-layout">
+      <div class="approach-card-item">
+        <span class="phase-step">Fase 01 · Reconocimiento</span>
+        <h3>Mapeo de Arquitectura y Flujos</h3>
+        <p>Identificación de componentes, análisis de lógica de negocio, mapeo de endpoints y revisión de configuraciones.</p>
+      </div>
+      <div class="approach-card-item">
+        <span class="phase-step">Fase 02 · Evaluación</span>
+        <h3>Pentesting y Análisis Vulnerable</h3>
+        <p>Ejecución de pruebas de intrusión no destructivas para validar brechas de seguridad y vectores de ataque.</p>
+      </div>
+      <div class="approach-card-item">
+        <span class="phase-step">Fase 03 · Remediación</span>
+        <h3>Hardening y Reporte Ejecutivo</h3>
+        <p>Emisión del informe técnico con hallazgos, recomendaciones de remediación y plan de hardening.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN REQUISITOS Y GARANTÍA LEGAL -->
 <section class="section" id="requisitos">
   <div class="wrap">
     <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
@@ -594,7 +622,7 @@
       </div>
       <div>
         <button class="btn-ui btn-ui-ghost" data-bs-toggle="modal" data-bs-target="#modalPreviewRoe">
-          <i class="bi bi-file-earmark-pdf me-1 text-info"></i> Previsualizar Modelo de Carta RoE
+          <i class="bi bi-file-earmark-pdf me-1 text-info"></i> Previsualizar Carta RoE
         </button>
       </div>
     </div>
@@ -603,8 +631,8 @@
       <div class="req-card-item">
         <div class="req-icon-box"><i class="bi bi-file-earmark-text"></i></div>
         <div>
-          <h4>1. Carta de Autorización y Exención de Responsabilidad (Rules of Engagement - RoE)</h4>
-          <p>Documento contractual debidamente firmado por la dirección de la empresa cliente facultando las pruebas de intrusión.</p>
+          <h4>1. Carta de Autorización y Exención de Responsabilidad (RoE)</h4>
+          <p>Documento contractual firmado por la dirección de la empresa cliente facultando las pruebas de intrusión.</p>
         </div>
       </div>
 
@@ -612,7 +640,7 @@
         <div class="req-icon-box"><i class="bi bi-list-check"></i></div>
         <div>
           <h4>2. Delimitación Explícita del Alcance (Scope & Target Inventory)</h4>
-          <p>Entrega del listado exacto de Direcciones IP, nombres de dominio (FQDN) y APIs que serán evaluados.</p>
+          <p>Listado exacto de Direcciones IP, nombres de dominio (FQDN) y APIs que serán evaluados.</p>
         </div>
       </div>
 
@@ -620,7 +648,7 @@
         <div class="req-icon-box"><i class="bi bi-diagram-3"></i></div>
         <div>
           <h4>3. Clasificación de Entornos y Ventanas de Mantenimiento</h4>
-          <p>Declaración del tipo de entorno (Producción, Staging o Desarrollo) para coordinar ventanas horarias sin afectación.</p>
+          <p>Declaración del tipo de entorno (Producción, Staging o Desarrollo) para coordinar ventanas horarias.</p>
         </div>
       </div>
 
@@ -632,38 +660,32 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- SECCIÓN MARCO LEGAL ORIGINAL: NADA SE TOCA SIN PERMISO POR ESCRITO -->
-<section class="section" id="marco-legal">
-  <div class="wrap">
-    <div class="row align-items-center g-4">
+    <!-- GARANTÍA LEGAL INTEGRADA -->
+    <div class="row align-items-center g-4 mt-4 pt-4" style="border-top:1px solid var(--border);">
       <div class="col-lg-7 col-12">
-        <span class="eyebrow"><i class="bi bi-file-earmark-check-fill me-1"></i> Garantía Legal y Ética</span>
-        <h2>Nada se toca sin permiso por escrito.</h2>
-        <p class="fs-6 text-light opacity-90">Antes de iniciar cualquier servicio que implique evaluar o intentar comprometer datos o sistemas — pentesting, pruebas de intrusión controladas, auditorías de código — <strong>SECURE CODE S.A.S. de C.V.</strong> exige una Carta de Autorización (RoE) firmada por la Representación Legal de la empresa cliente.</p>
-        <p class="small text-muted">Operamos 100% dentro del marco legal salvadoreño y estándares internacionales de ciberseguridad. Sin ese documento firmado por ambas partes, el servicio simplemente no arranca, sin excepciones.</p>
+        <h3>Nada se toca sin permiso por escrito.</h3>
+        <p>Antes de iniciar cualquier servicio que implique evaluar o intentar comprometer datos o sistemas — pentesting, pruebas de intrusión controladas, auditorías de código — <strong class="text-light">SECURE CODE S.A.S. de C.V.</strong> exige una Carta de Autorización (RoE) firmada por la Representación Legal de la empresa cliente.</p>
+        <p class="small" style="color:var(--text-muted);">Operamos 100% dentro del marco legal salvadoreño y estándares internacionales de ciberseguridad. Sin ese documento firmado por ambas partes, el servicio simplemente no arranca, sin excepciones.</p>
       </div>
       <div class="col-lg-5 col-12">
-        <div class="p-4 bg-dark rounded border border-secondary shadow-lg">
-          <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary">
-            <i class="bi bi-shield-lock-fill text-info fs-4"></i>
-            <h5 class="m-0 text-light font-monospace fw-bold fs-6">Protocolo Estricto de Autorización</h5>
+        <div class="card-service-item">
+          <div>
+            <span class="service-tag-label"><i class="bi bi-shield-lock-fill me-1"></i> Protocolo de Autorización</span>
           </div>
-          <div class="d-flex align-items-center gap-2 py-2 border-bottom border-secondary small text-light">
-            <i class="bi bi-check-circle-fill text-info me-1"></i> Alcance del servicio delimitado por escrito
+          <div class="d-flex align-items-center gap-2 py-2" style="border-bottom:1px solid var(--border); font-size:14px;">
+            <i class="bi bi-check-circle-fill" style="color:var(--accent);"></i> Alcance del servicio delimitado por escrito
           </div>
-          <div class="d-flex align-items-center gap-2 py-2 border-bottom border-secondary small text-light">
-            <i class="bi bi-check-circle-fill text-info me-1"></i> Carta de Autorización (RoE) firmada por Representante Legal
+          <div class="d-flex align-items-center gap-2 py-2" style="border-bottom:1px solid var(--border); font-size:14px;">
+            <i class="bi bi-check-circle-fill" style="color:var(--accent);"></i> Carta de Autorización (RoE) firmada por Representante Legal
           </div>
-          <div class="d-flex align-items-center gap-2 py-2 border-bottom border-secondary small text-light">
-            <i class="bi bi-check-circle-fill text-info me-1"></i> Ventana de pruebas acordada previamente sin interrupción
+          <div class="d-flex align-items-center gap-2 py-2" style="border-bottom:1px solid var(--border); font-size:14px;">
+            <i class="bi bi-check-circle-fill" style="color:var(--accent);"></i> Ventana de pruebas acordada previamente
           </div>
-          <div class="d-flex align-items-center gap-2 py-2 small text-light">
-            <i class="bi bi-check-circle-fill text-info me-1"></i> Confidencialidad absoluta y Acuerdo NDA vinculante
+          <div class="d-flex align-items-center gap-2 py-2" style="font-size:14px;">
+            <i class="bi bi-check-circle-fill" style="color:var(--accent);"></i> Confidencialidad absoluta y Acuerdo NDA vinculante
           </div>
-          <div class="mt-3 pt-2 border-top border-secondary font-monospace small text-info text-center fw-bold">
+          <div class="mt-3 pt-2 font-monospace small text-center fw-bold" style="border-top:1px solid var(--border); color:var(--accent);">
             Sin este documento, ningún servicio de intrusión se ejecuta.
           </div>
         </div>
@@ -672,7 +694,7 @@
   </div>
 </section>
 
-<!-- SECCIÓN 3: COTIZADOR INTERACTIVO ARMA TU PAQUETE -->
+<!-- SECCIÓN COTIZADOR INTERACTIVO -->
 <section class="section" id="cotizador">
   <div class="wrap">
     <div class="section-head text-center mx-auto">
@@ -830,34 +852,6 @@
   </div>
 </section>
 
-<!-- SECCIÓN METODOLOGÍA -->
-<section class="section" id="metodologia">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Metodología de Trabajo</span>
-      <h2>Fases de Ejecución de la Auditoría</h2>
-      <p>Proceso estructurado que garantiza rigurosidad técnica, confidencialidad y cero interrupciones en la continuidad del negocio.</p>
-    </div>
-    <div class="approach-grid-layout">
-      <div class="approach-card-item">
-        <span class="phase-step">Fase 01 · Reconocimiento</span>
-        <h3>Mapeo de Arquitectura y Flujos</h3>
-        <p>Identificación de componentes, análisis de lógica de negocio, mapeo de endpoints y revisión de configuraciones.</p>
-      </div>
-      <div class="approach-card-item">
-        <span class="phase-step">Fase 02 · Evaluación</span>
-        <h3>Pentesting y Análisis Vulnerable</h3>
-        <p>Ejecución de pruebas de intrusión no destructivas para validar brechas de seguridad y vectores de ataque.</p>
-      </div>
-      <div class="approach-card-item">
-        <span class="phase-step">Fase 03 · Remediación</span>
-        <h3>Hardening y Reporte Ejecutivo</h3>
-        <p>Emisión del informe técnico con hallazgos, recomendaciones de remediación y plan de hardening.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- SECCIÓN PREGUNTAS FRECUENTES FAQ / ACUERDOS NDA -->
 <section class="section" id="faq">
   <div class="wrap">
@@ -923,76 +917,83 @@
   </div>
 </section>
 
-<!-- SECCIÓN PARA INVERSIONISTAS CON ALTO CONTRASTE LUMINOSO -->
-<section class="section" id="inversion" style="background: radial-gradient(ellipse 800px 400px at 20% 0%, rgba(0,229,255,0.08), transparent 60%), var(--bg-card);">
+<!-- SECCIÓN PARA INVERSIONISTAS -->
+<section class="section" id="inversion">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow"><i class="bi bi-briefcase-fill me-1"></i> Propuesta para Inversionistas</span>
-      <h2 style="font-size:clamp(28px, 4vw, 42px);">¿Quién quiere nadar con nosotros?</h2>
+      <h2>¿Quién quiere nadar con nosotros?</h2>
+      <p>En un mundo donde los ataques digitales crecen cada día, SECURE CODE <strong class="text-info">no es un lujo, es una necesidad.</strong> Invertir en nosotros es invertir en la seguridad del futuro empresarial salvadoreño.</p>
     </div>
 
-    <p class="fs-5 text-light mb-5" style="max-width:850px; line-height:1.5; color:#FFFFFF !important;">
-      En un mundo donde los ataques digitales crecen cada día, SECURE CODE <span style="color:var(--accent); font-weight:700;">no es un lujo, es una necesidad.</span> Invertir en nosotros es invertir en la seguridad del futuro empresarial salvadoreño.
-    </p>
-
-    <!-- GRID DE MÉTRICAS CLAVE DE LA SOCIEDAD CON TEXTO DE ALTO CONTRASTE -->
-    <div class="row g-3 mb-4 p-4 rounded" style="background:var(--bg-element); border:1px solid var(--border-bright);">
+    <!-- MÉTRICAS CLAVE -->
+    <div class="row g-3 mb-4">
       <div class="col-md-3 col-6">
-        <span style="color:#CBD5E1 !important; font-size:12.5px;" class="font-monospace uppercase d-block fw-bold mb-1">Tipo de Sociedad</span>
-        <div class="font-monospace text-light fs-4 fw-bold">S.A.S. de C.V.</div>
+        <div class="card-service-item" style="padding:20px 22px;">
+          <span class="service-tag-label">Tipo de Sociedad</span>
+          <div class="font-monospace text-light fs-4 fw-bold">S.A.S. de C.V.</div>
+        </div>
       </div>
       <div class="col-md-3 col-6">
-        <span style="color:#CBD5E1 !important; font-size:12.5px;" class="font-monospace uppercase d-block fw-bold mb-1">Capital Inicial</span>
-        <div class="font-monospace text-info fs-3 fw-bold">$18,000</div>
+        <div class="card-service-item" style="padding:20px 22px;">
+          <span class="service-tag-label">Capital Inicial</span>
+          <div class="price-tag-value" style="margin:0;">$18,000</div>
+        </div>
       </div>
       <div class="col-md-3 col-6">
-        <span style="color:#CBD5E1 !important; font-size:12.5px;" class="font-monospace uppercase d-block fw-bold mb-1">Ingresos Proyectados Año 3</span>
-        <div class="font-monospace text-info fs-3 fw-bold">$86,000 <small class="fs-6" style="color:#CBD5E1 !important;">/año</small></div>
+        <div class="card-service-item" style="padding:20px 22px;">
+          <span class="service-tag-label">Ingresos Proyectados Año 3</span>
+          <div class="price-tag-value" style="margin:0;">$86,000 <small class="fs-6" style="color:var(--text-muted);">/año</small></div>
+        </div>
       </div>
       <div class="col-md-3 col-6">
-        <span style="color:#CBD5E1 !important; font-size:12.5px;" class="font-monospace uppercase d-block fw-bold mb-1">Valoración Implícita Pedida</span>
-        <div class="font-monospace text-info fs-3 fw-bold">$75,000</div>
+        <div class="card-service-item" style="padding:20px 22px;">
+          <span class="service-tag-label">Valoración Pedida</span>
+          <div class="price-tag-value" style="margin:0;">$75,000</div>
+        </div>
       </div>
     </div>
 
-    <!-- TARJETAS DE ESTRUCTURA Y PROPUESTA DE INVERSIÓN CON PÁRRAFOS BLANCOS/PLATA -->
+    <!-- ESTRUCTURA ACCIONARIA -->
     <div class="row g-4 mb-5">
-      <div class="col-md-12 col-12">
-        <div class="p-4 bg-dark rounded border border-secondary h-100">
-          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-3">Estructura Accionaria y Capital</h4>
-          <p class="mb-4" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">Sociedad conformada por 4 accionistas fundadores, cada uno con un aporte dinerario de <strong>$4,500.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Administrador Único Titular.</p>
-          <div class="table-responsive">
-            <table class="table table-dark table-borderless table-sm mb-0 align-middle" style="font-size:14px; background-color: transparent;">
+      <div class="col-12">
+        <div class="card-service-item">
+          <div>
+            <span class="service-tag-label">Estructura Accionaria y Capital</span>
+            <p>Sociedad conformada por 4 accionistas fundadores, cada uno con un aporte dinerario de <strong class="text-light">$4,500.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Administrador Único Titular.</p>
+          </div>
+          <div class="table-responsive mt-2">
+            <table class="table table-dark table-borderless table-sm mb-0 align-middle" style="font-size:14px; background-color:transparent;">
               <thead>
-                <tr class="border-bottom border-secondary text-info">
-                  <th class="pb-2">Accionista</th>
-                  <th class="pb-2">Rol Legal / Funcional</th>
-                  <th class="pb-2">Inversión</th>
-                  <th class="pb-2">Participación</th>
+                <tr style="border-bottom:1px solid var(--border-bright);">
+                  <th class="pb-2" style="color:var(--accent);">Accionista</th>
+                  <th class="pb-2" style="color:var(--accent);">Rol Legal / Funcional</th>
+                  <th class="pb-2" style="color:var(--accent);">Inversión</th>
+                  <th class="pb-2" style="color:var(--accent);">Participación</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-bottom border-secondary border-opacity-25">
+                <tr style="border-bottom:1px solid var(--border);">
                   <td class="py-2">Blanca Leticia Argueta Portillo</td>
-                  <td class="py-2 text-muted">Accionista</td>
+                  <td class="py-2" style="color:var(--text-muted);">Accionista</td>
                   <td class="py-2 font-monospace">$4,500.00</td>
                   <td class="py-2 font-monospace">25%</td>
                 </tr>
-                <tr class="border-bottom border-secondary border-opacity-25">
+                <tr style="border-bottom:1px solid var(--border);">
                   <td class="py-2">William Alfredo Irula González</td>
-                  <td class="py-2 text-muted">Accionista</td>
+                  <td class="py-2" style="color:var(--text-muted);">Accionista</td>
                   <td class="py-2 font-monospace">$4,500.00</td>
                   <td class="py-2 font-monospace">25%</td>
                 </tr>
-                <tr class="border-bottom border-secondary border-opacity-25">
+                <tr style="border-bottom:1px solid var(--border);">
                   <td class="py-2">Emerson Aldahir Portillo Segovia</td>
-                  <td class="py-2 text-muted">Accionista</td>
+                  <td class="py-2" style="color:var(--text-muted);">Accionista</td>
                   <td class="py-2 font-monospace">$4,500.00</td>
                   <td class="py-2 font-monospace">25%</td>
                 </tr>
                 <tr>
                   <td class="py-2">Javier Alexander Vargas Díaz</td>
-                  <td class="py-2 text-muted">Rep. Legal y Adm. Único Titular</td>
+                  <td class="py-2" style="color:var(--accent);">Rep. Legal y Adm. Único Titular</td>
                   <td class="py-2 font-monospace">$4,500.00</td>
                   <td class="py-2 font-monospace">25%</td>
                 </tr>
@@ -1001,29 +1002,36 @@
           </div>
         </div>
       </div>
-      
+
+      <!-- TARJETAS INFERIORES -->
       <div class="col-md-4 col-12">
-        <div class="p-4 bg-dark rounded border border-secondary h-100">
-          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Fuente de Financiamiento</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14px; line-height:1.65;">100% capital propio de los accionistas, sin crédito bancario en el arranque. El 40% de las utilidades de los primeros ejercicios se reinvierte en investigación y desarrollo.</p>
+        <div class="card-service-item h-100">
+          <div>
+            <span class="service-tag-label">Fuente de Financiamiento</span>
+            <p>100% capital propio de los accionistas, sin crédito bancario en el arranque. El 40% de las utilidades de los primeros ejercicios se reinvierte en I+D.</p>
+          </div>
         </div>
       </div>
       <div class="col-md-4 col-12">
-        <div class="p-4 bg-dark rounded border border-secondary h-100">
-          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">De Dónde Sale la Proyección</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14px; line-height:1.65;">Mezcla a 3 años: ≈$12k anuales de PYMEs, $46.9k de contrato institucional público, y ≈$27k de auditorías por proyecto — total cercano a $86k/año.</p>
+        <div class="card-service-item h-100">
+          <div>
+            <span class="service-tag-label">Proyección de Ingresos</span>
+            <p>Mezcla a 3 años: ≈$12k anuales de PYMEs, $46.9k de contrato institucional público, y ≈$27k de auditorías por proyecto — total cercano a $86k/año.</p>
+          </div>
         </div>
       </div>
       <div class="col-md-4 col-12">
-        <div class="p-4 bg-dark rounded border border-secondary h-100">
-          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Lo Que Pedimos Hoy</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14px; line-height:1.65;"><strong class="text-light fw-bold">$15,000</strong> adicionales a cambio del <strong class="text-light fw-bold">20% de participación</strong>, valoración de <strong class="text-light fw-bold">$75,000</strong> — ~0.87x ingresos anuales, para financiar expansión.</p>
+        <div class="card-service-item h-100">
+          <div>
+            <span class="service-tag-label">Lo Que Pedimos Hoy</span>
+            <p><strong class="text-light">$15,000</strong> adicionales a cambio del <strong class="text-light">20% de participación</strong>, valoración de <strong class="text-light">$75,000</strong> — ~0.87x ingresos anuales, para financiar expansión.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="text-center pt-3">
-      <p class="fs-4 text-light font-display mb-4" style="max-width:700px; margin:0 auto; color:#FFFFFF !important;">¿Quién de ustedes quiere nadar con nosotros en este océano de oportunidades?</p>
+      <p class="lead-desc" style="max-width:700px; margin:0 auto 24px;">¿Quién de ustedes quiere nadar con nosotros en este océano de oportunidades?</p>
       <a class="btn-ui btn-ui-primary" href="mailto:contacto@securecode.com"><i class="bi bi-briefcase me-1"></i> Hablemos de la Inversión</a>
     </div>
   </div>
@@ -1094,10 +1102,10 @@
         <div class="footer-col">
           <h5>Navegación</h5>
           <a href="#servicios">Servicios</a>
-          <a href="#requisitos">Requisitos</a>
-          <a href="#cotizador">Arma tu Paquete</a>
           <a href="#metodologia">Metodología</a>
-          <a href="#faq">Preguntas Frecuentes</a>
+          <a href="#requisitos">Requisitos</a>
+          <a href="#cotizador">Cotizador</a>
+          <a href="#faq">FAQ</a>
           <a href="#inversion">Inversión</a>
         </div>
         <div class="footer-col">
