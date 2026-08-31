@@ -974,7 +974,7 @@
         <div class="card-service-item">
           <div>
             <span class="service-tag-label">Estructura Accionaria y Capital</span>
-            <p>Sociedad conformada por 4 accionistas fundadores, cada uno con un aporte dinerario de <strong class="text-light">$4,500.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Representante Legal.</p>
+            <p>Sociedad conformada por 5 accionistas fundadores, cada uno con un aporte dinerario de <strong class="text-light">$3,600.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Representante Legal.</p>
           </div>
           <div class="table-responsive mt-2">
             <table class="table table-dark table-borderless table-sm mb-0 align-middle" style="font-size:14px; background-color:transparent;">
@@ -990,26 +990,32 @@
                 <tr style="border-bottom:1px solid var(--border);">
                   <td class="py-2">Blanca Leticia Argueta Portillo</td>
                   <td class="py-2" style="color:var(--text-muted);">Accionista</td>
-                  <td class="py-2 font-monospace">$4,500.00</td>
-                  <td class="py-2 font-monospace">25%</td>
+                  <td class="py-2 font-monospace">$3,600.00</td>
+                  <td class="py-2 font-monospace">20%</td>
                 </tr>
                 <tr style="border-bottom:1px solid var(--border);">
                   <td class="py-2">William Alfredo Irula González</td>
                   <td class="py-2" style="color:var(--text-muted);">Accionista</td>
-                  <td class="py-2 font-monospace">$4,500.00</td>
-                  <td class="py-2 font-monospace">25%</td>
+                  <td class="py-2 font-monospace">$3,600.00</td>
+                  <td class="py-2 font-monospace">20%</td>
                 </tr>
                 <tr style="border-bottom:1px solid var(--border);">
                   <td class="py-2">Emerson Aldahir Portillo Segovia</td>
                   <td class="py-2" style="color:var(--text-muted);">Accionista</td>
-                  <td class="py-2 font-monospace">$4,500.00</td>
-                  <td class="py-2 font-monospace">25%</td>
+                  <td class="py-2 font-monospace">$3,600.00</td>
+                  <td class="py-2 font-monospace">20%</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td class="py-2">Alfredo Ezequiel Medrano Martinez</td>
+                  <td class="py-2" style="color:var(--text-muted);">Accionista</td>
+                  <td class="py-2 font-monospace">$3,600.00</td>
+                  <td class="py-2 font-monospace">20%</td>
                 </tr>
                 <tr>
                   <td class="py-2">Javier Alexander Vargas Díaz</td>
                   <td class="py-2" style="color:var(--accent);">Representante Legal</td>
-                  <td class="py-2 font-monospace">$4,500.00</td>
-                  <td class="py-2 font-monospace">25%</td>
+                  <td class="py-2 font-monospace">$3,600.00</td>
+                  <td class="py-2 font-monospace">20%</td>
                 </tr>
               </tbody>
             </table>
