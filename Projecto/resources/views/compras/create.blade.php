@@ -290,121 +290,71 @@
       </div>
     </div>
 
-    <!-- PASO 2: SELECCIÓN DE SEGMENTO Y SERVICIOS -->
-    <div class="seg-tabs">
-      <button class="seg-tab active" data-seg="pyme" type="button">Cotizador PYME (Servidores / Dispositivos)</button>
-      <button class="seg-tab" data-seg="publico" type="button">Sector Público (Tarifa Institucional)</button>
-      <button class="seg-tab" data-seg="empresarial" type="button">Empresarial / Proyectos Especiales</button>
-    </div>
-
-    <!-- PANEL PYME -->
-    <div class="seg-panel active" id="panel-pyme">
-      <div class="calc-panel">
-        <div class="calc-addons">
-          <h3 class="text-light fs-5 mb-2 fw-bold">Paso 2: Paquete Base de Monitoreo</h3>
-          <p class="small mb-3" style="color:#E2E8F0 !important;">Planes anuales adaptados según la cantidad de activos o dispositivos a proteger.</p>
-          
-          <div class="row g-2 mb-3" id="pymeTierGroup">
-            <div class="col-md-4">
-              <div class="tier-card active" data-tier="pbasico" data-price="30">
-                <span class="font-monospace small uppercase fw-bold" style="color:var(--accent);">Básico</span>
-                <div class="text-light font-monospace fw-bold fs-4">$30<small class="fs-6" style="color:#CBD5E1;">/año/disp.</small></div>
-                <p class="small m-0" style="color:#E2E8F0 !important;">Monitoreo básico.</p>
-              </div>
+    <!-- SECCIÓN DE COTIZACIÓN -->
+    <div class="calc-panel mt-4">
+      <div class="calc-addons">
+        <h3 class="text-light fs-5 mb-2 fw-bold">Paso 2: Confirma tu Plan y Configura Servicios Extra</h3>
+        <p class="small mb-4" style="color:#E2E8F0 !important;">A continuación, verás el plan que seleccionaste en la página anterior. Si lo deseas, puedes añadir auditorías o servicios puntuales a tu carrito.</p>
+        
+        <div class="p-3 bg-dark border border-info rounded mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge bg-info text-dark font-monospace mb-1 fw-bold">Plan Seleccionado</span>
+              <h5 class="text-light m-0 fw-bold" id="selectedPlanName">Plan Básico PYME (5 Disp.)</h5>
+              <small class="text-muted" id="selectedPlanDesc" style="color:#CBD5E1!important;">Incluye protección base para 5 dispositivos.</small>
             </div>
-            <div class="col-md-4">
-              <div class="tier-card" data-tier="pestandar" data-price="75">
-                <span class="font-monospace small uppercase fw-bold" style="color:var(--accent);">Estándar</span>
-                <div class="text-light font-monospace fw-bold fs-4">$75<small class="fs-6" style="color:#CBD5E1;">/año/disp.</small></div>
-                <p class="small m-0" style="color:#E2E8F0 !important;">Recomendado PYME.</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="tier-card" data-tier="pcompleto" data-price="150">
-                <span class="font-monospace small uppercase fw-bold" style="color:var(--accent);">Completo</span>
-                <div class="text-light font-monospace fw-bold fs-4">$150<small class="fs-6" style="color:#CBD5E1;">/año/disp.</small></div>
-                <p class="small m-0" style="color:#E2E8F0 !important;">Protección total.</p>
-              </div>
+            <div class="text-end">
+              <span class="text-light font-monospace fs-4 fw-bold" id="selectedPlanPrice">$30.00</span>
+              <span class="text-muted small" id="selectedPlanType">/ mes</span>
             </div>
           </div>
+        </div>
 
-          <label class="form-label text-light font-monospace small fw-bold">
-            Cantidad de Dispositivos / Servidores: <span id="deviceCountLabel" class="text-info fw-bold fs-6">5</span>
-          </label>
-          <input type="range" id="deviceCount" min="1" max="100" value="5" class="form-range mb-4">
-
-          <h3 class="text-light fs-5 mb-2 fw-bold">Servicios Específicos del Catálogo Oficial</h3>
-          <p class="small mb-3" style="color:#E2E8F0 !important;">Selecciona auditorías o servicios adicionales para agregarlos al desglose de tu orden:</p>
-
-          <div class="row g-3">
-            @foreach($productos as $producto)
-              <div class="col-12">
-                <div class="service-card">
-                  <div class="d-flex justify-content-between align-items-start gap-2">
-                    <div>
-                      <h6 class="text-light fw-bold mb-1 fs-5">{{ $producto->titulo }}</h6>
-                      <p class="small mb-2" style="color:#E2E8F0 !important;">{{ $producto->descripcion }}</p>
-                      <span class="text-info font-monospace fw-bold fs-6">${{ number_format($producto->precio, 2) }} USD</span>
-                    </div>
-                    <div>
-                      <button type="button" 
-                              class="btn btn-sm btn-outline-info agregar-btn font-monospace fw-bold"
-                              data-id="{{ $producto->juegos_Id }}"
-                              data-nombre="{{ $producto->titulo }}"
-                              data-precio="{{ $producto->precio }}">
-                        + Agregar al Carrito
-                      </button>
-                    </div>
+        <h3 class="text-light fs-5 mb-3 fw-bold">Catálogo Oficial de Servicios (Opcionales)</h3>
+        <div class="row g-3">
+          @foreach($productos as $producto)
+            <div class="col-12">
+              <div class="service-card">
+                <div class="d-flex justify-content-between align-items-start gap-2">
+                  <div>
+                    <h6 class="text-light fw-bold mb-1 fs-5">{{ $producto->titulo }}</h6>
+                    <p class="small mb-2" style="color:#E2E8F0 !important;">{{ $producto->descripcion }}</p>
+                    <span class="text-info font-monospace fw-bold fs-6">${{ number_format($producto->precio, 2) }} USD</span>
                   </div>
-                  <div class="next-step-box show mt-2">
-                    <strong>Ruta de Madurez Sugerida:</strong> Al contratar {{ $producto->titulo }}, se recomienda coordinar el Hardening de Servidores y la firma de la Carta de Autorización Expresa.
+                  <div>
+                    <button type="button" 
+                            class="btn btn-sm btn-outline-info agregar-btn font-monospace fw-bold"
+                            data-id="{{ $producto->juegos_Id }}"
+                            data-nombre="{{ $producto->titulo }}"
+                            data-precio="{{ $producto->precio }}">
+                      + Agregar al Carrito
+                    </button>
                   </div>
                 </div>
               </div>
-            @endforeach
-          </div>
-        </div>
-
-        <div class="calc-console">
-          <div class="text-light font-monospace small mb-1 fw-bold">Membresía Mensual (Base)</div>
-          <div class="text-light font-monospace fw-bold fs-2">$<span id="totalPrice">12.50</span><small class="fs-6" style="color:#CBD5E1;">/mes</small></div>
-          <div class="small mb-3" id="totalSub" style="color:#E2E8F0 !important;">Paquete Básico · 5 dispositivos</div>
-
-          <div class="text-light font-monospace small mb-2 fw-bold">Servicios Seleccionados en Carrito</div>
-          <div class="cart-dropdown-custom">
-            <div id="resumenProductos" class="small" style="color:#F1F5F9 !important;">No hay servicios agregados.</div>
-          </div>
-
-          <div class="console-warning" id="letterWarning">
-            <strong>Notificación Legal:</strong> Se preparará la Carta de Autorización y Exención de Responsabilidad formal para la firma de la Representación Legal de la empresa.
-          </div>
-
-          <div class="mt-auto pt-3">
-            <button type="button" class="btn btn-primary w-100 py-2 font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago" id="pagarBtn" disabled>
-              Confirmar y Contratar Servicios
-            </button>
-          </div>
+            </div>
+          @endforeach
         </div>
       </div>
-    </div>
 
-    <!-- PANEL SECTOR PÚBLICO -->
-    <div class="seg-panel" id="panel-publico">
-      <div class="p-4 bg-dark rounded border border-secondary">
-        <span class="badge bg-info text-dark font-monospace mb-2 fw-bold">Sector Público El Salvador</span>
-        <h3 class="text-light fs-2">$3,915.18 <small class="fs-6" style="color:#CBD5E1;">/mes</small></h3>
-        <p style="color:#E2E8F0 !important;">Equivalente a <strong>$46,982.13 anuales</strong> según tabulador del Ministerio de Hacienda para contratos institucionales de ciberseguridad.</p>
-        <button class="btn btn-primary font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago">Solicitar Contratación Institucional</button>
-      </div>
-    </div>
+      <div class="calc-console">
+        <div class="text-light font-monospace small mb-1 fw-bold">Total del Plan (Base + Disp. Extra)</div>
+        <div class="text-light font-monospace fw-bold fs-2">$<span id="basePlanTotal">30.00</span><small class="fs-6" style="color:#CBD5E1;" id="basePlanPeriod">/mes</small></div>
 
-    <!-- PANEL EMPRESARIAL -->
-    <div class="seg-panel" id="panel-empresarial">
-      <div class="p-4 bg-dark rounded border border-secondary">
-        <span class="badge bg-info text-dark font-monospace mb-2 fw-bold">Grandes Empresas</span>
-        <h3 class="text-light fs-2">$1,500 – $10,000+ <small class="fs-6" style="color:#CBD5E1;">/proyecto</small></h3>
-        <p style="color:#E2E8F0 !important;">Evaluaciones a medida para infraestructura crítica y dictámenes técnicos de software de terceros.</p>
-        <button class="btn btn-primary font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago">Solicitar Propuesta Corporativa</button>
+        <div class="text-light font-monospace small mt-4 mb-2 fw-bold">Servicios Seleccionados en Carrito</div>
+        <div class="cart-dropdown-custom">
+          <div id="resumenProductos" class="small" style="color:#F1F5F9 !important;">No hay servicios agregados.</div>
+        </div>
+
+        <div class="console-warning" id="letterWarning">
+          <strong>Notificación Legal:</strong> Se preparará la Carta de Autorización y Exención de Responsabilidad formal para la firma de la Representación Legal de la empresa.
+        </div>
+
+        <div class="mt-auto pt-3">
+          <button type="button" class="btn btn-primary w-100 py-2 font-monospace fw-bold" data-bs-toggle="modal" data-bs-target="#modalPago" id="pagarBtn" disabled>
+            Confirmar y Pagar
+          </button>
+        </div>
       </div>
     </div>
 </div>
@@ -491,11 +441,49 @@
     const inputProductosDiv = document.getElementById('inputProductos');
     const modalSubtotal = document.getElementById('modalSubtotal');
     const pagarBtn = document.getElementById('pagarBtn');
-    const deviceSlider = document.getElementById('deviceCount');
 
-    let currentTierPrice = 30;
-    let currentTierName = 'pbasico';
+    let basePlanName = "Plan Básico PYME (5 Disp.)";
+    let basePlanTotal = 30.00;
+    let basePlanPeriod = "mes";
+    let basePlanDesc = "Incluye protección base para 5 dispositivos.";
+
     const carrito = {};
+
+    function initFromDraft() {
+        const draft = localStorage.getItem('draftCart');
+        if (draft) {
+            try {
+                const parsed = JSON.parse(draft);
+                if (parsed.plan) {
+                    basePlanName = parsed.plan;
+                    basePlanTotal = parseFloat(parsed.precioTotal);
+                    
+                    if (basePlanName.includes("PYME")) {
+                        basePlanPeriod = "mes";
+                        basePlanDesc = parsed.extraDevices > 0 
+                            ? `Incluye 5 dispositivos + ${parsed.extraDevices} adicionales.`
+                            : "Incluye protección base para 5 dispositivos.";
+                    } else if (basePlanName.includes("Público")) {
+                        basePlanPeriod = "mes";
+                        basePlanDesc = "Tarifa institucional regulada por LACAP.";
+                    } else {
+                        basePlanPeriod = "proyecto";
+                        basePlanDesc = "Cotización inicial. Sujeto a auditoría.";
+                    }
+                }
+            } catch (e) {}
+        }
+        
+        document.getElementById('selectedPlanName').textContent = basePlanName;
+        document.getElementById('selectedPlanPrice').textContent = "$" + basePlanTotal.toFixed(2);
+        document.getElementById('selectedPlanType').textContent = "/ " + basePlanPeriod;
+        document.getElementById('selectedPlanDesc').textContent = basePlanDesc;
+        
+        document.getElementById('basePlanTotal').textContent = basePlanTotal.toFixed(2);
+        document.getElementById('basePlanPeriod').textContent = "/" + basePlanPeriod;
+        
+        updateCalculator();
+    }
 
     function updateCalculator() {
         const reqLegal = document.getElementById('reqLegal').checked;
@@ -507,16 +495,16 @@
         const prereqCount = (reqLegal?1:0) + (reqScope?1:0) + (reqEnvironments?1:0) + (reqBackups?1:0) + (reqPoc?1:0);
         document.getElementById('prereqStatus').textContent = `${prereqCount} de 5 verificados`;
 
-        const devices = parseInt(deviceSlider.value, 10);
-        document.getElementById('deviceCountLabel').textContent = devices;
-
-        const monthlyPrice = (currentTierPrice / 12) * devices;
-        document.getElementById('totalPrice').textContent = monthlyPrice.toFixed(2);
-
         let addonTotal = 0;
         let cartItemCount = 0;
         let resumenHTML = '';
         inputProductosDiv.innerHTML = '';
+
+        const baseTotalInput = document.createElement('input');
+        baseTotalInput.type = 'hidden';
+        baseTotalInput.name = 'total_base';
+        baseTotalInput.value = basePlanTotal;
+        inputProductosDiv.appendChild(baseTotalInput);
 
         Object.entries(carrito).forEach(([id, item]) => {
             const sub = item.precio * item.cantidad;
@@ -539,19 +527,16 @@
 
         resumenProductos.innerHTML = resumenHTML || '<span style="color:#E2E8F0 !important;">No hay servicios agregados.</span>';
 
-        const grandTotal = monthlyPrice + addonTotal;
+        const grandTotal = basePlanTotal + addonTotal;
         totalInput.value = grandTotal.toFixed(2);
         modalSubtotal.textContent = grandTotal.toFixed(2);
         pagarBtn.disabled = grandTotal <= 0;
 
-        let score = (prereqCount * 12) + (cartItemCount * 8) + (currentTierName === 'pcompleto' ? 20 : 10);
+        let score = (prereqCount * 12) + (cartItemCount * 8) + 15;
         if(score > 100) score = 100;
 
         document.getElementById('maturityFill').style.width = `${score}%`;
         document.getElementById('maturityPercent').textContent = `${score}% · Madurez ${score >= 70 ? 'Avanzada' : 'Intermedia'}`;
-
-        const warningEl = document.getElementById('letterWarning');
-        warningEl.classList.add('show');
     }
 
     document.querySelectorAll('.agregar-btn').forEach(btn => {
@@ -569,26 +554,6 @@
         });
     });
 
-    document.querySelectorAll('.seg-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.seg-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.seg-panel').forEach(p => p.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById('panel-' + tab.dataset.seg).classList.add('active');
-        });
-    });
-
-    document.querySelectorAll('#pymeTierGroup .tier-card').forEach(card => {
-        card.addEventListener('click', () => {
-            document.querySelectorAll('#pymeTierGroup .tier-card').forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            currentTierName = card.dataset.tier;
-            currentTierPrice = parseInt(card.dataset.price, 10);
-            updateCalculator();
-        });
-    });
-
-    deviceSlider.addEventListener('input', updateCalculator);
     document.getElementById('reqLegal').addEventListener('change', updateCalculator);
     document.getElementById('reqScope').addEventListener('change', updateCalculator);
     document.getElementById('reqEnvironments').addEventListener('change', updateCalculator);
@@ -596,17 +561,7 @@
     document.getElementById('reqPoc').addEventListener('change', updateCalculator);
 
     document.addEventListener('DOMContentLoaded', () => {
-        const draft = localStorage.getItem('draftCart');
-        if (draft) {
-            try {
-                const parsed = JSON.parse(draft);
-                Object.entries(parsed).forEach(([id, serv]) => {
-                    carrito[id] = { nombre: serv.nombre, cantidad: 1, precio: serv.precio };
-                });
-                localStorage.removeItem('draftCart');
-                updateCalculator();
-            } catch (e) {}
-        }
+        initFromDraft();
     });
 
     function enviarFormulario() {
@@ -619,8 +574,6 @@
         valor = valor.replace(/(\d{4})(?=\d)/g, '$1-');
         input.value = valor;
     }
-
-    updateCalculator();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

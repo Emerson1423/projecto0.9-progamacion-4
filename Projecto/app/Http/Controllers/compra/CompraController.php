@@ -35,47 +35,37 @@ class CompraController extends Controller
     {
         $this->autoLoginClient();
 
-        if (empty($request->productos)) {
-            return back()->with('error', 'No hay productos en el carrito');
-        }
-
         $orden = Orden::create([
             'usuario_Id' => Auth::id(),
-            'total' => $request->total ?? 300.00
+            'total' => $request->total ?? 0
         ]);
 
-        $total = 0;
-        foreach ($request->productos as $juegos_Id => $cantidad) {
-            if ($cantidad > 0) {
-                $producto = Juego::find($juegos_Id);
-                
-                if (!$producto) {
-                    continue;
+        $total = (float) ($request->total_base ?? 0);
+
+        if (!empty($request->productos)) {
+            foreach ($request->productos as $juegos_Id => $cantidad) {
+                if ($cantidad > 0) {
+                    $producto = Juego::find($juegos_Id);
+                    
+                    if (!$producto) {
+                        continue;
+                    }
+
+                    Pedido::create([
+                        'orden_Id' => $orden->orden_Id,
+                        'juegos_Id' => $juegos_Id,
+                        'cantidad' => $cantidad,
+                        'precio_unitario' => $producto->precio
+                    ]);
+
+                    $total += $producto->precio * $cantidad;
+                    $producto->decrement('cantidad_dispo', $cantidad);
                 }
-
-                Pedido::create([
-                    'orden_Id' => $orden->orden_Id,
-                    'juegos_Id' => $juegos_Id,
-                    'cantidad' => $cantidad,
-                    'precio_unitario' => $producto->precio
-                ]);
-
-                $total += $producto->precio * $cantidad;
-                $producto->decrement('cantidad_dispo', $cantidad);
             }
         }
 
-        if ($total <= 0) {
-            $producto = Juego::first();
-            if ($producto) {
-                Pedido::create([
-                    'orden_Id' => $orden->orden_Id,
-                    'juegos_Id' => $producto->juegos_Id,
-                    'cantidad' => 1,
-                    'precio_unitario' => $producto->precio
-                ]);
-                $total = $producto->precio;
-            }
+        if ($total <= 0 && $request->total) {
+            $total = (float) $request->total;
         }
 
         $orden->update(['total' => $total]);
