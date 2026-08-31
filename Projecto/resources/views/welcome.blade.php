@@ -957,28 +957,67 @@
 
     <!-- TARJETAS DE ESTRUCTURA Y PROPUESTA DE INVERSIÓN CON PÁRRAFOS BLANCOS/PLATA -->
     <div class="row g-4 mb-5">
-      <div class="col-md-6 col-12">
+      <div class="col-md-12 col-12">
         <div class="p-4 bg-dark rounded border border-secondary h-100">
-          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Accionistas y Estructura</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">5 accionistas, cada uno con aporte dinerario igual de $3,600 (100% del capital social). Administración a cargo de un Administrador Único Titular, siendo Javier el único representante legal definido en el pacto social.</p>
+          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-3">Estructura Accionaria y Capital</h4>
+          <p class="mb-4" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">Sociedad conformada por 4 accionistas fundadores, cada uno con un aporte dinerario de <strong>$4,500.00</strong>, sumando el 100% del capital social inicial ($18,000.00). La administración recae sobre un Administrador Único Titular.</p>
+          <div class="table-responsive">
+            <table class="table table-dark table-borderless table-sm mb-0 align-middle" style="font-size:14px; background-color: transparent;">
+              <thead>
+                <tr class="border-bottom border-secondary text-info">
+                  <th class="pb-2">Accionista</th>
+                  <th class="pb-2">Rol Legal / Funcional</th>
+                  <th class="pb-2">Inversión</th>
+                  <th class="pb-2">Participación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-bottom border-secondary border-opacity-25">
+                  <td class="py-2">Blanca Leticia Argueta Portillo</td>
+                  <td class="py-2 text-muted">Accionista</td>
+                  <td class="py-2 font-monospace">$4,500.00</td>
+                  <td class="py-2 font-monospace">25%</td>
+                </tr>
+                <tr class="border-bottom border-secondary border-opacity-25">
+                  <td class="py-2">William Alfredo Irula González</td>
+                  <td class="py-2 text-muted">Accionista</td>
+                  <td class="py-2 font-monospace">$4,500.00</td>
+                  <td class="py-2 font-monospace">25%</td>
+                </tr>
+                <tr class="border-bottom border-secondary border-opacity-25">
+                  <td class="py-2">Emerson Aldahir Portillo Segovia</td>
+                  <td class="py-2 text-muted">Accionista</td>
+                  <td class="py-2 font-monospace">$4,500.00</td>
+                  <td class="py-2 font-monospace">25%</td>
+                </tr>
+                <tr>
+                  <td class="py-2">Javier Alexander Vargas Díaz</td>
+                  <td class="py-2 text-muted">Rep. Legal y Adm. Único Titular</td>
+                  <td class="py-2 font-monospace">$4,500.00</td>
+                  <td class="py-2 font-monospace">25%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div class="col-md-6 col-12">
+      
+      <div class="col-md-4 col-12">
         <div class="p-4 bg-dark rounded border border-secondary h-100">
           <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Fuente de Financiamiento</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">100% capital propio de los accionistas, sin crédito bancario en el arranque. El 40% de las utilidades de los primeros ejercicios se reinvierte en investigación y desarrollo.</p>
+          <p class="m-0" style="color:#F1F5F9 !important; font-size:14px; line-height:1.65;">100% capital propio de los accionistas, sin crédito bancario en el arranque. El 40% de las utilidades de los primeros ejercicios se reinvierte en investigación y desarrollo.</p>
         </div>
       </div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-4 col-12">
         <div class="p-4 bg-dark rounded border border-secondary h-100">
           <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">De Dónde Sale la Proyección</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">Mezcla realista a 3 años sobre nuestros 3 segmentos: ≈$12,000 anuales de PYMEs (50 clientes, 3 dispositivos c/u en promedio), $46,982 de un contrato institucional del sector público, y ≈$27,000 de auditorías empresariales por proyecto — un total cercano a $86,000 anuales.</p>
+          <p class="m-0" style="color:#F1F5F9 !important; font-size:14px; line-height:1.65;">Mezcla a 3 años: ≈$12k anuales de PYMEs, $46.9k de contrato institucional público, y ≈$27k de auditorías por proyecto — total cercano a $86k/año.</p>
         </div>
       </div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-4 col-12">
         <div class="p-4 bg-dark rounded border border-secondary h-100">
           <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Lo Que Pedimos Hoy</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;"><strong class="text-light fw-bold">$15,000</strong> adicionales a cambio del <strong class="text-light fw-bold">20% de participación accionaria</strong>, lo que implica una valoración de <strong class="text-light fw-bold">$75,000</strong> — apenas ~0.87x los ingresos anuales proyectados, un múltiplo conservador para financiar nuevas sucursales y consolidarnos como líderes en seguridad informática en El Salvador.</p>
+          <p class="m-0" style="color:#F1F5F9 !important; font-size:14px; line-height:1.65;"><strong class="text-light fw-bold">$15,000</strong> adicionales a cambio del <strong class="text-light fw-bold">20% de participación</strong>, valoración de <strong class="text-light fw-bold">$75,000</strong> — ~0.87x ingresos anuales, para financiar expansión.</p>
         </div>
       </div>
     </div>
