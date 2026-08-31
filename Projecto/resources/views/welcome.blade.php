@@ -736,9 +736,9 @@
               <div>
                 <h5 class="text-light mb-1 fs-6 fw-bold">1. Auditoría de Lógica de Negocio y Flujos Digitales</h5>
                 <p class="small text-muted mb-2">Evaluación de reglas de negocio y flujos transaccionales.</p>
-                <span class="text-info font-monospace fw-bold">$300.00 USD</span>
+                <span class="text-info font-monospace fw-bold">Desde $500.00 USD</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(1, 'Auditoría de Lógica de Negocio', 300)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(1, 'Auditoría de Lógica de Negocio', 500)">Seleccionar</button>
             </div>
           </div>
 
@@ -747,9 +747,9 @@
               <div>
                 <h5 class="text-light mb-1 fs-6 fw-bold">2. Auditoría Técnica y Pentesting de Infraestructura</h5>
                 <p class="small text-muted mb-2">Pruebas de intrusión en servidores y red.</p>
-                <span class="text-info font-monospace fw-bold">$450.00 USD</span>
+                <span class="text-info font-monospace fw-bold">Desde $850.00 USD</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(2, 'Auditoría Técnica y Pentesting', 450)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(2, 'Auditoría Técnica y Pentesting', 850)">Seleccionar</button>
             </div>
           </div>
 
@@ -758,9 +758,9 @@
               <div>
                 <h5 class="text-light mb-1 fs-6 fw-bold">3. Ingeniería de Software Seguro (OWASP / ISO 27001)</h5>
                 <p class="small text-muted mb-2">Revisión de código fuente y desarrollo seguro.</p>
-                <span class="text-info font-monospace fw-bold">$350.00 USD</span>
+                <span class="text-info font-monospace fw-bold">Desde $600.00 USD</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(3, 'Ingeniería de Software Seguro', 350)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(3, 'Ingeniería de Software Seguro', 600)">Seleccionar</button>
             </div>
           </div>
 
@@ -769,9 +769,9 @@
               <div>
                 <h5 class="text-light mb-1 fs-6 fw-bold">4. Hardening y Bastionado de Entornos de Despliegue</h5>
                 <p class="small text-muted mb-2">Aseguramiento de servidores web y bases de datos.</p>
-                <span class="text-info font-monospace fw-bold">$250.00 USD</span>
+                <span class="text-info font-monospace fw-bold">Desde $450.00 USD</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(4, 'Hardening y Bastionado', 250)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(4, 'Hardening y Bastionado', 450)">Seleccionar</button>
             </div>
           </div>
 
@@ -780,9 +780,9 @@
               <div>
                 <h5 class="text-light mb-1 fs-6 fw-bold">5. Plataforma de Monitoreo Continuo (SOC 24/7)</h5>
                 <p class="small text-muted mb-2">Supervisión en tiempo real e incidentes.</p>
-                <span class="text-info font-monospace fw-bold">$500.00 USD / mes</span>
+                <span class="text-info font-monospace fw-bold">Desde $1,200.00 USD / mes</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(5, 'Monitoreo Continuo SOC 24/7', 500)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(5, 'Monitoreo Continuo SOC 24/7', 1200)">Seleccionar</button>
             </div>
           </div>
 
@@ -791,9 +791,9 @@
               <div>
                 <h5 class="text-light mb-1 fs-6 fw-bold">6. Evaluación y Dictamen Técnico de Software de Terceros</h5>
                 <p class="small text-muted mb-2">Análisis de cumplimiento y diagnóstico de software externo.</p>
-                <span class="text-info font-monospace fw-bold">$400.00 USD</span>
+                <span class="text-info font-monospace fw-bold">Desde $700.00 USD</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(6, 'Evaluación y Dictamen Técnico', 400)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(6, 'Evaluación y Dictamen Técnico', 700)">Seleccionar</button>
             </div>
           </div>
         </div>
@@ -814,9 +814,10 @@
 
             <div class="pt-3 border-top border-secondary mt-3">
               <div class="d-flex justify-content-between text-light font-monospace fw-bold fs-5">
-                <span>Total Estimado:</span>
-                <span class="text-info">$<span id="montoTotalEstimado">0.00</span> USD</span>
+                <span>Total Estimado Base:</span>
+                <span class="text-info">$<span id="montoTotalEstimado">0.00</span> USD*</span>
               </div>
+              <small class="text-muted d-block mt-2" style="font-size: 11px;">* El costo final puede escalar dependiendo del tamaño de la infraestructura y tipo de empresa (Micro, Pequeña, Mediana, Grande).</small>
             </div>
 
             <div class="mt-4">
@@ -958,14 +959,14 @@
     <div class="row g-4 mb-5">
       <div class="col-md-6 col-12">
         <div class="p-4 bg-dark rounded border border-secondary h-100">
-          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Socios y Estructura</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">5 socios accionistas, cada uno con aporte dinerario igual de $3,600 (100% del capital social). Administración a cargo de un Administrador Único Titular y un Administrador Suplente, con representación legal definida en el pacto social.</p>
+          <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Accionistas y Estructura</h4>
+          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">5 accionistas, cada uno con aporte dinerario igual de $3,600 (100% del capital social). Administración a cargo de un Administrador Único Titular, siendo Javier el único representante legal definido en el pacto social.</p>
         </div>
       </div>
       <div class="col-md-6 col-12">
         <div class="p-4 bg-dark rounded border border-secondary h-100">
           <h4 class="text-info font-monospace fs-5 uppercase fw-bold mb-2">Fuente de Financiamiento</h4>
-          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">100% capital propio de los socios, sin crédito bancario en el arranque. El 40% de las utilidades de los primeros ejercicios se reinvierte en investigación y desarrollo.</p>
+          <p class="m-0" style="color:#F1F5F9 !important; font-size:14.5px; line-height:1.65;">100% capital propio de los accionistas, sin crédito bancario en el arranque. El 40% de las utilidades de los primeros ejercicios se reinvierte en investigación y desarrollo.</p>
         </div>
       </div>
       <div class="col-md-6 col-12">
@@ -1126,7 +1127,7 @@
       htmlLista += `
         <div class="d-flex justify-content-between align-items-center py-1 border-bottom border-secondary">
           <span class="text-light">${serv.nombre}</span>
-          <span class="text-info font-monospace fw-bold">$${serv.precio.toFixed(2)}</span>
+          <span class="text-info font-monospace fw-bold">Desde $${serv.precio.toFixed(2)}</span>
         </div>
       `;
     });
