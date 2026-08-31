@@ -498,85 +498,119 @@
   </div>
 </div>
 
-<!-- SECCIÓN 1: SERVICIOS OFRECIDOS -->
+<!-- SECCIÓN 1: PLANES Y SERVICIOS -->
 <section class="section" id="servicios">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Catálogo Profesional</span>
-      <h2>Servicios de Ciberseguridad Ofrecidos</h2>
-      <p>Portafolio especializado de auditoría técnica, pentesting e ingeniería de software seguro. Explora el catálogo e integra tu solución a la medida.</p>
+      <span class="eyebrow">Planes y Precios</span>
+      <h2>Soluciones de Ciberseguridad por Segmento</h2>
+      <p>Protección escalable desde microempresas hasta corporaciones. Elige el plan que se adapta al tamaño de tu infraestructura.</p>
     </div>
 
-    <div class="services-grid-layout">
-      <div class="card-service-item">
+    <!-- 3 PLANES DE MERCADO -->
+    <div class="services-grid-layout mb-5">
+
+      <!-- PLAN PYMES -->
+      <div class="card-service-item" style="border-color:var(--accent); position:relative;">
         <div>
-          <span class="service-tag-label">Auditoría Técnica</span>
-          <h3>Auditoría de Lógica de Negocio y Flujos Digitales</h3>
-          <p>Análisis de flujos de trabajo en plataformas transaccionales para identificar fallas en reglas de negocio y evasión de controles.</p>
-          <div class="price-tag-value">Desde $500.00 <small style="font-size:12px; color:var(--text-muted);">USD / Evaluación</small></div>
+          <span class="service-tag-label">PYMEs y Microempresas</span>
+          <h3>Plan Básico de Protección</h3>
+          <p>Monitoreo continuo y protección para pequeñas y medianas empresas. Incluye supervisión de dispositivos, alertas tempranas y reportes mensuales.</p>
+          <div class="price-tag-value">$30.00 <small style="font-size:12px; color:var(--text-muted);">USD / mes</small></div>
+          <div style="font-size:13.5px; color:var(--text-mid); margin-top:8px; line-height:1.6;">
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> 5 dispositivos incluidos</div>
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-plus-circle" style="color:var(--warning); font-size:14px;"></i> +$12.50/mes por dispositivo adicional</div>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-info-circle" style="color:var(--text-muted); font-size:14px;"></i> Equivale a $6.00/dispositivo/mes</div>
+          </div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(1, 'Auditoría de Lógica de Negocio', 500)">Agregar al Paquete</button>
+          <a class="btn-ui btn-ui-primary w-100" href="#cotizador">Armar Paquete PYME</a>
         </div>
       </div>
 
+      <!-- PLAN SECTOR PÚBLICO -->
       <div class="card-service-item">
         <div>
-          <span class="service-tag-label">Pentesting de Red</span>
-          <h3>Auditoría Técnica y Pentesting de Infraestructura</h3>
-          <p>Pruebas de intrusión defensivas y ofensivas sobre servidores, Direcciones IP y servicios expuestos.</p>
-          <div class="price-tag-value">Desde $850.00 <small style="font-size:12px; color:var(--text-muted);">USD / Alcance</small></div>
+          <span class="service-tag-label">Sector Público / Gobierno</span>
+          <h3>Contrato Institucional</h3>
+          <p>Tarifa anual fijada por el Ministerio de Hacienda de El Salvador para protección integral de infraestructura gubernamental y sistemas críticos.</p>
+          <div class="price-tag-value">$46,982.13 <small style="font-size:12px; color:var(--text-muted);">USD / año</small></div>
+          <div style="font-size:13.5px; color:var(--text-mid); margin-top:8px; line-height:1.6;">
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> ≈$3,915.18/mes</div>
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> Cobertura integral SOC 24/7</div>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> Conforme a normativa de Hacienda</div>
+          </div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(2, 'Auditoría Técnica y Pentesting', 850)">Agregar al Paquete</button>
+          <a class="btn-ui btn-ui-ghost w-100" href="mailto:contacto@securecode.com">Solicitar Contrato</a>
         </div>
       </div>
 
+      <!-- PLAN EMPRESARIAL -->
       <div class="card-service-item">
         <div>
-          <span class="service-tag-label">Desarrollo Seguro</span>
-          <h3>Ingeniería de Software Seguro (OWASP / ISO 27001)</h3>
-          <p>Revisión de código fuente y arquitectura de software bajo estándares internacionales para el ciclo de vida seguro.</p>
-          <div class="price-tag-value">Desde $600.00 <small style="font-size:12px; color:var(--text-muted);">USD / Proyecto</small></div>
+          <span class="service-tag-label">Empresarial y Corporativo</span>
+          <h3>Auditorías y Pentesting a Medida</h3>
+          <p>Evaluaciones de seguridad, pruebas de penetración, hardening y dictámenes técnicos. Cotización personalizada según el volumen de la red.</p>
+          <div class="price-tag-value">$1,500 — $10,000+ <small style="font-size:12px; color:var(--text-muted);">USD / proyecto</small></div>
+          <div style="font-size:13.5px; color:var(--text-mid); margin-top:8px; line-height:1.6;">
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> Alcance definido por inventario</div>
+            <div class="d-flex align-items-center gap-2 mb-1"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> Dictamen técnico oficial en PDF</div>
+            <div class="d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill" style="color:var(--accent); font-size:14px;"></i> Carta de Autorización (RoE) incluida</div>
+          </div>
         </div>
         <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(3, 'Ingeniería de Software Seguro', 600)">Agregar al Paquete</button>
+          <a class="btn-ui btn-ui-ghost w-100" href="#cotizador">Solicitar Cotización</a>
         </div>
       </div>
+    </div>
 
-      <div class="card-service-item">
+    <!-- SERVICIOS TÉCNICOS INCLUIDOS -->
+    <div class="section-head">
+      <span class="eyebrow">Portafolio Técnico</span>
+      <h2>Servicios Especializados Disponibles</h2>
+    </div>
+    <div class="reqs-grid-layout">
+      <div class="req-card-item">
+        <div class="req-icon-box"><i class="bi bi-search"></i></div>
         <div>
-          <span class="service-tag-label">Bastionado de Entornos</span>
-          <h3>Hardening y Bastionado de Entornos de Despliegue</h3>
-          <p>Configuración y aseguramiento de servidores web, bases de datos y contenedores reduciendo vectores de ataque.</p>
-          <div class="price-tag-value">Desde $450.00 <small style="font-size:12px; color:var(--text-muted);">USD / Entorno</small></div>
-        </div>
-        <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(4, 'Hardening y Bastionado', 450)">Agregar al Paquete</button>
+          <h4>Auditoría de Lógica de Negocio</h4>
+          <p>Identificación de vulnerabilidades en procesos operativos, flujos de transacciones y toma de decisiones automatizadas.</p>
         </div>
       </div>
-
-      <div class="card-service-item">
+      <div class="req-card-item">
+        <div class="req-icon-box"><i class="bi bi-bug"></i></div>
         <div>
-          <span class="service-tag-label">Monitoreo SOC 24/7</span>
-          <h3>Plataforma de Monitoreo Continuo e Incidentes</h3>
-          <p>Supervisión en tiempo real de logs, detección de anomalías y respuesta inmediata ante amenazas operado por analistas.</p>
-          <div class="price-tag-value">Desde $1,200.00 <small style="font-size:12px; color:var(--text-muted);">USD / Mes</small></div>
-        </div>
-        <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(5, 'Monitoreo Continuo SOC 24/7', 1200)">Agregar al Paquete</button>
+          <h4>Pentesting de Infraestructura</h4>
+          <p>Pruebas de intrusión controlada sobre redes, servidores expuestos y plataformas corporativas.</p>
         </div>
       </div>
-
-      <div class="card-service-item">
+      <div class="req-card-item">
+        <div class="req-icon-box"><i class="bi bi-code-slash"></i></div>
         <div>
-          <span class="service-tag-label">Dictamen Técnico</span>
-          <h3>Evaluación y Dictamen Técnico de Software de Terceros</h3>
-          <p>Análisis de cumplimiento y diagnóstico de seguridad para soluciones adquiridas a proveedores externos.</p>
-          <div class="price-tag-value">Desde $700.00 <small style="font-size:12px; color:var(--text-muted);">USD / Dictamen</small></div>
+          <h4>Ingeniería de Software Seguro</h4>
+          <p>Análisis estático/dinámico de código y revisión de arquitectura conforme a OWASP e ISO 27001.</p>
         </div>
-        <div class="mt-3 pt-3 border-top border-secondary">
-          <button class="btn-ui btn-ui-ghost w-100" onclick="seleccionarServicioYIrACotizador(6, 'Evaluación y Dictamen Técnico', 700)">Agregar al Paquete</button>
+      </div>
+      <div class="req-card-item">
+        <div class="req-icon-box"><i class="bi bi-shield-lock"></i></div>
+        <div>
+          <h4>Hardening y Bastionado</h4>
+          <p>Configuración de seguridad avanzada en servidores Linux/Windows y contenedores.</p>
+        </div>
+      </div>
+      <div class="req-card-item">
+        <div class="req-icon-box"><i class="bi bi-display"></i></div>
+        <div>
+          <h4>Monitoreo Continuo SOC 24/7</h4>
+          <p>Supervisión con alertas tempranas, respuesta activa a amenazas y disponibilidad del 99.8%.</p>
+        </div>
+      </div>
+      <div class="req-card-item">
+        <div class="req-icon-box"><i class="bi bi-file-earmark-check"></i></div>
+        <div>
+          <h4>Dictamen Técnico de Terceros</h4>
+          <p>Auditoría integral y certificación de riesgo de software de proveedores externos.</p>
         </div>
       </div>
     </div>
@@ -748,98 +782,76 @@
         </div>
       </div>
 
-      <!-- PASO 2: SELECCIÓN Y RECOMENDACIÓN DINÁMICA -->
+      <!-- PASO 2: SELECCIÓN DE PLAN Y DISPOSITIVOS -->
       <div class="row g-4">
         <div class="col-lg-7 col-12">
-          <h4 class="text-light mb-3">2. Selecciona los Servicios para tu Paquete</h4>
+          <h4 class="text-light mb-3">2. Selecciona tu Segmento y Plan</h4>
 
-          <div class="select-service-row" id="card-1">
-            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
+          <!-- PLAN PYME -->
+          <div class="select-service-row mb-3" id="plan-pyme">
+            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
               <div>
-                <h5 class="text-light mb-1 fs-6 fw-bold">1. Auditoría de Lógica de Negocio y Flujos Digitales</h5>
-                <p class="small text-muted mb-2">Evaluación de reglas de negocio y flujos transaccionales.</p>
-                <span class="text-info font-monospace fw-bold">Desde $500.00 USD</span>
+                <h5 class="text-light mb-1 fs-6 fw-bold">Plan Básico PYMEs y Microempresas</h5>
+                <p class="small text-muted mb-2">Incluye monitoreo SOC, alertas y protección para 5 dispositivos.</p>
+                <span class="text-info font-monospace fw-bold">$30.00 USD / mes</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(1, 'Auditoría de Lógica de Negocio', 500)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" id="btn-pyme" onclick="seleccionarPlan('pyme')">Seleccionar Plan</button>
+            </div>
+            
+            <div class="pyme-extras mt-3 pt-3 border-top border-secondary" id="pyme-extras" style="display:none;">
+              <label class="form-label text-light small">Dispositivos Adicionales (+$12.50/mes c/u)</label>
+              <div class="d-flex align-items-center gap-3">
+                <input type="number" id="extra-devices" class="form-control bg-dark text-light border-secondary w-25" min="0" value="0" onchange="calcularTotal()">
+                <span class="small text-muted">Añade los dispositivos extra que necesites proteger por encima de los 5 básicos.</span>
+              </div>
             </div>
           </div>
 
-          <div class="select-service-row" id="card-2">
+          <!-- PLAN PÚBLICO -->
+          <div class="select-service-row mb-3" id="plan-publico">
             <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
               <div>
-                <h5 class="text-light mb-1 fs-6 fw-bold">2. Auditoría Técnica y Pentesting de Infraestructura</h5>
-                <p class="small text-muted mb-2">Pruebas de intrusión en servidores y red.</p>
-                <span class="text-info font-monospace fw-bold">Desde $850.00 USD</span>
+                <h5 class="text-light mb-1 fs-6 fw-bold">Sector Público / Contrato Institucional</h5>
+                <p class="small text-muted mb-2">Protección integral gubernamental regulada por Ministerio de Hacienda.</p>
+                <span class="text-info font-monospace fw-bold">≈ $3,915.18 USD / mes ($46,982.13/año)</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(2, 'Auditoría Técnica y Pentesting', 850)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" id="btn-publico" onclick="seleccionarPlan('publico')">Seleccionar Plan</button>
             </div>
           </div>
 
-          <div class="select-service-row" id="card-3">
+          <!-- PLAN EMPRESARIAL -->
+          <div class="select-service-row mb-3" id="plan-empresarial">
             <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
               <div>
-                <h5 class="text-light mb-1 fs-6 fw-bold">3. Ingeniería de Software Seguro (OWASP / ISO 27001)</h5>
-                <p class="small text-muted mb-2">Revisión de código fuente y desarrollo seguro.</p>
-                <span class="text-info font-monospace fw-bold">Desde $600.00 USD</span>
+                <h5 class="text-light mb-1 fs-6 fw-bold">Solución Empresarial a la Medida</h5>
+                <p class="small text-muted mb-2">Auditorías, pentesting e ingeniería de software según el volumen de red.</p>
+                <span class="text-info font-monospace fw-bold">Desde $1,500.00 USD / proyecto</span>
               </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(3, 'Ingeniería de Software Seguro', 600)">Seleccionar</button>
-            </div>
-          </div>
-
-          <div class="select-service-row" id="card-4">
-            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
-              <div>
-                <h5 class="text-light mb-1 fs-6 fw-bold">4. Hardening y Bastionado de Entornos de Despliegue</h5>
-                <p class="small text-muted mb-2">Aseguramiento de servidores web y bases de datos.</p>
-                <span class="text-info font-monospace fw-bold">Desde $450.00 USD</span>
-              </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(4, 'Hardening y Bastionado', 450)">Seleccionar</button>
-            </div>
-          </div>
-
-          <div class="select-service-row" id="card-5">
-            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
-              <div>
-                <h5 class="text-light mb-1 fs-6 fw-bold">5. Plataforma de Monitoreo Continuo (SOC 24/7)</h5>
-                <p class="small text-muted mb-2">Supervisión en tiempo real e incidentes.</p>
-                <span class="text-info font-monospace fw-bold">Desde $1,200.00 USD / mes</span>
-              </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(5, 'Monitoreo Continuo SOC 24/7', 1200)">Seleccionar</button>
-            </div>
-          </div>
-
-          <div class="select-service-row" id="card-6">
-            <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
-              <div>
-                <h5 class="text-light mb-1 fs-6 fw-bold">6. Evaluación y Dictamen Técnico de Software de Terceros</h5>
-                <p class="small text-muted mb-2">Análisis de cumplimiento y diagnóstico de software externo.</p>
-                <span class="text-info font-monospace fw-bold">Desde $700.00 USD</span>
-              </div>
-              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" onclick="toggleServicio(6, 'Evaluación y Dictamen Técnico', 700)">Seleccionar</button>
+              <button class="btn-ui btn-ui-ghost btn-sm font-monospace" id="btn-empresarial" onclick="seleccionarPlan('empresarial')">Seleccionar Plan</button>
             </div>
           </div>
         </div>
 
         <div class="col-lg-5 col-12">
           <div class="p-4 bg-dark rounded border border-secondary sticky-top" style="top:95px;">
-            <h4 class="text-light mb-3">Resumen de tu Paquete</h4>
+            <h4 class="text-light mb-3">Resumen de tu Cotización</h4>
 
             <div id="listaSeleccionados" class="small mb-3">
-              <span class="text-muted">No has seleccionado ningún servicio aún.</span>
+              <span class="text-muted">No has seleccionado ningún plan aún.</span>
             </div>
 
             <!-- RUTA DE RECOMENDACION DINAMICA PASO A PASO -->
             <div id="boxRutaRecomendada" class="recommendation-box" style="display:none;">
-              <strong>Ruta de Ciberseguridad Sugerida:</strong>
+              <strong>Recomendación:</strong>
               <div id="textRutaRecomendada" class="mt-1"></div>
             </div>
 
             <div class="pt-3 border-top border-secondary mt-3">
               <div class="d-flex justify-content-between text-light font-monospace fw-bold fs-5">
-                <span>Total Estimado Base:</span>
+                <span>Total Estimado:</span>
                 <span class="text-info">$<span id="montoTotalEstimado">0.00</span> USD*</span>
               </div>
-              <small class="text-muted d-block mt-2" style="font-size: 11px;">* El costo final puede escalar dependiendo del tamaño de la infraestructura y tipo de empresa (Micro, Pequeña, Mediana, Grande).</small>
+              <small class="text-muted d-block mt-2" style="font-size: 11px;">* Precio base mensual/anual estimado. El contrato oficial se genera previa firma de NDA y Carta RoE.</small>
             </div>
 
             <div class="mt-4">
@@ -1122,79 +1134,105 @@
 </footer>
 
 <script>
-  const serviciosSeleccionados = {};
-
-  const recomendacionesRuta = {
-    1: "Al evaluar la Lógica de Negocio, el siguiente paso recomendado es realizar la Auditoría Técnica y Pentesting de Infraestructura.",
-    2: "Al completar el Pentesting de Infraestructura, se recomienda ejecutar el Hardening y Bastionado de Entornos de Despliegue.",
-    3: "Al validar la Ingeniería de Software Seguro, el paso siguiente recomendado es configurar el Bastionado de Servidores.",
-    4: "Al asegurar los entornos con Hardening, se recomienda activar la Plataforma de Monitoreo Continuo SOC 24/7.",
-    5: "Con el SOC 24/7 activo, se sugiere realizar la Evaluación y Dictamen Técnico de Software de Terceros.",
-    6: "Con el Dictamen de Terceros completado, se sugiere mantener la Auditoría de Lógica de Negocio actualizada periódicamente."
+  let planSeleccionado = null;
+  const planes = {
+    'pyme': { nombre: 'Plan Básico PYME (5 Disp.)', precioBase: 30, tipo: 'mes' },
+    'publico': { nombre: 'Contrato Institucional Público', precioBase: 3915.18, tipo: 'mes' },
+    'empresarial': { nombre: 'Solución Empresarial a la Medida', precioBase: 1500, tipo: 'proyecto' }
   };
 
-  function seleccionarServicioYIrACotizador(id, nombre, precio) {
-    if (!serviciosSeleccionados[id]) {
-      toggleServicio(id, nombre, precio);
-    }
-    document.getElementById('cotizador').scrollIntoView({ behavior: 'smooth' });
-  }
+  const recomendacionesRuta = {
+    'pyme': "Ideal para negocios en crecimiento. Te recomendamos iniciar con el monitoreo básico de 5 dispositivos y escalar según tu demanda.",
+    'publico': "Diseñado para cumplir con las regulaciones de la LACAP y Hacienda. Se requiere firma de NDA y Carta RoE previo al inicio.",
+    'empresarial': "Recomendado para arquitecturas complejas. Un analista se contactará para definir el alcance exacto y la ventana de mantenimiento."
+  };
 
-  function toggleServicio(id, nombre, precio) {
-    const card = document.getElementById(`card-${id}`);
-    if (!card) return;
-    const btn = card.querySelector('button');
-
-    if (serviciosSeleccionados[id]) {
-      delete serviciosSeleccionados[id];
-      card.classList.remove('selected');
-      if(btn) {
-        btn.textContent = 'Seleccionar';
-        btn.classList.replace('btn-ui-primary', 'btn-ui-ghost');
-      }
+  function seleccionarPlan(idPlan) {
+    // Si ya está seleccionado, deseleccionar
+    if (planSeleccionado === idPlan) {
+      planSeleccionado = null;
     } else {
-      serviciosSeleccionados[id] = { nombre, precio };
-      card.classList.add('selected');
-      if(btn) {
-        btn.textContent = 'Quitar';
-        btn.classList.replace('btn-ui-ghost', 'btn-ui-primary');
-      }
+      planSeleccionado = idPlan;
     }
-    calcularPaquete();
-  }
-
-  function calcularPaquete() {
-    let total = 0;
-    let htmlLista = '';
-    let ultimoId = null;
-
-    Object.entries(serviciosSeleccionados).forEach(([id, serv]) => {
-      total += serv.precio;
-      ultimoId = id;
-      htmlLista += `
-        <div class="d-flex justify-content-between align-items-center py-1 border-bottom border-secondary">
-          <span class="text-light">${serv.nombre}</span>
-          <span class="text-info font-monospace fw-bold">Desde $${serv.precio.toFixed(2)}</span>
-        </div>
-      `;
+    
+    // UI Updates
+    Object.keys(planes).forEach(key => {
+      const card = document.getElementById(`plan-${key}`);
+      const btn = document.getElementById(`btn-${key}`);
+      
+      if (key === planSeleccionado) {
+        card.classList.add('selected');
+        btn.textContent = 'Seleccionado';
+        btn.classList.replace('btn-ui-ghost', 'btn-ui-primary');
+        if(key === 'pyme') document.getElementById('pyme-extras').style.display = 'block';
+      } else {
+        card.classList.remove('selected');
+        btn.textContent = 'Seleccionar Plan';
+        btn.classList.replace('btn-ui-primary', 'btn-ui-ghost');
+        if(key === 'pyme') document.getElementById('pyme-extras').style.display = 'none';
+      }
     });
 
-    document.getElementById('listaSeleccionados').innerHTML = htmlLista || '<span class="text-muted">No has seleccionado ningún servicio aún.</span>';
+    calcularTotal();
+  }
+
+  function calcularTotal() {
+    let htmlLista = '';
+    let total = 0;
+
+    if (!planSeleccionado) {
+      document.getElementById('listaSeleccionados').innerHTML = '<span class="text-muted">No has seleccionado ningún plan aún.</span>';
+      document.getElementById('montoTotalEstimado').textContent = '0.00';
+      document.getElementById('boxRutaRecomendada').style.display = 'none';
+      return;
+    }
+
+    const plan = planes[planSeleccionado];
+    total = plan.precioBase;
+
+    htmlLista += `
+      <div class="d-flex justify-content-between align-items-center py-1 border-bottom border-secondary mb-2">
+        <strong class="text-light">${plan.nombre}</strong>
+        <span class="text-info font-monospace fw-bold">$${plan.precioBase.toFixed(2)}</span>
+      </div>
+    `;
+
+    if (planSeleccionado === 'pyme') {
+      const extraDevices = parseInt(document.getElementById('extra-devices').value) || 0;
+      if (extraDevices > 0) {
+        const extraCost = extraDevices * 12.50;
+        total += extraCost;
+        htmlLista += `
+          <div class="d-flex justify-content-between align-items-center py-1 border-bottom border-secondary">
+            <span class="text-light small">+ ${extraDevices} Disp. Adicionales ($12.50 c/u)</span>
+            <span class="text-info font-monospace fw-bold small">+$${extraCost.toFixed(2)}</span>
+          </div>
+        `;
+      }
+    }
+
+    document.getElementById('listaSeleccionados').innerHTML = htmlLista;
     document.getElementById('montoTotalEstimado').textContent = total.toFixed(2);
 
     const boxRuta = document.getElementById('boxRutaRecomendada');
     const textRuta = document.getElementById('textRutaRecomendada');
-
-    if (ultimoId && recomendacionesRuta[ultimoId]) {
-      textRuta.textContent = recomendacionesRuta[ultimoId];
-      boxRuta.style.display = 'block';
-    } else {
-      boxRuta.style.display = 'none';
-    }
+    textRuta.textContent = recomendacionesRuta[planSeleccionado];
+    boxRuta.style.display = 'block';
   }
 
   function guardarBorradorCarrito() {
-    localStorage.setItem('draftCart', JSON.stringify(serviciosSeleccionados));
+    if(!planSeleccionado) return;
+    
+    let datos = {
+      plan: planes[planSeleccionado].nombre,
+      precioTotal: parseFloat(document.getElementById('montoTotalEstimado').textContent)
+    };
+    
+    if(planSeleccionado === 'pyme') {
+      datos.extraDevices = parseInt(document.getElementById('extra-devices').value) || 0;
+    }
+    
+    localStorage.setItem('draftCart', JSON.stringify(datos));
   }
 </script>
 
