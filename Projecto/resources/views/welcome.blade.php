@@ -76,6 +76,8 @@
   h2 { font-size: clamp(26px, 3.5vw, 40px); }
   h3 { font-size: 21px; }
   p { color: var(--text-muted); margin: 0 0 16px; font-size: 15.5px; }
+  .text-muted { color: var(--text-muted) !important; }
+  .text-light { color: var(--text-high) !important; }
 
   .section { padding: clamp(60px, 8vw, 95px) 0; position: relative; border-top: 1px solid var(--border); }
   .section-head { max-width: 760px; margin-bottom: 48px; }
@@ -698,9 +700,9 @@
     <!-- GARANTÍA LEGAL INTEGRADA -->
     <div class="row align-items-center g-4 mt-4 pt-4" style="border-top:1px solid var(--border);">
       <div class="col-lg-7 col-12">
-        <h3>Nada se toca sin permiso por escrito.</h3>
-        <p>Antes de iniciar cualquier servicio que implique evaluar o intentar comprometer datos o sistemas — pentesting, pruebas de intrusión controladas, auditorías de código — <strong class="text-light">SECURE CODE S.A.S. de C.V.</strong> exige una Carta de Autorización (RoE) firmada por la Representación Legal de la empresa cliente.</p>
-        <p class="small" style="color:var(--text-muted);">Operamos 100% dentro del marco legal salvadoreño y estándares internacionales de ciberseguridad. Sin ese documento firmado por ambas partes, el servicio simplemente no arranca, sin excepciones.</p>
+        <h3 class="text-light">Nada se toca sin permiso por escrito.</h3>
+        <p class="fs-6 text-light opacity-75" style="color:var(--text-mid)!important;">Antes de iniciar cualquier servicio que implique evaluar o intentar comprometer datos o sistemas — pentesting, pruebas de intrusión controladas, auditorías de código — <strong class="text-light">SECURE CODE S.A.S. de C.V.</strong> exige una Carta de Autorización (RoE) firmada por la Representación Legal de la empresa cliente.</p>
+        <p class="small text-muted">Operamos 100% dentro del marco legal salvadoreño y estándares internacionales de ciberseguridad. Sin ese documento firmado por ambas partes, el servicio simplemente no arranca, sin excepciones.</p>
       </div>
       <div class="col-lg-5 col-12">
         <div class="card-service-item">
